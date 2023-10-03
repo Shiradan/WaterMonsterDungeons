@@ -29,7 +29,7 @@ multirun/other_window_args="join"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/multirun/plugin.cfg")
+enabled=PackedStringArray("res://addons/dice_syntax/plugin.cfg", "res://addons/multirun/plugin.cfg")
 
 [rendering]
 
