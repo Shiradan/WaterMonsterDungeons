@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="WaterMonsterDungeons"
+run/main_scene="res://main/login_page.tscn"
 config/features=PackedStringArray("4.1", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://logo.png"
 
 [autoload]
 
-ServerConnection="*res://autoload/ServerConnection.gd"
 Nakama="*res://addons/com.heroiclabs.nakama/Nakama.gd"
+ServerConnection="*res://autoload/ServerConnection.gd"
 
 [debug]
 
@@ -27,9 +28,19 @@ multirun/add_custom_args=true
 multirun/first_window_args="listen"
 multirun/other_window_args="join"
 
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/dice_syntax/plugin.cfg", "res://addons/multirun/plugin.cfg")
+
+[filesystem]
+
+import/blender/enabled=false
 
 [rendering]
 
