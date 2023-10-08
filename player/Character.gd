@@ -9,6 +9,10 @@ var race:int=-1 : set=set_race
 var gender:int=-1 : set=set_gender
 var max_hp:int=0 : set=set_max_hp
 var hp:int=max_hp : set=set_hp
+var max_mana:int=0 : set=set_max_mana
+var mana:int=max_mana : set=set_mana
+var max_skill_points:int=0 : set=set_max_skill_points
+var skill_points:int=max_skill_points : set=set_skill_points
 #var damage_reduction:int
 var attributes:Dictionary = {
 	"str":0,
@@ -23,6 +27,8 @@ var armor_class:int=10 : set=set_armor_class
 #var savings:Dictionary
 var base_attack_bonus:int=0 : set=set_bab
 #var spell_resistance:Dictionary
+var before_turn_actions:int=0 : set=set_before_turn_actions
+var actions:int=0 : set=set_actions
 var active:bool=false : set=set_active
 
 func set_character_name(value):
@@ -49,6 +55,18 @@ func set_max_hp(value):
 func set_hp(value):
 	hp=value
 
+func set_max_mana(value):
+	max_mana=value
+
+func set_mana(value):
+	mana=value
+
+func set_max_skill_points(value):
+	max_skill_points=value
+
+func set_skill_points(value):
+	skill_points=value
+
 func set_attributes(value):
 	attributes=value
 	
@@ -60,6 +78,12 @@ func set_armor_class(value):
 
 func set_bab(value):
 	base_attack_bonus=value 
+
+func set_before_turn_actions(value):
+	before_turn_actions=value
+
+func set_actions(value):
+	actions=value
 
 func set_active(value):
 	active=value
