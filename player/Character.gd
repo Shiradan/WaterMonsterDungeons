@@ -22,6 +22,7 @@ var initiative:int=0 : set=set_initiative
 var armor_class:int=10 : set=set_armor_class
 #var savings:Dictionary
 var base_attack_bonus:int=0 : set=set_bab
+#var spell_resistance:Dictionary
 
 func set_character_name(value):
 	character_name=value
