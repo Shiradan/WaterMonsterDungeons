@@ -23,6 +23,7 @@ var armor_class:int=10 : set=set_armor_class
 #var savings:Dictionary
 var base_attack_bonus:int=0 : set=set_bab
 #var spell_resistance:Dictionary
+var active:bool=false : set=set_active
 
 func set_character_name(value):
 	character_name=value
@@ -59,3 +60,6 @@ func set_armor_class(value):
 
 func set_bab(value):
 	base_attack_bonus=value 
+
+func set_active(value):
+	active=value
