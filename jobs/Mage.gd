@@ -1,7 +1,8 @@
 extends Job
 class_name Mage
 
-const job_index=1
+const job_index:int=1
+const cn_name:String="法师"
 
 func _init():
 	self.hit_dice=6

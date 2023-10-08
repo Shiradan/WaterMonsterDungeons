@@ -2,6 +2,7 @@ extends Race
 class_name Gnome
 
 const race_index:int=3
+const cn_name:String="侏儒"
 const gnome_bonus_attributes:Dictionary={
 	"str":-2,
 	"dex":0,

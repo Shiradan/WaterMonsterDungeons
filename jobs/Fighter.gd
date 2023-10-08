@@ -1,7 +1,8 @@
 extends Job
 class_name Fighter
 
-const job_index=0
+const job_index:int=0
+const cn_name:String="战士"
 
 func _init():
 	self.hit_dice=10

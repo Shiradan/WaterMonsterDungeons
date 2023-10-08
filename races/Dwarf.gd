@@ -2,6 +2,7 @@ extends Race
 class_name Dwarf
 
 const race_index:int=1
+const cn_name:String="矮人"
 const dwarf_bonus_attributes:Dictionary={
 	"str":0,
 	"dex":0,

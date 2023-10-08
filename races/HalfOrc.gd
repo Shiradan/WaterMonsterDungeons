@@ -2,6 +2,7 @@ extends Race
 class_name HalfOrc
 
 const race_index=6
+const cn_name:String="半兽人"
 const halforc_bonus_attributes:Dictionary={
 	"str":2,
 	"dex":2,

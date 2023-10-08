@@ -2,6 +2,7 @@ extends Race
 class_name Elf
 
 const race_index:int=2
+const cn_name:String="精灵"
 const elf_bonus_attributes:Dictionary={
 	"str":0,
 	"dex":2,

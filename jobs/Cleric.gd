@@ -1,7 +1,8 @@
 extends Job
 class_name Cleric
 
-const job_index=2
+const job_index:int=2
+const cn_name:String="牧师"
 
 func _init():
 	self.hit_dice=8
