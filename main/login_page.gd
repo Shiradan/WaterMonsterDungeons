@@ -16,6 +16,7 @@ func register_and_login():
 		return
 
 	await connect_to_server()
+	await join_system_group()
 
 func connect_to_server():
 	var result=await ServerConnection.connect_to_server_async()
@@ -25,6 +26,12 @@ func connect_to_server():
 		status_panel.text="连接Nakama服务器失败，请检查网络情况或联系站长."
 		return
 
+func join_system_group():
+	var result= await ServerConnection.join_wmd_group_async()
+	if result==OK:
+		status_panel.text="加入水怪地城系统组."
+	else:
+		status_panel.text="加入水怪地城系统错误，请检查网络情况或联系站长."
 
 func _on_register_login_button_down():
 	register_and_login()

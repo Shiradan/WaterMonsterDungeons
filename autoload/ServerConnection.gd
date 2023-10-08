@@ -51,6 +51,7 @@ var _presences={}: set=_no_set
 var error_message := "": set= _no_set, get= _get_error_message
 var _exception_handler := ExceptionHandler.new()
 var _channelId: String
+var _groupId=""
 
 func authenticate_async(email, password):
 	var result=OK
@@ -84,6 +85,75 @@ func connect_to_server_async():
 
 		return OK
 	return ERR_CANT_CONNECT
+
+func join_wmd_group_async():
+	var result=OK
+	var userGroupList : NakamaAPI.ApiUserGroupList = await _client.list_user_groups_async(_session, get_user_id())
+	if userGroupList.is_exception():
+		@warning_ignore("int_as_enum_without_cast")
+		result=userGroupList.get_exception().status_code
+		print(userGroupList.get_exception()._to_string())
+		return result
+	else:
+		if userGroupList.user_groups.size()>0:
+			for ug in userGroupList.user_groups:
+				var g = ug.group as NakamaAPI.ApiGroup
+				if g.name=="WMD Public Group":
+					print("Group %s role %s" % [g.id, ug.state])
+					return result
+	
+	var list : NakamaAPI.ApiGroupList = await _client.list_groups_async(_session, "WMD Public Group", 20)
+	if list.is_exception():
+		@warning_ignore("int_as_enum_without_cast")
+		result=list.get_exception().status_code
+		print(list.get_exception()._to_string())
+	else:
+		if list.groups.size() == 0:
+			var group:NakamaAPI.ApiRpc=await _client.rpc_async(_session,"get_wmd_group_id","")
+			if not group.is_exception():
+				_groupId=group.payload
+				var join : NakamaAsyncResult = await _client.join_group_async(_session, _groupId)
+				if join.is_exception():
+					@warning_ignore("int_as_enum_without_cast")
+					result=join.get_exception().status_code
+					print(join.get_exception()._to_string())
+				else:
+					print("Sent group join request %s" % _groupId)
+			else:
+				@warning_ignore("int_as_enum_without_cast")
+				result=group.get_exception().status_code
+				print(group.get_exception()._to_string())
+		else:
+			for g in list.groups:
+				var group = g as NakamaAPI.ApiGroup
+				if g.name=="WMD Public Group":
+					_groupId=g.id
+					print("Group: name %s, id %s" % [group.name, group.id])
+					break
+			var cursor = list.cursor
+			while cursor: # While there are more results get next page.
+				list = await _client.list_groups_async(_session, "WMD Public Group", 20, cursor)
+				if list.is_exception():
+					@warning_ignore("int_as_enum_without_cast")
+					result=list.get_exception().status_code
+					print(list.get_exception()._to_string())
+					return result
+				for g in list.groups:
+					var group = g as NakamaAPI.ApiGroup
+					if group.name=="WMD Public Group":
+						_groupId=group.id
+						print("Group: name %s, id %s" % [group.name, group.id])
+						break
+				cursor = list.cursor
+				
+			var join : NakamaAsyncResult = await _client.join_group_async(_session, _groupId)
+			if join.is_exception():
+				@warning_ignore("int_as_enum_without_cast")
+				result=join.get_exception().status_code
+				print(join.get_exception()._to_string())
+			else:
+				print("Sent group join request %s" % _groupId)
+	return result
 
 func join_world_async():
 	var world:NakamaAPI.ApiRpc=await _client.rpc_async(_session,"get_world_id","")
