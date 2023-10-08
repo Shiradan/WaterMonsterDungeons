@@ -1,9 +1,9 @@
 extends Node
-class_name CharacterStats
+class_name Character
 
 var character_name:String="" : set=set_character_name
 var job:int=-1 : set=set_job
-var exp:int=0 : set=set_exp
+var experience:int=0 : set=set_exp
 var level:int=0 : set=set_level
 var race:int=-1 : set=set_race
 var gender:int=-1 : set=set_gender
@@ -32,7 +32,7 @@ func set_job(value):
 	job=value
 
 func set_exp(value):
-	exp=value
+	experience=value
 
 func set_level(value):
 	level=value

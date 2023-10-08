@@ -19,7 +19,7 @@ config/icon="res://logo.png"
 
 Nakama="*res://addons/com.heroiclabs.nakama/Nakama.gd"
 ServerConnection="*res://autoload/ServerConnection.gd"
-Character="*res://player/Character.gd"
+ClientManager="*res://autoload/ClientManager.gd"
 
 [debug]
 
