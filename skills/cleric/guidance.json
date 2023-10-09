@@ -1,0 +1,20 @@
+{
+	"name": "Guidance",
+	"cn_name": "神导术",
+	"Desc": "向神明寻求指引，战胜敌人",
+	"LevelRequired": 1,
+	"Learned": 0,
+	"Type": 1,
+	"Range": 0,
+	"TurnAction": 1,
+	"Mana": 0,
+	"Target": 1,
+	"EffectType": 1,
+	"BuffValueArray": [
+		{
+			"BuffType": 0,
+			"BuffValue": 1
+		}
+	],
+	"Duration": 0
+}

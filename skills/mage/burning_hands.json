@@ -1,0 +1,22 @@
+{
+	"name": "Burning Hands",
+	"cn_name": "燃烧之手",
+	"Desc": "双手燃起熊熊火焰，向敌人发射火焰攻击",
+	"LevelRequired": 1,
+	"Learned": 0,
+	"Type": 1,
+	"Range": 2,
+	"TurnAction": 1,
+	"Mana": 1,
+	"Target": -1,
+	"TargetMultiplier": 2,
+	"TargetFactor": 0,
+	"EffectType": 0,
+	"DamageDiceArray": [
+		{
+			"DamageType": "FIRE",
+			"DamageDice": 6,
+			"DamageDiceNo": 1
+		}
+	]
+}

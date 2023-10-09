@@ -11,8 +11,8 @@ var max_hp:int=0 : set=set_max_hp
 var hp:int=max_hp : set=set_hp
 var max_mana:int=0 : set=set_max_mana
 var mana:int=max_mana : set=set_mana
-var max_skill_points:int=0 : set=set_max_skill_points
-var skill_points:int=max_skill_points : set=set_skill_points
+var mana_regeneration:int : set=set_mana_regeneration
+var skill_points:int=0 : set=set_skill_points
 var attribute_points:int=0 : set=set_attribute_points
 #var damage_reduction:int
 var attributes:Dictionary = {
@@ -30,6 +30,7 @@ var base_attack_bonus:int=0 : set=set_bab
 #var spell_resistance:Dictionary
 var before_turn_actions:int=0 : set=set_before_turn_actions
 var actions:int=0 : set=set_actions
+var after_turn_actions:int=0 : set=set_after_turn_actions
 var active:bool=false : set=set_active
 
 func set_character_name(value):
@@ -62,8 +63,8 @@ func set_max_mana(value):
 func set_mana(value):
 	mana=value
 
-func set_max_skill_points(value):
-	max_skill_points=value
+func set_mana_regeneration(value):
+	mana_regeneration=value
 
 func set_skill_points(value):
 	skill_points=value
@@ -88,6 +89,9 @@ func set_before_turn_actions(value):
 
 func set_actions(value):
 	actions=value
+
+func set_after_turn_actions(value):
+	after_turn_actions=value
 
 func set_active(value):
 	active=value

@@ -1,0 +1,21 @@
+{
+	"name": "Unarmed Attack Finesse",
+	"cn_name": "灵巧徒手攻击",
+	"Desc": "利用敏捷的身手赤手空拳对敌人进行打击。",
+	"LevelRequired": 1,
+	"Learned": 0,
+	"AttackAttribute": 2,
+	"DamageAttribute": 2,
+	"Type": 0,
+	"Range": 1,
+	"TurnAction": 1,
+	"Target": 1,
+	"EffectType": 0,
+	"DamageDiceArray": [
+		{
+			"DamageType": "WEAPON",
+			"DamageDice": 4,
+			"DamageDiceNo": 1
+		}
+	]
+}

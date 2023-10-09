@@ -1,0 +1,25 @@
+{
+	"name": "Combat Expertise",
+	"cn_name": "寓守于攻",
+	"Desc": "牺牲准确度，提升防御能力。",
+	"LevelRequired": 1,
+	"Learned": 0,
+	"Type": 0,
+	"Range": -1,
+	"TurnAction": 0,
+	"Target": 1,
+	"EffectType": 1,
+	"BuffDiceArray": [
+		{
+			"BuffType": 0,
+			"BuffDice": -6,
+			"BuffDiceNo": 1
+		},
+		{
+			"BuffType": -1,
+			"BuffDice": 6,
+			"BuffDiceNo": 2
+		}
+	],
+	"Duration": 1
+}

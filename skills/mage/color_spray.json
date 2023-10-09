@@ -1,0 +1,29 @@
+{
+	"name": "Color Spray",
+	"cn_name": "七彩喷射",
+	"Desc": "放射出彩虹色的射线攻击敌人，迷惑敌人",
+	"LevelRequired": 1,
+	"Learned": 0,
+	"Type": 1,
+	"Range": 2,
+	"TurnAction": 1,
+	"Mana": 1,
+	"Target": -1,
+	"TargetMultiplier": 1,
+	"TargetFactor": 0,
+	"EffectType": -1,
+	"DebuffValueArray": [
+		{
+			"DebuffType": -1,
+			"DebuffValue": 4
+		}
+	],
+	"DebuffDiceArray": [
+		{
+			"DebuffType": 2,
+			"DebuffDice": 6,
+			"DebuffDiceNo": 2
+		}
+	],
+	"Duration": 2
+}

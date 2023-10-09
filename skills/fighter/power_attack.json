@@ -1,0 +1,25 @@
+{
+	"name": "Power Attack",
+	"cn_name": "猛力攻击",
+	"Desc": "以牺牲准确率为代价提高力量。",
+	"LevelRequired": 1,
+	"Learned": 0,
+	"Type": 0,
+	"Range": -1,
+	"TurnAction": 0,
+	"Target": 1,
+	"EffectType": 1,
+	"BuffDiceArray": [
+		{
+			"BuffType": 0,
+			"BuffDice": -6,
+			"BuffDiceNo": 1
+		},
+		{
+			"BuffType": 1,
+			"BuffDice": 8,
+			"BuffDiceNo": 4
+		}
+	],
+	"Duration": 1
+}

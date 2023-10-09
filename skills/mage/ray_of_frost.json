@@ -1,0 +1,20 @@
+{
+	"name": "Ray Of Frost",
+	"cn_name": "寒冰射线",
+	"Desc": "发射寒冷的射线攻击敌人",
+	"LevelRequired": 1,
+	"Learned": 0,
+	"Type": 1,
+	"Range": 2,
+	"TurnAction": 1,
+	"Mana": 0,
+	"Target": 1,
+	"EffectType": 0,
+	"DamageDiceArray": [
+		{
+			"DamageType": "FROST",
+			"DamageDice": 4,
+			"DamageDiceNo": 1
+		}
+	]
+}

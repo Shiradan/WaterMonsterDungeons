@@ -1,0 +1,18 @@
+{
+	"name": "Improved Initiative",
+	"cn_name": "精通先攻",
+	"Desc": "磨炼身体，使自己可以更快行动",
+	"LevelRequired": 1,
+	"Learned": 0,
+	"Type": -1,
+	"Range": -1,
+	"TurnAction": -1,
+	"Target": 1,
+	"EffectType": 1,
+	"BuffValueArray": [
+		{
+			"BuffType": 7,
+			"BuffValue": 2
+		}
+	]
+}

@@ -1,0 +1,61 @@
+{
+	"name": "",
+	"cn_name": "",
+	"Desc": "",
+	"LevelRequired": 0,
+	"PreSkill": "",
+	"Learned": 0,
+	"Type": 0,
+	"Range": 0,
+	"TurnAction": 0,
+	"Mana": 0,
+	"AttackAttribute": 0,
+	"DamageAttribute": 0,
+	"Target": 0,
+	"TargetMultiplier": 0,
+	"TargetFactor": 0,
+	"EffectType": 0,
+	"DamageValueArray": [
+		{
+			"DamageType": "",
+			"DamageValue": 0
+		}
+	],
+	"DamageDiceArray": [
+		{
+			"DamageType": "",
+			"DamageDice": 0,
+			"DamageDiceNo": 0
+		}
+	],
+	"HealValue": 0,
+	"HealDice": 0,
+	"HealDiceNo": 0,
+	"BuffValueArray": [
+		{
+			"BuffType": 0,
+			"BuffValue": 0
+		}
+	],
+	"BuffDiceArray": [
+		{
+			"BuffType": 0,
+			"BuffDice": 0,
+			"BuffDiceNo": 0
+		}
+	],
+	"DebuffValueArray": [
+		{
+			"DebuffType": 0,
+			"DebuffValue": 0
+		}
+	],
+	"DebuffDiceArray": [
+		{
+			"DebuffType": 0,
+			"DebuffDice": 0,
+			"DebuffDiceNo": 0
+		}
+	],
+	"Duration": 0
+}

@@ -1,0 +1,15 @@
+{
+	"name": "Cure Light Wound",
+	"cn_name": "治疗轻伤",
+	"Desc": "治疗轻微伤害",
+	"LevelRequired": 1,
+	"Learned": 0,
+	"Type": 1,
+	"Range": 0,
+	"TurnAction": -1,
+	"Mana": 1,
+	"Target": 1,
+	"EffectType": 2,
+	"HealDice": 8,
+	"HealDiceNo": 1,
+}

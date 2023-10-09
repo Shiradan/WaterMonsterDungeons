@@ -1,0 +1,18 @@
+{
+	"name": "Weapon Focus",
+	"cn_name": "攻击专精",
+	"Desc": "熟练掌握用武器或徒手进行攻击，准确率提升。",
+	"LevelRequired": 1,
+	"Learned": 0,
+	"Type": -1,
+	"Range": -1,
+	"TurnAction": -1,
+	"Target": 1,
+	"EffectType": 1,
+	"BuffValueArray": [
+		{
+			"BuffType": 0,
+			"BuffValue": 2
+		}
+	]
+}
