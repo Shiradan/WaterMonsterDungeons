@@ -8,6 +8,10 @@ var creation:Character=null
 @onready var step2_rollAttributes=$Step2_RollAttributes
 
 func _ready():
+	characterListPage.show()
+	step1.hide()
+	step2_buyAttributes.hide()
+	step2_rollAttributes.hide()
 	setup_character_list()
 	
 func setup_character_list():
@@ -72,7 +76,7 @@ func _on_buy_points_pressed():
 	var creation_name=$Step1_ModeSelection/Panel/CharacterNameContainer/CharacterName
 	var creation_gender=$Step1_ModeSelection/Panel/GenderContainer/Gender
 	creation=Character.new()
-	creation.character_name=creation_name
+	creation.character_name=creation_name.text
 	creation.gender=creation_gender.selected
 	step1.hide()
 	step2_buyAttributes.show()
@@ -82,7 +86,7 @@ func _on_roll_attributes_pressed():
 	var creation_name=$Step1_ModeSelection/Panel/CharacterNameContainer/CharacterName
 	var creation_gender=$Step1_ModeSelection/Panel/GenderContainer/Gender
 	creation=Character.new()
-	creation.character_name=creation_name
+	creation.character_name=creation_name.text
 	creation.gender=creation_gender.selected
 	step1.hide()
 	step2_rollAttributes.show()

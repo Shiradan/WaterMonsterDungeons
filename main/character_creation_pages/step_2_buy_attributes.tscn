@@ -1,0 +1,301 @@
+[gd_scene load_steps=5 format=3 uid="uid://cj1e12cveyeic"]
+
+[ext_resource type="Texture2D" uid="uid://dr3d8gkcpdt5" path="res://assets/character_creation/buttons/add.png" id="1_eu6bs"]
+[ext_resource type="Script" path="res://main/character_creation_pages/step_2_buy_attributes.gd" id="1_hvbrx"]
+[ext_resource type="Texture2D" uid="uid://dwho7fs0wb4xm" path="res://assets/character_creation/buttons/minus.png" id="2_f4edr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bnnaq"]
+bg_color = Color(0.301961, 0.301961, 0.301961, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+
+[node name="Step2_BuyAttributes" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_hvbrx")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+offset_left = 256.0
+offset_top = 128.0
+offset_right = 1024.0
+offset_bottom = 576.0
+
+[node name="AttributesLabelContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 96.0
+offset_right = 304.0
+offset_bottom = 355.0
+
+[node name="Strength" type="Label" parent="Panel/AttributesLabelContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 24
+text = "力量"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Dexterity" type="Label" parent="Panel/AttributesLabelContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 24
+text = "敏捷"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Constitution" type="Label" parent="Panel/AttributesLabelContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 24
+text = "体质"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Intelligence" type="Label" parent="Panel/AttributesLabelContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 24
+text = "智力"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Wisdom" type="Label" parent="Panel/AttributesLabelContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 24
+text = "感知"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Charisma" type="Label" parent="Panel/AttributesLabelContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 24
+text = "魅力"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AttributesValueContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 96.0
+offset_right = 520.0
+offset_bottom = 356.0
+
+[node name="StrContainer" type="HBoxContainer" parent="Panel/AttributesValueContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="StrAdd" type="Button" parent="Panel/AttributesValueContainer/StrContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+icon = ExtResource("1_eu6bs")
+flat = true
+icon_alignment = 1
+
+[node name="StrValue" type="Label" parent="Panel/AttributesValueContainer/StrContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StrMinus" type="Button" parent="Panel/AttributesValueContainer/StrContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+icon = ExtResource("2_f4edr")
+flat = true
+icon_alignment = 1
+
+[node name="DexContainer" type="HBoxContainer" parent="Panel/AttributesValueContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="DexAdd" type="Button" parent="Panel/AttributesValueContainer/DexContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+icon = ExtResource("1_eu6bs")
+flat = true
+icon_alignment = 1
+
+[node name="DexValue" type="Label" parent="Panel/AttributesValueContainer/DexContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DexMinus" type="Button" parent="Panel/AttributesValueContainer/DexContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+icon = ExtResource("2_f4edr")
+flat = true
+icon_alignment = 1
+
+[node name="ConContainer" type="HBoxContainer" parent="Panel/AttributesValueContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ConAdd" type="Button" parent="Panel/AttributesValueContainer/ConContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+icon = ExtResource("1_eu6bs")
+flat = true
+icon_alignment = 1
+
+[node name="ConValue" type="Label" parent="Panel/AttributesValueContainer/ConContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ConMinus" type="Button" parent="Panel/AttributesValueContainer/ConContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+icon = ExtResource("2_f4edr")
+flat = true
+icon_alignment = 1
+
+[node name="IntContainer" type="HBoxContainer" parent="Panel/AttributesValueContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="IntAdd" type="Button" parent="Panel/AttributesValueContainer/IntContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+icon = ExtResource("1_eu6bs")
+flat = true
+icon_alignment = 1
+
+[node name="IntValue" type="Label" parent="Panel/AttributesValueContainer/IntContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="IntMinus" type="Button" parent="Panel/AttributesValueContainer/IntContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+icon = ExtResource("2_f4edr")
+flat = true
+icon_alignment = 1
+
+[node name="WisContainer" type="HBoxContainer" parent="Panel/AttributesValueContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="WisAdd" type="Button" parent="Panel/AttributesValueContainer/WisContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+icon = ExtResource("1_eu6bs")
+flat = true
+icon_alignment = 1
+
+[node name="WisValue" type="Label" parent="Panel/AttributesValueContainer/WisContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WisMinus" type="Button" parent="Panel/AttributesValueContainer/WisContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+icon = ExtResource("2_f4edr")
+flat = true
+icon_alignment = 1
+
+[node name="ChaContainer" type="HBoxContainer" parent="Panel/AttributesValueContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ChaAdd" type="Button" parent="Panel/AttributesValueContainer/ChaContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+icon = ExtResource("1_eu6bs")
+flat = true
+icon_alignment = 1
+
+[node name="ChaValue" type="Label" parent="Panel/AttributesValueContainer/ChaContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ChaMinus" type="Button" parent="Panel/AttributesValueContainer/ChaContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+icon = ExtResource("2_f4edr")
+flat = true
+icon_alignment = 1
+
+[node name="BuyPointsContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 296.0
+offset_top = 24.0
+offset_right = 472.0
+offset_bottom = 66.0
+
+[node name="BuyPointsLabel" type="Label" parent="Panel/BuyPointsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 28
+text = "剩余购点："
+vertical_alignment = 1
+
+[node name="Value" type="Label" parent="Panel/BuyPointsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_bnnaq")
+text = "20"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PreStep" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 272.0
+offset_top = 384.0
+offset_right = 364.0
+offset_bottom = 431.0
+theme_override_font_sizes/font_size = 28
+text = "上一步"
+
+[node name="NextStep" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 408.0
+offset_top = 384.0
+offset_right = 500.0
+offset_bottom = 431.0
+theme_override_font_sizes/font_size = 28
+text = "下一步
+"
+
+[connection signal="pressed" from="Panel/AttributesValueContainer/StrContainer/StrAdd" to="." method="_on_str_add_pressed"]
+[connection signal="pressed" from="Panel/AttributesValueContainer/StrContainer/StrMinus" to="." method="_on_str_minus_pressed"]
+[connection signal="pressed" from="Panel/AttributesValueContainer/DexContainer/DexAdd" to="." method="_on_dex_add_pressed"]
+[connection signal="pressed" from="Panel/AttributesValueContainer/DexContainer/DexMinus" to="." method="_on_dex_minus_pressed"]
+[connection signal="pressed" from="Panel/AttributesValueContainer/ConContainer/ConAdd" to="." method="_on_con_add_pressed"]
+[connection signal="pressed" from="Panel/AttributesValueContainer/ConContainer/ConMinus" to="." method="_on_con_minus_pressed"]
+[connection signal="pressed" from="Panel/AttributesValueContainer/IntContainer/IntAdd" to="." method="_on_int_add_pressed"]
+[connection signal="pressed" from="Panel/AttributesValueContainer/IntContainer/IntMinus" to="." method="_on_int_minus_pressed"]
+[connection signal="pressed" from="Panel/AttributesValueContainer/WisContainer/WisAdd" to="." method="_on_wis_add_pressed"]
+[connection signal="pressed" from="Panel/AttributesValueContainer/WisContainer/WisMinus" to="." method="_on_wis_minus_pressed"]
+[connection signal="pressed" from="Panel/AttributesValueContainer/ChaContainer/ChaAdd" to="." method="_on_cha_add_pressed"]
+[connection signal="pressed" from="Panel/AttributesValueContainer/ChaContainer/ChaMinus" to="." method="_on_cha_minus_pressed"]
