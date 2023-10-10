@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://cohysnyqualqv"]
+
+[node name="Step1_ModeSelection" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+offset_left = 256.0
+offset_top = 128.0
+offset_right = 1016.0
+offset_bottom = 576.0
+
+[node name="CharacterNameContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 64.0
+offset_right = 576.0
+offset_bottom = 128.0
+
+[node name="CharacterNameLabel" type="Label" parent="Panel/CharacterNameContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "角色名："
+
+[node name="CharacterName" type="LineEdit" parent="Panel/CharacterNameContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 28
+
+[node name="GenderContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 192.0
+offset_right = 488.0
+offset_bottom = 256.0
+
+[node name="GenderLabel" type="Label" parent="Panel/GenderContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "性别："
+
+[node name="Gender" type="OptionButton" parent="Panel/GenderContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 28
+alignment = 1
+item_count = 2
+allow_reselect = true
+popup/item_0/text = "男性"
+popup/item_0/id = 0
+popup/item_1/text = "女性"
+popup/item_1/id = 1
+
+[node name="BuyPoints" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 320.0
+offset_right = 344.0
+offset_bottom = 384.0
+theme_override_font_sizes/font_size = 28
+text = "购点模式"
+
+[node name="RollAttributes" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 424.0
+offset_top = 320.0
+offset_right = 576.0
+offset_bottom = 384.0
+theme_override_font_sizes/font_size = 28
+text = "Roll点模式"

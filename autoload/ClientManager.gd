@@ -16,8 +16,12 @@ enum jobs {
 	CLERIC
 }
 
-var character=Character.new()
+var characters:Array=[]
+var character:=Character.new()
 var skillDB:TextDatabase=null
 
+func to_character_object(s):
+	var c=Character.new()
+	return c
 
 

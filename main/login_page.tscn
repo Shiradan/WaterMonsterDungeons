@@ -65,6 +65,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 32
 placeholder_text = "请输入至少8位数密码"
+secret = true
 
 [node name="StatusPanel" type="PanelContainer" parent="LoginPanel"]
 layout_mode = 0

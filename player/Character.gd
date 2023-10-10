@@ -31,7 +31,7 @@ var base_attack_bonus:int=0 : set=set_bab
 var before_turn_actions:int=0 : set=set_before_turn_actions
 var actions:int=0 : set=set_actions
 var after_turn_actions:int=0 : set=set_after_turn_actions
-var active:bool=false : set=set_active
+var active:int=0 : set=set_active
 
 func set_character_name(value):
 	character_name=value

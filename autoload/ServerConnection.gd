@@ -156,7 +156,7 @@ func join_wmd_group_async():
 	return result
 
 func join_world_async():
-	var world:NakamaAPI.ApiRpc=await _client.rpc_async(_session,"get_world_id","")
+	var world:NakamaAPI.ApiRpc=await _client.rpc_async(_session,"get_wmd_world_id","")
 	if not world.is_exception():
 		_worldId=world.payload
 		
@@ -169,7 +169,7 @@ func join_world_async():
 	for presence in matchJoinResult.presences:
 		_presences[presence.user_id]=presence
 	
-	var roomname = "World"
+	var roomname = "WMD"
 	var persistence = true
 	var hidden = false
 	var type = NakamaSocket.ChannelType.Room
@@ -187,7 +187,7 @@ func write_characters_async(chars):
 		_session,
 		[
 			NakamaWriteStorageObject.new(
-				"player_data",
+				"wmd_data",
 				"characters",
 				ReadPermissions.PUBLIC_READ,
 				WritePermissions.OWNER_WRITE,
@@ -207,14 +207,19 @@ func read_characters_async():
 		_session,
 		[
 			NakamaStorageObjectId.new(
-				"player_data",
+				"wmd_data",
 				"characters",
 				_session.user_id
 			)
 		]
 	)
 	
-	if storageObjects.objects:
+	var parsed_result := _exception_handler.parse_exception(storageObjects)
+	if parsed_result != OK:
+		return storageObjects.get_exception()._to_string()
+	
+	if storageObjects.objects.size()>0:
+		#get array of dictionary
 		var decodedCharacters=JSON.parse_string(storageObjects.objects[0].value).characters
 		characters=decodedCharacters
 		

@@ -17,6 +17,7 @@ func register_and_login():
 
 	await connect_to_server()
 	await join_system_group()
+	switch_to_character_creation()
 
 func connect_to_server():
 	var result=await ServerConnection.connect_to_server_async()
@@ -33,9 +34,16 @@ func join_system_group():
 	else:
 		status_panel.text="加入水怪地城系统错误，请检查网络情况或联系站长."
 
+func switch_to_character_creation():
+	var charactersData=await ServerConnection.read_characters_async()
+	if typeof(charactersData)==TYPE_STRING:
+		status_panel.text=charactersData
+		return
+	ClientManager.characters=charactersData
+	get_tree().change_scene_to_file("res://main/character_creation.tscn")
+
 func _on_register_login_button_down():
 	register_and_login()
-
 
 func _on_password_text_submitted(_new_text):
 	register_and_login()

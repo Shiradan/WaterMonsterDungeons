@@ -1,0 +1,91 @@
+[gd_scene load_steps=3 format=3 uid="uid://cr20ub3p48lkk"]
+
+[ext_resource type="Texture2D" uid="uid://dcu33616dssw2" path="res://assets/character_creation/buttons/Style 4 Icon 320.png" id="1_ibiev"]
+[ext_resource type="Texture2D" uid="uid://d8h5k7k8aj1b" path="res://assets/character_creation/buttons/Style 4 Icon 324.png" id="2_xgaww"]
+
+[node name="CharacterList" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 128.0
+offset_right = 1016.0
+offset_bottom = 576.0
+
+[node name="CharacterSlotContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 96.0
+offset_right = 576.0
+offset_bottom = 352.0
+
+[node name="CharacterSlot1" type="Button" parent="Panel/CharacterSlotContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 40
+icon = ExtResource("1_ibiev")
+icon_alignment = 1
+expand_icon = true
+
+[node name="CharacterSlot2" type="Button" parent="Panel/CharacterSlotContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+icon = ExtResource("1_ibiev")
+icon_alignment = 1
+expand_icon = true
+
+[node name="CharacterSlot3" type="Button" parent="Panel/CharacterSlotContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+icon = ExtResource("1_ibiev")
+icon_alignment = 1
+expand_icon = true
+
+[node name="SelectionContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 576.0
+offset_top = 96.0
+offset_right = 656.0
+offset_bottom = 352.0
+
+[node name="Selection1" type="TextureRect" parent="Panel/SelectionContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_xgaww")
+
+[node name="Selection2" type="TextureRect" parent="Panel/SelectionContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_xgaww")
+
+[node name="Selection3" type="TextureRect" parent="Panel/SelectionContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_xgaww")
+
+[node name="Title" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 16.0
+offset_right = 512.0
+offset_bottom = 80.0
+theme_override_font_sizes/font_size = 32
+text = "你的角色"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EnterWMD" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 368.0
+offset_right = 488.0
+offset_bottom = 432.0
+theme_override_font_sizes/font_size = 32
+text = "进入水怪地城"
