@@ -93,10 +93,10 @@ offset_bottom = 356.0
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="StrAdd" type="Button" parent="Panel/AttributesValueContainer/StrContainer"]
+[node name="StrMinus" type="Button" parent="Panel/AttributesValueContainer/StrContainer"]
 layout_mode = 2
-size_flags_horizontal = 2
-icon = ExtResource("1_eu6bs")
+size_flags_horizontal = 10
+icon = ExtResource("2_f4edr")
 flat = true
 icon_alignment = 1
 
@@ -108,10 +108,10 @@ text = "10"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="StrMinus" type="Button" parent="Panel/AttributesValueContainer/StrContainer"]
+[node name="StrAdd" type="Button" parent="Panel/AttributesValueContainer/StrContainer"]
 layout_mode = 2
-size_flags_horizontal = 10
-icon = ExtResource("2_f4edr")
+size_flags_horizontal = 2
+icon = ExtResource("1_eu6bs")
 flat = true
 icon_alignment = 1
 
@@ -119,10 +119,10 @@ icon_alignment = 1
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="DexAdd" type="Button" parent="Panel/AttributesValueContainer/DexContainer"]
+[node name="DexMinus" type="Button" parent="Panel/AttributesValueContainer/DexContainer"]
 layout_mode = 2
-size_flags_horizontal = 2
-icon = ExtResource("1_eu6bs")
+size_flags_horizontal = 10
+icon = ExtResource("2_f4edr")
 flat = true
 icon_alignment = 1
 
@@ -134,10 +134,10 @@ text = "10"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DexMinus" type="Button" parent="Panel/AttributesValueContainer/DexContainer"]
+[node name="DexAdd" type="Button" parent="Panel/AttributesValueContainer/DexContainer"]
 layout_mode = 2
-size_flags_horizontal = 10
-icon = ExtResource("2_f4edr")
+size_flags_horizontal = 2
+icon = ExtResource("1_eu6bs")
 flat = true
 icon_alignment = 1
 
@@ -145,10 +145,10 @@ icon_alignment = 1
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ConAdd" type="Button" parent="Panel/AttributesValueContainer/ConContainer"]
+[node name="ConMinus" type="Button" parent="Panel/AttributesValueContainer/ConContainer"]
 layout_mode = 2
-size_flags_horizontal = 2
-icon = ExtResource("1_eu6bs")
+size_flags_horizontal = 10
+icon = ExtResource("2_f4edr")
 flat = true
 icon_alignment = 1
 
@@ -160,10 +160,10 @@ text = "10"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ConMinus" type="Button" parent="Panel/AttributesValueContainer/ConContainer"]
+[node name="ConAdd" type="Button" parent="Panel/AttributesValueContainer/ConContainer"]
 layout_mode = 2
-size_flags_horizontal = 10
-icon = ExtResource("2_f4edr")
+size_flags_horizontal = 2
+icon = ExtResource("1_eu6bs")
 flat = true
 icon_alignment = 1
 
@@ -171,10 +171,10 @@ icon_alignment = 1
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="IntAdd" type="Button" parent="Panel/AttributesValueContainer/IntContainer"]
+[node name="IntMinus" type="Button" parent="Panel/AttributesValueContainer/IntContainer"]
 layout_mode = 2
-size_flags_horizontal = 2
-icon = ExtResource("1_eu6bs")
+size_flags_horizontal = 10
+icon = ExtResource("2_f4edr")
 flat = true
 icon_alignment = 1
 
@@ -186,10 +186,10 @@ text = "10"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="IntMinus" type="Button" parent="Panel/AttributesValueContainer/IntContainer"]
+[node name="IntAdd" type="Button" parent="Panel/AttributesValueContainer/IntContainer"]
 layout_mode = 2
-size_flags_horizontal = 10
-icon = ExtResource("2_f4edr")
+size_flags_horizontal = 2
+icon = ExtResource("1_eu6bs")
 flat = true
 icon_alignment = 1
 
@@ -197,10 +197,10 @@ icon_alignment = 1
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="WisAdd" type="Button" parent="Panel/AttributesValueContainer/WisContainer"]
+[node name="WisMinus" type="Button" parent="Panel/AttributesValueContainer/WisContainer"]
 layout_mode = 2
-size_flags_horizontal = 2
-icon = ExtResource("1_eu6bs")
+size_flags_horizontal = 10
+icon = ExtResource("2_f4edr")
 flat = true
 icon_alignment = 1
 
@@ -212,10 +212,10 @@ text = "10"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="WisMinus" type="Button" parent="Panel/AttributesValueContainer/WisContainer"]
+[node name="WisAdd" type="Button" parent="Panel/AttributesValueContainer/WisContainer"]
 layout_mode = 2
-size_flags_horizontal = 10
-icon = ExtResource("2_f4edr")
+size_flags_horizontal = 2
+icon = ExtResource("1_eu6bs")
 flat = true
 icon_alignment = 1
 
@@ -223,10 +223,10 @@ icon_alignment = 1
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ChaAdd" type="Button" parent="Panel/AttributesValueContainer/ChaContainer"]
+[node name="ChaMinus" type="Button" parent="Panel/AttributesValueContainer/ChaContainer"]
 layout_mode = 2
-size_flags_horizontal = 2
-icon = ExtResource("1_eu6bs")
+size_flags_horizontal = 10
+icon = ExtResource("2_f4edr")
 flat = true
 icon_alignment = 1
 
@@ -238,10 +238,10 @@ text = "10"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ChaMinus" type="Button" parent="Panel/AttributesValueContainer/ChaContainer"]
+[node name="ChaAdd" type="Button" parent="Panel/AttributesValueContainer/ChaContainer"]
 layout_mode = 2
-size_flags_horizontal = 10
-icon = ExtResource("2_f4edr")
+size_flags_horizontal = 2
+icon = ExtResource("1_eu6bs")
 flat = true
 icon_alignment = 1
 
@@ -287,15 +287,15 @@ theme_override_font_sizes/font_size = 28
 text = "下一步
 "
 
-[connection signal="pressed" from="Panel/AttributesValueContainer/StrContainer/StrAdd" to="." method="_on_str_add_pressed"]
 [connection signal="pressed" from="Panel/AttributesValueContainer/StrContainer/StrMinus" to="." method="_on_str_minus_pressed"]
-[connection signal="pressed" from="Panel/AttributesValueContainer/DexContainer/DexAdd" to="." method="_on_dex_add_pressed"]
+[connection signal="pressed" from="Panel/AttributesValueContainer/StrContainer/StrAdd" to="." method="_on_str_add_pressed"]
 [connection signal="pressed" from="Panel/AttributesValueContainer/DexContainer/DexMinus" to="." method="_on_dex_minus_pressed"]
-[connection signal="pressed" from="Panel/AttributesValueContainer/ConContainer/ConAdd" to="." method="_on_con_add_pressed"]
+[connection signal="pressed" from="Panel/AttributesValueContainer/DexContainer/DexAdd" to="." method="_on_dex_add_pressed"]
 [connection signal="pressed" from="Panel/AttributesValueContainer/ConContainer/ConMinus" to="." method="_on_con_minus_pressed"]
-[connection signal="pressed" from="Panel/AttributesValueContainer/IntContainer/IntAdd" to="." method="_on_int_add_pressed"]
+[connection signal="pressed" from="Panel/AttributesValueContainer/ConContainer/ConAdd" to="." method="_on_con_add_pressed"]
 [connection signal="pressed" from="Panel/AttributesValueContainer/IntContainer/IntMinus" to="." method="_on_int_minus_pressed"]
-[connection signal="pressed" from="Panel/AttributesValueContainer/WisContainer/WisAdd" to="." method="_on_wis_add_pressed"]
+[connection signal="pressed" from="Panel/AttributesValueContainer/IntContainer/IntAdd" to="." method="_on_int_add_pressed"]
 [connection signal="pressed" from="Panel/AttributesValueContainer/WisContainer/WisMinus" to="." method="_on_wis_minus_pressed"]
-[connection signal="pressed" from="Panel/AttributesValueContainer/ChaContainer/ChaAdd" to="." method="_on_cha_add_pressed"]
+[connection signal="pressed" from="Panel/AttributesValueContainer/WisContainer/WisAdd" to="." method="_on_wis_add_pressed"]
 [connection signal="pressed" from="Panel/AttributesValueContainer/ChaContainer/ChaMinus" to="." method="_on_cha_minus_pressed"]
+[connection signal="pressed" from="Panel/AttributesValueContainer/ChaContainer/ChaAdd" to="." method="_on_cha_add_pressed"]

@@ -1,0 +1,194 @@
+[gd_scene load_steps=3 format=3 uid="uid://bo2lcr4fophnu"]
+
+[ext_resource type="Texture2D" uid="uid://cmmppbyjbkedc" path="res://assets/character_creation/buttons/d20.png" id="1_fn8uu"]
+[ext_resource type="Script" path="res://main/character_creation_pages/step_2_roll_attributes.gd" id="1_ui4cc"]
+
+[node name="Step2_RollAttributes" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_ui4cc")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 128.0
+offset_right = 1024.0
+offset_bottom = 576.0
+
+[node name="AttributesLabelContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 296.0
+offset_top = 88.0
+offset_right = 344.0
+offset_bottom = 347.0
+
+[node name="Strength" type="Label" parent="Panel/AttributesLabelContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 24
+text = "力量"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Dexterity" type="Label" parent="Panel/AttributesLabelContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 24
+text = "敏捷"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Constitution" type="Label" parent="Panel/AttributesLabelContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 24
+text = "体质"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Intelligence" type="Label" parent="Panel/AttributesLabelContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 24
+text = "智力"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Wisdom" type="Label" parent="Panel/AttributesLabelContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 24
+text = "感知"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Charisma" type="Label" parent="Panel/AttributesLabelContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 24
+text = "魅力"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AttributesValueContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 424.0
+offset_top = 88.0
+offset_right = 472.0
+offset_bottom = 347.0
+
+[node name="StrContainer" type="HBoxContainer" parent="Panel/AttributesValueContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="StrValue" type="Label" parent="Panel/AttributesValueContainer/StrContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DexContainer" type="HBoxContainer" parent="Panel/AttributesValueContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="DexValue" type="Label" parent="Panel/AttributesValueContainer/DexContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ConContainer" type="HBoxContainer" parent="Panel/AttributesValueContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ConValue" type="Label" parent="Panel/AttributesValueContainer/ConContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="IntContainer" type="HBoxContainer" parent="Panel/AttributesValueContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="IntValue" type="Label" parent="Panel/AttributesValueContainer/IntContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WisContainer" type="HBoxContainer" parent="Panel/AttributesValueContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="WisValue" type="Label" parent="Panel/AttributesValueContainer/WisContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ChaContainer" type="HBoxContainer" parent="Panel/AttributesValueContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ChaValue" type="Label" parent="Panel/AttributesValueContainer/ChaContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Roll" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 544.0
+offset_top = 200.0
+offset_right = 1184.0
+offset_bottom = 840.0
+scale = Vector2(0.1, 0.1)
+theme_override_font_sizes/font_size = 28
+icon = ExtResource("1_fn8uu")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="PreStep" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 272.0
+offset_top = 384.0
+offset_right = 364.0
+offset_bottom = 431.0
+theme_override_font_sizes/font_size = 28
+text = "上一步"
+
+[node name="NextStep" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 408.0
+offset_top = 384.0
+offset_right = 500.0
+offset_bottom = 431.0
+theme_override_font_sizes/font_size = 28
+text = "下一步
+"
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 544.0
+offset_top = 168.0
+offset_right = 608.0
+offset_bottom = 193.0
+text = "点击骰子"
+
+[connection signal="pressed" from="Panel/Roll" to="." method="_on_roll_pressed"]
