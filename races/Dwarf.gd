@@ -1,8 +1,6 @@
 extends Race
 class_name Dwarf
 
-const race_index:int=1
-const cn_name:String="矮人"
 const dwarf_bonus_attributes:Dictionary={
 	"str":0,
 	"dex":0,
@@ -13,6 +11,9 @@ const dwarf_bonus_attributes:Dictionary={
 }
 
 func _init():
+	self.cn_name="矮人"
+	self.race_index=ClientManager.races.DWARF
+	self.desc=""
 	self.bonus_attributes=dwarf_bonus_attributes
 	self.bonus_ac=4
 	self.bonus_ab=1

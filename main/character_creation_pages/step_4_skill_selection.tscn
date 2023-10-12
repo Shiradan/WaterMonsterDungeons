@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dhis4452mlp34"]
+
+[node name="Step4_SkillSelection" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 488.0
+offset_bottom = 280.0
+
+[node name="SkillsContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

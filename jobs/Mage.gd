@@ -1,10 +1,10 @@
 extends Job
 class_name Mage
 
-const job_index:int=1
-const cn_name:String="法师"
-
 func _init():
+	self.job_index=ClientManager.jobs.MAGE
+	self.cn_name="法师"
+	self.desc=""
 	self.hit_dice=6
 	self.l1_bab=0
 	self.bab_increment=0.5

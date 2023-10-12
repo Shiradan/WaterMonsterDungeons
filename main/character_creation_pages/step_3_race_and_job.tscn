@@ -1,0 +1,133 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjs3mm2w87u3q"]
+
+[ext_resource type="StyleBox" uid="uid://clv50blojv0tt" path="res://assets/character_creation/GUI/label_style_box_flat.tres" id="1_580t4"]
+[ext_resource type="Script" path="res://main/character_creation_pages/step_3_race_and_job.gd" id="1_nela8"]
+
+[node name="Step3_RaceAndJob" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_nela8")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+offset_left = 256.0
+offset_top = 128.0
+offset_right = 1024.0
+offset_bottom = 576.0
+
+[node name="RaceContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 80.0
+offset_right = 408.0
+offset_bottom = 128.0
+
+[node name="RaceLabel" type="Label" parent="Panel/RaceContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "种族："
+vertical_alignment = 1
+
+[node name="RaceOptionButton" type="OptionButton" parent="Panel/RaceContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+allow_reselect = true
+
+[node name="JobContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 232.0
+offset_right = 408.0
+offset_bottom = 280.0
+
+[node name="JobLabel" type="Label" parent="Panel/JobContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "职业："
+vertical_alignment = 1
+
+[node name="JobOptionButton" type="OptionButton" parent="Panel/JobContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+allow_reselect = true
+
+[node name="SummaryContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 424.0
+offset_top = 72.0
+offset_right = 680.0
+offset_bottom = 376.0
+
+[node name="RaceSummary" type="RichTextLabel" parent="Panel/SummaryContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/normal = ExtResource("1_580t4")
+
+[node name="JobSummary" type="RichTextLabel" parent="Panel/SummaryContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/normal = ExtResource("1_580t4")
+
+[node name="BonusAttributeContainer" type="HBoxContainer" parent="Panel"]
+visible = false
+layout_mode = 0
+offset_left = 200.0
+offset_top = 144.0
+offset_right = 407.0
+offset_bottom = 184.0
+
+[node name="BonusAttributeLabel" type="Label" parent="Panel/BonusAttributeContainer"]
+layout_mode = 2
+text = "额外属性点分配："
+
+[node name="BonuaAttributeOptionButton" type="OptionButton" parent="Panel/BonusAttributeContainer"]
+layout_mode = 2
+icon_alignment = 1
+item_count = 6
+popup/item_0/text = "力量"
+popup/item_0/id = 1
+popup/item_1/text = "敏捷"
+popup/item_1/id = 2
+popup/item_2/text = "体质"
+popup/item_2/id = 3
+popup/item_3/text = "智力"
+popup/item_3/id = 4
+popup/item_4/text = "感知"
+popup/item_4/id = 5
+popup/item_5/text = "魅力"
+popup/item_5/id = 6
+
+[node name="PreStep_RaceAndJob" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 272.0
+offset_top = 384.0
+offset_right = 364.0
+offset_bottom = 431.0
+theme_override_font_sizes/font_size = 28
+text = "上一步"
+
+[node name="NextStep_RaceAndJob" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 408.0
+offset_top = 384.0
+offset_right = 500.0
+offset_bottom = 431.0
+theme_override_font_sizes/font_size = 28
+text = "下一步
+"
+
+[node name="Title" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 312.0
+offset_top = 16.0
+offset_right = 456.0
+offset_bottom = 56.0
+theme_override_font_sizes/font_size = 28
+text = "种族与职业"
+
+[connection signal="item_selected" from="Panel/RaceContainer/RaceOptionButton" to="." method="_on_race_option_button_item_selected"]
+[connection signal="item_selected" from="Panel/JobContainer/JobOptionButton" to="." method="_on_job_option_button_item_selected"]

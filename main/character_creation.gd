@@ -1,17 +1,26 @@
 extends Node2D
 
-var creation:Character=null
+var creation:Character=Character.new()
+var race:Race=Race.new()
+var job:Job=Job.new()
+var bonus_attribute_choice:int=0
+var mode:int=-1
+var dice_rolled:bool=false
 
 @onready var characterListPage=$CharacterList
 @onready var step1=$Step1_ModeSelection
 @onready var step2_buyAttributes=$Step2_BuyAttributes
 @onready var step2_rollAttributes=$Step2_RollAttributes
+@onready var step3_raceAndJob=$Step3_RaceAndJob
+@onready var step4_skillSelection=$Step4_SkillSelection
 
 func _ready():
 	characterListPage.show()
 	step1.hide()
 	step2_buyAttributes.hide()
 	step2_rollAttributes.hide()
+	step3_raceAndJob.hide()
+	step4_skillSelection.hide()
 	setup_character_list()
 	
 func setup_character_list():
@@ -75,18 +84,117 @@ func _on_character_slot_3_pressed():
 func _on_buy_points_pressed():
 	var creation_name=$Step1_ModeSelection/Panel/CharacterNameContainer/CharacterName
 	var creation_gender=$Step1_ModeSelection/Panel/GenderContainer/Gender
-	creation=Character.new()
-	creation.character_name=creation_name.text
-	creation.gender=creation_gender.selected
-	step1.hide()
-	step2_buyAttributes.show()
+	if(creation_name!="" and creation_gender.selected!=-1):
+		creation.character_name=creation_name.text
+		creation.gender=creation_gender.selected
+		step1.hide()
+		mode=0
+		step2_buyAttributes.show()
 
 
 func _on_roll_attributes_pressed():
 	var creation_name=$Step1_ModeSelection/Panel/CharacterNameContainer/CharacterName
 	var creation_gender=$Step1_ModeSelection/Panel/GenderContainer/Gender
-	creation=Character.new()
-	creation.character_name=creation_name.text
-	creation.gender=creation_gender.selected
+	if(creation_name.text!="" and creation_gender.selected!=-1):
+		creation.character_name=creation_name.text
+		creation.gender=creation_gender.selected
+		step1.hide()
+		mode=1
+		step2_rollAttributes.show()
+
+
+func _on_go_back_pressed():
 	step1.hide()
-	step2_rollAttributes.show()
+	characterListPage.show()
+	setup_character_list()
+
+
+func _on_pre_step_buy_attributes_pressed():
+	step2_buyAttributes.hide()
+	step1.show()
+
+
+func _on_pre_step_roll_attributes_pressed():
+	step2_rollAttributes.hide()
+	step1.show()
+
+
+func _on_next_step_buy_attributes_pressed():
+	var strValue=int(($Step2_BuyAttributes/Panel/AttributesValueContainer/StrContainer/StrValue).text)
+	var dexValue=int(($Step2_BuyAttributes/Panel/AttributesValueContainer/DexContainer/DexValue).text)
+	var conValue=int(($Step2_BuyAttributes/Panel/AttributesValueContainer/ConContainer/ConValue).text)
+	var intValue=int(($Step2_BuyAttributes/Panel/AttributesValueContainer/IntContainer/IntValue).text)
+	var wisValue=int(($Step2_BuyAttributes/Panel/AttributesValueContainer/WisContainer/WisValue).text)
+	var chaValue=int(($Step2_BuyAttributes/Panel/AttributesValueContainer/ChaContainer/ChaValue).text)
+	
+	var bpValue=int(($Step2_BuyAttributes/Panel/BuyPointsContainer/Value).text)
+	
+	if bpValue>0:
+		var creation_attributes={
+			"str":strValue,
+			"dex":dexValue,
+			"con":conValue,
+			"int":intValue,
+			"wis":wisValue,
+			"cha":chaValue
+		}
+		creation.attributes=creation_attributes
+		step2_buyAttributes.hide()
+		step3_raceAndJob.show()
+
+
+func _on_next_step_roll_attributes_pressed():
+	var strValue=int(($Step2_RollAttributes/Panel/AttributesValueContainer/StrContainer/StrValue).text)
+	var dexValue=int(($Step2_RollAttributes/Panel/AttributesValueContainer/DexContainer/DexValue).text)
+	var conValue=int(($Step2_RollAttributes/Panel/AttributesValueContainer/ConContainer/ConValue).text)
+	var intValue=int(($Step2_RollAttributes/Panel/AttributesValueContainer/IntContainer/IntValue).text)
+	var wisValue=int(($Step2_RollAttributes/Panel/AttributesValueContainer/WisContainer/WisValue).text)
+	var chaValue=int(($Step2_RollAttributes/Panel/AttributesValueContainer/ChaContainer/ChaValue).text)
+	
+	if dice_rolled:
+		var creation_attributes={
+			"str":strValue,
+			"dex":dexValue,
+			"con":conValue,
+			"int":intValue,
+			"wis":wisValue,
+			"cha":chaValue
+		}
+		creation.attributes=creation_attributes
+		step2_rollAttributes.hide()
+		step3_raceAndJob.show()
+
+
+func _on_step_2_roll_attributes_rolled_dice():
+	dice_rolled=true
+
+
+func _on_pre_step_race_and_job_pressed():
+	step3_raceAndJob.hide()
+	match mode:
+		0:
+			step2_buyAttributes.show()
+		1:
+			step2_rollAttributes.show()
+
+
+func _on_next_step_race_and_job_pressed():
+	var raceOption=$Step3_RaceAndJob/Panel/RaceContainer/RaceOptionButton
+	var jobOption=$Step3_RaceAndJob/Panel/JobContainer/JobOptionButton
+	var bonusAttributeOption=$Step3_RaceAndJob/Panel/BonusAttributeContainer/BonuaAttributeOptionButton
+	
+	if raceOption.selected!=-1 and jobOption.selected!=-1:
+		if raceOption.selected==ClientManager.races.HUMAN:
+			if bonusAttributeOption.selected==-1:
+				return
+			else:
+				bonus_attribute_choice=bonusAttributeOption.selected
+		race=ClientManager.get_race_from_index(raceOption.selected)
+		job=ClientManager.get_job_from_index(jobOption.selected)
+		creation.job=job.job_index
+		creation.race=race.race_index
+		creation.level=1
+		creation.skill_points=job.l1_skill_points+race.bonus_skill_points
+		step3_raceAndJob.hide()
+		step4_skillSelection.show()
+		var skillList:TextDatabase=ClientManager.get_skill_list(job.job_index)

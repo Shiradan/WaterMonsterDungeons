@@ -1,4 +1,4 @@
-{
+[{
 	"name": "Unarmed Attack",
 	"cn_name": "徒手攻击",
 	"Desc": "赤手空拳对敌人进行打击。",
@@ -16,4 +16,4 @@
 			"DamageDiceNo": 1
 		}
 	]
-}
+}]

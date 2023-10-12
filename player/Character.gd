@@ -13,7 +13,7 @@ var max_mana:int=0 : set=set_max_mana
 var mana:int=max_mana : set=set_mana
 var mana_regeneration:int : set=set_mana_regeneration
 var skill_points:int=0 : set=set_skill_points
-var attribute_points:int=0 : set=set_attribute_points
+var levelup_attribute_points:int=0 : set=set_levelup_attribute_points
 #var damage_reduction:int
 var attributes:Dictionary = {
 	"str":0,
@@ -69,8 +69,8 @@ func set_mana_regeneration(value):
 func set_skill_points(value):
 	skill_points=value
 
-func set_attribute_points(value):
-	attribute_points=value
+func set_levelup_attribute_points(value):
+	levelup_attribute_points=value
 
 func set_attributes(value):
 	attributes=value

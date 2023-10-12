@@ -1,4 +1,4 @@
-{
+[{
 	"name": "Combat Expertise",
 	"cn_name": "寓守于攻",
 	"Desc": "牺牲准确度，提升防御能力。",
@@ -22,4 +22,4 @@
 		}
 	],
 	"Duration": 1
-}
+}]

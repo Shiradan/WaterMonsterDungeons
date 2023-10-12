@@ -1,8 +1,6 @@
 extends Race
 class_name Elf
 
-const race_index:int=2
-const cn_name:String="精灵"
 const elf_bonus_attributes:Dictionary={
 	"str":0,
 	"dex":2,
@@ -13,4 +11,7 @@ const elf_bonus_attributes:Dictionary={
 }
 
 func _init():
+	self.cn_name="精灵"
+	self.race_index=ClientManager.races.ELF
+	self.desc=""
 	self.bonus_attributes=elf_bonus_attributes

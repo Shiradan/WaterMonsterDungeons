@@ -1,4 +1,4 @@
-{
+[{
 	"name": "Improved Initiative",
 	"cn_name": "精通先攻",
 	"Desc": "磨炼身体，使自己可以更快行动",
@@ -15,4 +15,4 @@
 			"BuffValue": 2
 		}
 	]
-}
+}]

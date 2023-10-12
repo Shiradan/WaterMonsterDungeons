@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://8fjbsqkovypo"]
+[gd_scene load_steps=12 format=3 uid="uid://8fjbsqkovypo"]
 
 [ext_resource type="Script" path="res://main/character_creation.gd" id="1_nably"]
 [ext_resource type="Texture2D" uid="uid://uf1ygjtcrl6d" path="res://assets/character_creation/GUI/GUI_4x.png" id="2_o3k8c"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://cohysnyqualqv" path="res://main/character_creation_pages/step_1_mode_selection.tscn" id="4_6vxbf"]
 [ext_resource type="PackedScene" uid="uid://cj1e12cveyeic" path="res://main/character_creation_pages/step_2_buy_attributes.tscn" id="5_i2fv7"]
 [ext_resource type="PackedScene" uid="uid://bo2lcr4fophnu" path="res://main/character_creation_pages/step_2_roll_attributes.tscn" id="6_f5bcu"]
+[ext_resource type="StyleBox" uid="uid://clv50blojv0tt" path="res://assets/character_creation/GUI/label_style_box_flat.tres" id="6_xhava"]
+[ext_resource type="PackedScene" uid="uid://bjs3mm2w87u3q" path="res://main/character_creation_pages/step_3_race_and_job.tscn" id="8_d8lpl"]
+[ext_resource type="PackedScene" uid="uid://dhis4452mlp34" path="res://main/character_creation_pages/step_4_skill_selection.tscn" id="9_j7vbf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d1eof"]
 texture = ExtResource("2_o3k8c")
@@ -1075,21 +1078,36 @@ offset_right = 1024.0
 [node name="Step2_BuyAttributes" parent="." instance=ExtResource("5_i2fv7")]
 visible = false
 
+[node name="Value" parent="Step2_BuyAttributes/Panel/BuyPointsContainer" index="1"]
+theme_override_styles/normal = ExtResource("6_xhava")
+
 [node name="Step2_RollAttributes" parent="." instance=ExtResource("6_f5bcu")]
+visible = false
 
 [node name="Panel" parent="Step2_RollAttributes" index="0"]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 768.0
-offset_bottom = 448.0
+layout_mode = 1
+
+[node name="Step3_RaceAndJob" parent="." instance=ExtResource("8_d8lpl")]
+visible = false
+
+[node name="Step4_SkillSelection" parent="." instance=ExtResource("9_j7vbf")]
 
 [connection signal="pressed" from="CharacterList/Panel/CharacterSlotContainer/CharacterSlot1" to="." method="_on_character_slot_1_pressed"]
 [connection signal="pressed" from="CharacterList/Panel/CharacterSlotContainer/CharacterSlot2" to="." method="_on_character_slot_2_pressed"]
 [connection signal="pressed" from="CharacterList/Panel/CharacterSlotContainer/CharacterSlot3" to="." method="_on_character_slot_3_pressed"]
 [connection signal="pressed" from="Step1_ModeSelection/Panel/BuyPoints" to="." method="_on_buy_points_pressed"]
 [connection signal="pressed" from="Step1_ModeSelection/Panel/RollAttributes" to="." method="_on_roll_attributes_pressed"]
+[connection signal="pressed" from="Step1_ModeSelection/Panel/GoBack" to="." method="_on_go_back_pressed"]
+[connection signal="pressed" from="Step2_BuyAttributes/Panel/PreStep_BuyAttributes" to="." method="_on_pre_step_buy_attributes_pressed"]
+[connection signal="pressed" from="Step2_BuyAttributes/Panel/NextStep_BuyAttributes" to="." method="_on_next_step_buy_attributes_pressed"]
+[connection signal="rolled_dice" from="Step2_RollAttributes" to="." method="_on_step_2_roll_attributes_rolled_dice"]
+[connection signal="pressed" from="Step2_RollAttributes/Panel/PreStep_RollAttributes" to="." method="_on_pre_step_roll_attributes_pressed"]
+[connection signal="pressed" from="Step2_RollAttributes/Panel/NextStep_RollAttributes" to="." method="_on_next_step_roll_attributes_pressed"]
+[connection signal="pressed" from="Step3_RaceAndJob/Panel/PreStep_RaceAndJob" to="." method="_on_pre_step_race_and_job_pressed"]
+[connection signal="pressed" from="Step3_RaceAndJob/Panel/NextStep_RaceAndJob" to="." method="_on_next_step_race_and_job_pressed"]
 
 [editable path="CharacterList"]
 [editable path="Step1_ModeSelection"]
 [editable path="Step2_BuyAttributes"]
 [editable path="Step2_RollAttributes"]
+[editable path="Step3_RaceAndJob"]

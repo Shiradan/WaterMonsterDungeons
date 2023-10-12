@@ -14,17 +14,17 @@ func _ready():
 	bp=int(buyPoints.text)
 
 func _on_str_add_pressed():
-	var str=int(strValue.text)
-	str=do_buy_points_math_plus(str)
+	var strV=int(strValue.text)
+	strV=do_buy_points_math_plus(strV)
 	buyPoints.text=str(bp)
-	strValue.text=str(str)
+	strValue.text=str(strV)
 
 
 func _on_str_minus_pressed():
-	var str=int(strValue.text)
-	str=do_buy_points_math_minus(str)
+	var strV=int(strValue.text)
+	strV=do_buy_points_math_minus(strV)
 	buyPoints.text=str(bp)
-	strValue.text=str(str)
+	strValue.text=str(strV)
 
 
 func _on_dex_add_pressed():

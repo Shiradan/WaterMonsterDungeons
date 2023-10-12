@@ -1,13 +1,13 @@
 extends Control
 
-
-
+signal rolled_dice
 
 func _on_roll_pressed():
+	emit_signal("rolled_dice")
 	var rng = RandomNumberGenerator.new()
-	var str:int=0
-	while str<7:
-		str=dice_syntax.roll('4d6k3',rng).result
+	var strV:int=0
+	while strV<7:
+		strV=dice_syntax.roll('4d6k3',rng).result
 	var dex:int=0
 	while dex<7:
 		dex=dice_syntax.roll('4d6k3',rng).result
@@ -31,7 +31,7 @@ func _on_roll_pressed():
 	var wisValue=$Panel/AttributesValueContainer/WisContainer/WisValue
 	var chaValue=$Panel/AttributesValueContainer/ChaContainer/ChaValue
 	
-	strValue.text=str(str)
+	strValue.text=str(strV)
 	dexValue.text=str(dex)
 	conValue.text=str(con)
 	intValue.text=str(intV)

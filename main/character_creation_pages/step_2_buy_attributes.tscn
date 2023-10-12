@@ -268,7 +268,7 @@ text = "20"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PreStep" type="Button" parent="Panel"]
+[node name="PreStep_BuyAttributes" type="Button" parent="Panel"]
 layout_mode = 0
 offset_left = 272.0
 offset_top = 384.0
@@ -277,7 +277,7 @@ offset_bottom = 431.0
 theme_override_font_sizes/font_size = 28
 text = "上一步"
 
-[node name="NextStep" type="Button" parent="Panel"]
+[node name="NextStep_BuyAttributes" type="Button" parent="Panel"]
 layout_mode = 0
 offset_left = 408.0
 offset_top = 384.0

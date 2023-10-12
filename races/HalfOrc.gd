@@ -1,8 +1,6 @@
 extends Race
 class_name HalfOrc
 
-const race_index=6
-const cn_name:String="半兽人"
 const halforc_bonus_attributes:Dictionary={
 	"str":2,
 	"dex":2,
@@ -13,6 +11,9 @@ const halforc_bonus_attributes:Dictionary={
 }
 
 func _init():
+	self.cn_name="半兽人"
+	self.race_index=ClientManager.races.HALF_ORC
+	self.desc=""
 	self.bonus_attributes=halforc_bonus_attributes
 	self.bonus_ab=1
 	self.bonus_ac=1
