@@ -1,5 +1,6 @@
 [{
 	"name": "Magic Missle",
+	"Skill_Index": "MAGE-2",
 	"cn_name": "魔法飞弹",
 	"Desc": "发射魔法飞弹攻击敌人",
 	"LevelRequired": 1,

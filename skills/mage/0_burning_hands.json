@@ -1,5 +1,6 @@
 [{
 	"name": "Burning Hands",
+	"Skill_Index": "MAGE-0",
 	"cn_name": "燃烧之手",
 	"Desc": "双手燃起熊熊火焰，向敌人发射火焰攻击",
 	"LevelRequired": 1,

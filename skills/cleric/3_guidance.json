@@ -1,5 +1,6 @@
 [{
 	"name": "Guidance",
+	"Skill_Index": "CLERIC-3",
 	"cn_name": "神导术",
 	"Desc": "向神明寻求指引，战胜敌人",
 	"LevelRequired": 1,

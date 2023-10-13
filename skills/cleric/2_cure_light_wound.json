@@ -1,5 +1,6 @@
 [{
 	"name": "Cure Light Wound",
+	"Skill_Index": "CLERIC-2",
 	"cn_name": "治疗轻伤",
 	"Desc": "治疗轻微伤害",
 	"LevelRequired": 1,

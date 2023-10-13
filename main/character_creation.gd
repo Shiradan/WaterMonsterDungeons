@@ -1,6 +1,7 @@
 extends Node2D
 
 var creation:Character=Character.new()
+var selected_skills:Array=[]
 var race:Race=Race.new()
 var job:Job=Job.new()
 var bonus_attribute_choice:int=0
@@ -28,7 +29,12 @@ func _ready():
 func setup_character_list():
 	var characterSlots=$CharacterList/Panel/CharacterSlotContainer
 	var selections=$CharacterList/Panel/SelectionContainer
-	
+	#获取服务器端存储的角色清单
+	var characters=[]#需要修改
+	ClientManager.characters=characters
+	#获取当前已激活角色学习的技能清单
+	var skillsLearned=[]#需要修改
+	ClientManager.learned_skills=skillsLearned
 	var i=0
 	if ClientManager.characters.size()>0:
 		for c in ClientManager.characters:
@@ -49,6 +55,7 @@ func _on_character_slot_1_pressed():
 	if characterSlot1.text=="" or characterSlot1.text==null:
 		goto_step1()
 	else:
+		ClientManager.character=ClientManager.characters[0]
 		var selection1=$CharacterList/Panel/SelectionContainer/Selection1
 		var selection2=$CharacterList/Panel/SelectionContainer/Selection2
 		var selection3=$CharacterList/Panel/SelectionContainer/Selection3
@@ -62,6 +69,7 @@ func _on_character_slot_2_pressed():
 	if characterSlot2.text=="" or characterSlot2.text==null:
 		goto_step1()
 	else:
+		ClientManager.character=ClientManager.characters[1]
 		var selection1=$CharacterList/Panel/SelectionContainer/Selection1
 		var selection2=$CharacterList/Panel/SelectionContainer/Selection2
 		var selection3=$CharacterList/Panel/SelectionContainer/Selection3
@@ -75,6 +83,7 @@ func _on_character_slot_3_pressed():
 	if characterSlot3.text=="" or characterSlot3.text==null:
 		goto_step1()
 	else:
+		ClientManager.character=ClientManager.characters[2]
 		var selection1=$CharacterList/Panel/SelectionContainer/Selection1
 		var selection2=$CharacterList/Panel/SelectionContainer/Selection2
 		var selection3=$CharacterList/Panel/SelectionContainer/Selection3
@@ -190,16 +199,15 @@ func _on_next_step_race_and_job_pressed():
 	var bonusAttributeOption=$Step3_RaceAndJob/Panel/BonusAttributeContainer/BonuaAttributeOptionButton
 	
 	if raceOption.selected!=-1 and jobOption.selected!=-1:
-		if raceOption.selected==ClientManager.races.HUMAN:
+		if raceOption.selected==ClientManager.races.HUMAN or raceOption.selected==ClientManager.races.HALF_ELF:
 			if bonusAttributeOption.selected==-1:
 				return
 			else:
-				bonus_attribute_choice=bonusAttributeOption.selected
+				bonus_attribute_choice=bonusAttributeOption.selected+1
 		race=ClientManager.get_race_from_index(raceOption.selected)
 		job=ClientManager.get_job_from_index(jobOption.selected)
 		creation.job=job.job_index
 		creation.race=race.race_index
-		creation.level=1
 		creation.skill_points=job.l1_skill_points+race.bonus_skill_points
 		var skillList:TextDatabase=ClientManager.get_skill_list(job.job_index)
 		step4_skillSelection.skillList=skillList
@@ -217,6 +225,7 @@ func _on_pre_step_skill_selection_pressed():
 
 func _on_next_step_skill_selection_pressed():
 	creation.skill_points=step4_skillSelection.skillPoints
-	ClientManager.learned_skills=step4_skillSelection.get_selected_skills()
+	selected_skills=step4_skillSelection.get_selected_skills()
+	step5_summary.setup_creation_summary(creation,race,job,selected_skills,bonus_attribute_choice)
 	step4_skillSelection.hide()
 	step5_summary.show()

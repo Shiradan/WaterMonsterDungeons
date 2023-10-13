@@ -1,5 +1,6 @@
 [{
 	"name": "Unarmed Attack Finesse",
+	"Skill_Index": "MISC-2",
 	"cn_name": "灵巧徒手攻击",
 	"Desc": "利用敏捷的身手赤手空拳对敌人进行打击。",
 	"LevelRequired": 1,

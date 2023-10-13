@@ -1,5 +1,6 @@
 [{
 	"name": "Unarmed Attack",
+	"Skill_Index": "MISC-1",
 	"cn_name": "徒手攻击",
 	"Desc": "赤手空拳对敌人进行打击。",
 	"LevelRequired": 1,

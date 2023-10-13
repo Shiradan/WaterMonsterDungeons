@@ -1,5 +1,6 @@
 [{
 	"name": "Channel Positive Energy",
+	"Skill_Index": "CLERIC-1",
 	"cn_name": "引导正能量",
 	"Desc": "通过神圣的祈祷，利用正向能量治疗友方",
 	"LevelRequired": 1,

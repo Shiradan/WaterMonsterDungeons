@@ -11,7 +11,7 @@ var max_hp:int=0 : set=set_max_hp
 var hp:int=max_hp : set=set_hp
 var max_mana:int=0 : set=set_max_mana
 var mana:int=max_mana : set=set_mana
-var mana_regeneration:int : set=set_mana_regeneration
+var mana_regeneration:int=0 : set=set_mana_regeneration
 var skill_points:int=0 : set=set_skill_points
 var levelup_attribute_points:int=0 : set=set_levelup_attribute_points
 #var damage_reduction:int

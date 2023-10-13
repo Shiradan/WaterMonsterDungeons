@@ -1,5 +1,6 @@
 [{
 	"name": "Ray Of Frost",
+	"Skill_Index": "MAGE-3",
 	"cn_name": "寒冰射线",
 	"Desc": "发射寒冷的射线攻击敌人",
 	"LevelRequired": 1,

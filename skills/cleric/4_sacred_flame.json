@@ -1,5 +1,6 @@
 [{
 	"name": "Sacred Flame",
+	"Skill_Index": "CLERIC-4",
 	"cn_name": "圣火术",
 	"Desc": "向神明虔诚祈祷，让神圣的火焰降临在你的敌人身上",
 	"LevelRequired": 1,

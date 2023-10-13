@@ -1,5 +1,6 @@
 [{
 	"name": "Color Spray",
+	"Skill_Index": "MAGE-1",
 	"cn_name": "七彩喷射",
 	"Desc": "放射出彩虹色的射线攻击敌人，迷惑敌人",
 	"LevelRequired": 1,

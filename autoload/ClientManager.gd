@@ -266,3 +266,23 @@ func checkString(string_to_check: String) -> bool:
 	var regex = RegEx.new()
 	regex.compile("^[a-zA-Z0-9_\u4e00-\u9fff]+$") # 此正则表达式允许字母、数字、下划线和中文字符
 	return regex.search(string_to_check) != null
+
+func get_attr_mod(attr):
+	return floor((attr-10)/2)
+	
+func get_bt_actions(level):
+	if level<10:
+		return 1
+	elif level<20:
+		return 2
+	else:
+		return 3
+
+func get_at_actions(level):
+	if level<20:
+		return 1
+	else:
+		return 2
+
+func get_actions(bab):
+	return 1+floor((bab-1)/5)

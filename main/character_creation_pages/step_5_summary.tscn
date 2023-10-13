@@ -1,10 +1,13 @@
-[gd_scene format=3 uid="uid://c1o51fl4xsvui"]
+[gd_scene load_steps=2 format=3 uid="uid://c1o51fl4xsvui"]
+
+[ext_resource type="Script" path="res://main/character_creation_pages/step_5_summary.gd" id="1_t6esx"]
 
 [node name="Step5_Summary" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("1_t6esx")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
