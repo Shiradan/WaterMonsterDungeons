@@ -1,4 +1,4 @@
-{
+[{
 	"name": "Color Spray",
 	"cn_name": "七彩喷射",
 	"Desc": "放射出彩虹色的射线攻击敌人，迷惑敌人",
@@ -14,7 +14,7 @@
 	"EffectType": -1,
 	"DebuffValueArray": [
 		{
-			"DebuffType": -1,
+			"DebuffType": 1,
 			"DebuffValue": 4
 		}
 	],
@@ -26,4 +26,4 @@
 		}
 	],
 	"Duration": 2
-}
+}]

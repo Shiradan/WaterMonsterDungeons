@@ -1,4 +1,4 @@
-{
+[{
 	"name": "Burning Hands",
 	"cn_name": "燃烧之手",
 	"Desc": "双手燃起熊熊火焰，向敌人发射火焰攻击",
@@ -19,4 +19,4 @@
 			"DamageDiceNo": 1
 		}
 	]
-}
+}]

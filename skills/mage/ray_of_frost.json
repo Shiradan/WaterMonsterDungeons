@@ -1,4 +1,4 @@
-{
+[{
 	"name": "Ray Of Frost",
 	"cn_name": "寒冰射线",
 	"Desc": "发射寒冷的射线攻击敌人",
@@ -17,4 +17,4 @@
 			"DamageDiceNo": 1
 		}
 	]
-}
+}]

@@ -1,4 +1,4 @@
-{
+[{
 	"name": "Channel Positive Energy",
 	"cn_name": "引导正能量",
 	"Desc": "通过神圣的祈祷，利用正向能量治疗友方",
@@ -11,5 +11,5 @@
 	"Target": 0,
 	"EffectType": 2,
 	"HealDice": 6,
-	"HealDiceNo": 1,
-}
+	"HealDiceNo": 1
+}]

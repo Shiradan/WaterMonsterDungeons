@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://c1o51fl4xsvui"]
+
+[node name="Step5_Summary" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 48.0
+offset_right = 1232.0
+offset_bottom = 624.0
+
+[node name="BasicInfoPanel" type="Panel" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BasicInfo" type="RichTextLabel" parent="HBoxContainer/BasicInfoPanel"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 384.0
+offset_bottom = 568.0
+bbcode_enabled = true
+
+[node name="StatsPanel" type="Panel" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Stats" type="RichTextLabel" parent="HBoxContainer/StatsPanel"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 8.0
+offset_right = 380.0
+offset_bottom = 568.0
+bbcode_enabled = true
+
+[node name="SkillsPanel" type="Panel" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Skills" type="RichTextLabel" parent="HBoxContainer/SkillsPanel"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 384.0
+offset_bottom = 568.0
+bbcode_enabled = true
+
+[node name="PreStep_Summary" type="Button" parent="."]
+layout_mode = 0
+offset_left = 520.0
+offset_top = 640.0
+offset_right = 616.0
+offset_bottom = 687.0
+theme_override_font_sizes/font_size = 28
+text = "上一步"
+
+[node name="NextStep_Summary" type="Button" parent="."]
+layout_mode = 0
+offset_left = 664.0
+offset_top = 640.0
+offset_right = 760.0
+offset_bottom = 687.0
+theme_override_font_sizes/font_size = 28
+text = "保存"

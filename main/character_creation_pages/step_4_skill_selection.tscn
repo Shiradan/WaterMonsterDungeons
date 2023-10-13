@@ -1,17 +1,75 @@
-[gd_scene format=3 uid="uid://dhis4452mlp34"]
+[gd_scene load_steps=3 format=3 uid="uid://dhis4452mlp34"]
+
+[ext_resource type="Script" path="res://main/character_creation_pages/step_4_skill_selection.gd" id="1_ska2e"]
+[ext_resource type="StyleBox" uid="uid://clv50blojv0tt" path="res://assets/character_creation/GUI/label_style_box_flat.tres" id="2_s1784"]
 
 [node name="Step4_SkillSelection" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("1_ska2e")
 
 [node name="Panel" type="Panel" parent="."]
-layout_mode = 0
-offset_right = 488.0
-offset_bottom = 280.0
+layout_mode = 1
+offset_left = 256.0
+offset_top = 128.0
+offset_right = 1024.0
+offset_bottom = 576.0
 
-[node name="SkillsContainer" type="VBoxContainer" parent="Panel"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 128.0
+offset_top = 64.0
+offset_right = 640.0
+offset_bottom = 384.0
+
+[node name="SkillsContainer" type="VBoxContainer" parent="Panel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PreStep_SkillSelection" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 264.0
+offset_top = 392.0
+offset_right = 360.0
+offset_bottom = 439.0
+theme_override_font_sizes/font_size = 28
+text = "上一步"
+
+[node name="NextStep_SkillSelection" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 408.0
+offset_top = 392.0
+offset_right = 504.0
+offset_bottom = 439.0
+theme_override_font_sizes/font_size = 28
+text = "下一步"
+
+[node name="Tiitle" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 296.0
+offset_top = 16.0
+offset_right = 472.0
+offset_bottom = 56.0
+theme_override_font_sizes/font_size = 28
+text = "初始技能选择"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SkillPointsContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 640.0
+offset_top = 8.0
+offset_right = 750.0
+offset_bottom = 56.0
+
+[node name="SkillPointsLabel" type="Label" parent="Panel/SkillPointsContainer"]
+layout_mode = 2
+text = "剩余技能点："
+
+[node name="SkillPoints" type="Label" parent="Panel/SkillPointsContainer"]
+layout_mode = 2
+theme_override_styles/normal = ExtResource("2_s1784")
+text = "0"

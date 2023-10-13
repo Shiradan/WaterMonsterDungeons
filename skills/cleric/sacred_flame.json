@@ -1,4 +1,4 @@
-{
+[{
 	"name": "Sacred Flame",
 	"cn_name": "圣火术",
 	"Desc": "向神明虔诚祈祷，让神圣的火焰降临在你的敌人身上",
@@ -13,7 +13,7 @@
 	"EffectType": 0,
 	"DamageDiceArray": [
 		{
-			"DamageType": "LIGHT",
+			"DamageType": "HOLY",
 			"DamageDice": 4,
 			"DamageDiceNo": 1
 		},
@@ -23,4 +23,4 @@
 			"DamageDiceNo": 1
 		}
 	]
-}
+}]

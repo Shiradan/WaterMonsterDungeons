@@ -1,4 +1,4 @@
-{
+[{
 	"name": "Cure Light Wound",
 	"cn_name": "治疗轻伤",
 	"Desc": "治疗轻微伤害",
@@ -11,5 +11,5 @@
 	"Target": 1,
 	"EffectType": 2,
 	"HealDice": 8,
-	"HealDiceNo": 1,
-}
+	"HealDiceNo": 1
+}]

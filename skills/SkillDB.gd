@@ -45,7 +45,7 @@ func _initialize():
 	add_valid_property("BuffValueArray",TYPE_ARRAY)
 	#BUFF骰子数组（非必要），需要包含BuffType，BuffDice，BuffNo
 	add_valid_property("BuffDiceArray",TYPE_ARRAY)
-	#固定DEBUFF数组（非必要），需要包含DebuffType（buff类型，-1：AC、0：AB，1-6：六个属性），DebuffValue（debuff数值）
+	#固定DEBUFF数组（非必要），需要包含DebuffType（debuff类型，-1：AC、0：AB，1-6：六个属性），DebuffValue（debuff数值）
 	add_valid_property("DebuffValueArray",TYPE_ARRAY)
 	#DEBUFF骰子数组（非必要），需要包含debuffType，debuffDice，debuffNo
 	add_valid_property("DebuffDiceArray",TYPE_ARRAY)

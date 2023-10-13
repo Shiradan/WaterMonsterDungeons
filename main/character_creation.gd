@@ -13,6 +13,7 @@ var dice_rolled:bool=false
 @onready var step2_rollAttributes=$Step2_RollAttributes
 @onready var step3_raceAndJob=$Step3_RaceAndJob
 @onready var step4_skillSelection=$Step4_SkillSelection
+@onready var step5_summary=$Step5_Summary
 
 func _ready():
 	characterListPage.show()
@@ -21,6 +22,7 @@ func _ready():
 	step2_rollAttributes.hide()
 	step3_raceAndJob.hide()
 	step4_skillSelection.hide()
+	step5_summary.hide()
 	setup_character_list()
 	
 func setup_character_list():
@@ -84,23 +86,27 @@ func _on_character_slot_3_pressed():
 func _on_buy_points_pressed():
 	var creation_name=$Step1_ModeSelection/Panel/CharacterNameContainer/CharacterName
 	var creation_gender=$Step1_ModeSelection/Panel/GenderContainer/Gender
-	if(creation_name!="" and creation_gender.selected!=-1):
-		creation.character_name=creation_name.text
-		creation.gender=creation_gender.selected
-		step1.hide()
-		mode=0
-		step2_buyAttributes.show()
+	creation_name.text.replace(" ","")
+	if ClientManager.checkString(creation_name.text):
+		if(creation_name.text!="" and creation_gender.selected!=-1):
+			creation.character_name=creation_name.text
+			creation.gender=creation_gender.selected
+			step1.hide()
+			mode=0
+			step2_buyAttributes.show()
 
 
 func _on_roll_attributes_pressed():
 	var creation_name=$Step1_ModeSelection/Panel/CharacterNameContainer/CharacterName
 	var creation_gender=$Step1_ModeSelection/Panel/GenderContainer/Gender
-	if(creation_name.text!="" and creation_gender.selected!=-1):
-		creation.character_name=creation_name.text
-		creation.gender=creation_gender.selected
-		step1.hide()
-		mode=1
-		step2_rollAttributes.show()
+	creation_name.text.replace(" ","")
+	if ClientManager.checkString(creation_name.text):
+		if(creation_name.text!="" and creation_gender.selected!=-1):
+			creation.character_name=creation_name.text
+			creation.gender=creation_gender.selected
+			step1.hide()
+			mode=1
+			step2_rollAttributes.show()
 
 
 func _on_go_back_pressed():
@@ -195,6 +201,22 @@ func _on_next_step_race_and_job_pressed():
 		creation.race=race.race_index
 		creation.level=1
 		creation.skill_points=job.l1_skill_points+race.bonus_skill_points
+		var skillList:TextDatabase=ClientManager.get_skill_list(job.job_index)
+		step4_skillSelection.skillList=skillList
+		step4_skillSelection.skillPoints=creation.skill_points
 		step3_raceAndJob.hide()
 		step4_skillSelection.show()
-		var skillList:TextDatabase=ClientManager.get_skill_list(job.job_index)
+		step4_skillSelection.setup_skill_list()
+		
+
+
+func _on_pre_step_skill_selection_pressed():
+	step4_skillSelection.hide()
+	step3_raceAndJob.show()
+
+
+func _on_next_step_skill_selection_pressed():
+	creation.skill_points=step4_skillSelection.skillPoints
+	ClientManager.learned_skills=step4_skillSelection.get_selected_skills()
+	step4_skillSelection.hide()
+	step5_summary.show()

@@ -12,8 +12,8 @@
 	"BuffDiceArray": [
 		{
 			"BuffType": 0,
-			"BuffDice": -6,
-			"BuffDiceNo": 1
+			"BuffDice": 6,
+			"BuffDiceNo": -1
 		},
 		{
 			"BuffType": -1,

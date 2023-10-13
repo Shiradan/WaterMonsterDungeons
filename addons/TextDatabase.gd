@@ -148,7 +148,7 @@ func load_from_path(path: String):
 		"json":
 			var file := FileAccess.open(path, FileAccess.READ)
 			var json = JSON.parse_string(file.get_as_text())
-			
+			#print(file.get_path())
 			assert(json, "Parse failed, invalid JSON file: %s" % path)
 			assert(json is Array, "Invalid data type. Only JSON arrays are supported.")
 			data = json

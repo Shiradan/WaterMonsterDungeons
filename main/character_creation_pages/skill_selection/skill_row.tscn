@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://dnm07c3kvy6mh"]
+
+[ext_resource type="Script" path="res://main/character_creation_pages/skill_selection/ToggleSkillDescButton.gd" id="1_e0km6"]
+[ext_resource type="Texture2D" uid="uid://d4c8prurghsfs" path="res://assets/character_creation/buttons/chevron-up.svg" id="1_fbiur"]
+[ext_resource type="Script" path="res://main/character_creation_pages/skill_selection/skill_row.gd" id="1_tuqq2"]
+[ext_resource type="StyleBox" uid="uid://clv50blojv0tt" path="res://assets/character_creation/GUI/label_style_box_flat.tres" id="4_6ily2"]
+
+[node name="skill_row" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -676.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tuqq2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="SkillCheckBox" type="CheckBox" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="ToggleSkillDescButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+toggle_mode = true
+text = "详细"
+icon = ExtResource("1_fbiur")
+script = ExtResource("1_e0km6")
+
+[node name="SkillDesc" type="RichTextLabel" parent="."]
+layout_mode = 2
+theme_override_styles/normal = ExtResource("4_6ily2")
+bbcode_enabled = true
+
+[connection signal="toggled" from="HBoxContainer/SkillCheckBox" to="." method="_on_skill_check_box_toggled"]
+[connection signal="toggled" from="HBoxContainer/ToggleSkillDescButton" to="." method="_on_toggle_skill_desc_button_toggled"]
+[connection signal="toggled" from="HBoxContainer/ToggleSkillDescButton" to="HBoxContainer/ToggleSkillDescButton" method="_on_toggled"]

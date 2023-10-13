@@ -66,11 +66,13 @@ offset_bottom = 376.0
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/normal = ExtResource("1_580t4")
+bbcode_enabled = true
 
 [node name="JobSummary" type="RichTextLabel" parent="Panel/SummaryContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/normal = ExtResource("1_580t4")
+bbcode_enabled = true
 
 [node name="BonusAttributeContainer" type="HBoxContainer" parent="Panel"]
 visible = false
