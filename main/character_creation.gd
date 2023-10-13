@@ -144,7 +144,7 @@ func _on_next_step_buy_attributes_pressed():
 	
 	var bpValue=int(($Step2_BuyAttributes/Panel/BuyPointsContainer/Value).text)
 	
-	if bpValue>0:
+	if bpValue==0:
 		var creation_attributes={
 			"str":strValue,
 			"dex":dexValue,
@@ -229,3 +229,14 @@ func _on_next_step_skill_selection_pressed():
 	step5_summary.setup_creation_summary(creation,race,job,selected_skills,bonus_attribute_choice)
 	step4_skillSelection.hide()
 	step5_summary.show()
+
+
+func _on_pre_step_summary_pressed():
+	step5_summary.temp_character=null
+	step5_summary.hide()
+	step4_skillSelection.show()
+
+
+func _on_next_step_summary_pressed():
+	creation=step5_summary.temp_character
+

@@ -1117,6 +1117,28 @@ visible = false
 
 [node name="Step5_Summary" parent="." instance=ExtResource("10_qby20")]
 
+[node name="HBoxContainer" parent="Step5_Summary" index="0"]
+offset_left = 128.0
+offset_right = 1152.0
+
+[node name="BasicInfo" parent="Step5_Summary/HBoxContainer/BasicInfoPanel" index="0"]
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 320.0
+offset_bottom = 552.0
+
+[node name="Stats" parent="Step5_Summary/HBoxContainer/StatsPanel" index="0"]
+offset_left = 26.0
+offset_top = 24.0
+offset_right = 314.0
+offset_bottom = 552.0
+
+[node name="Skills" parent="Step5_Summary/HBoxContainer/SkillsPanel" index="0"]
+offset_left = 19.0
+offset_top = 24.0
+offset_right = 315.0
+offset_bottom = 552.0
+
 [connection signal="pressed" from="CharacterList/Panel/CharacterSlotContainer/CharacterSlot1" to="." method="_on_character_slot_1_pressed"]
 [connection signal="pressed" from="CharacterList/Panel/CharacterSlotContainer/CharacterSlot2" to="." method="_on_character_slot_2_pressed"]
 [connection signal="pressed" from="CharacterList/Panel/CharacterSlotContainer/CharacterSlot3" to="." method="_on_character_slot_3_pressed"]
@@ -1132,6 +1154,8 @@ visible = false
 [connection signal="pressed" from="Step3_RaceAndJob/Panel/NextStep_RaceAndJob" to="." method="_on_next_step_race_and_job_pressed"]
 [connection signal="pressed" from="Step4_SkillSelection/Panel/PreStep_SkillSelection" to="." method="_on_pre_step_skill_selection_pressed"]
 [connection signal="pressed" from="Step4_SkillSelection/Panel/NextStep_SkillSelection" to="." method="_on_next_step_skill_selection_pressed"]
+[connection signal="pressed" from="Step5_Summary/PreStep_Summary" to="." method="_on_pre_step_summary_pressed"]
+[connection signal="pressed" from="Step5_Summary/NextStep_Summary" to="." method="_on_next_step_summary_pressed"]
 
 [editable path="CharacterList"]
 [editable path="Step1_ModeSelection"]

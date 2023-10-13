@@ -268,7 +268,7 @@ func checkString(string_to_check: String) -> bool:
 	return regex.search(string_to_check) != null
 
 func get_attr_mod(attr):
-	return floor((attr-10)/2)
+	return floori((attr-10)/2.0)
 	
 func get_bt_actions(level):
 	if level<10:
@@ -285,4 +285,11 @@ func get_at_actions(level):
 		return 2
 
 func get_actions(bab):
-	return 1+floor((bab-1)/5)
+	return 1+floori((bab-1)/5.0)
+
+func get_gender_text(index):
+	if index==0:
+		return "男性"
+	if index==1:
+		return "女性"
+	return "性别错误"
