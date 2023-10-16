@@ -1,10 +1,13 @@
-[gd_scene format=3 uid="uid://cohysnyqualqv"]
+[gd_scene load_steps=2 format=3 uid="uid://cohysnyqualqv"]
+
+[ext_resource type="Script" path="res://main/character_creation_pages/step_1_mode_selection.gd" id="1_48lqv"]
 
 [node name="Step1_ModeSelection" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("1_48lqv")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1

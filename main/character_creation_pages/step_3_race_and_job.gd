@@ -17,7 +17,11 @@ func _ready():
 	raceOptionButton.selected=-1
 	jobOptionButton.selected=-1
 
-
+func reset():
+	raceOptionButton.selected=-1
+	jobOptionButton.selected=-1
+	bonusAttributeOptionButton.selected=-1
+	bonusAttributeOptionButton.hide()
 
 func _on_race_option_button_item_selected(index):
 	var summaryPanel:RichTextLabel=$Panel/SummaryContainer/RaceSummary

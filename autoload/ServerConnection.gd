@@ -201,6 +201,25 @@ func write_characters_async(chars):
 		]
 	)
 
+func write_skills_learned_async(sks):
+	await _client.write_storage_objects_async(
+		_session,
+		[
+			NakamaWriteStorageObject.new(
+				"wmd_data",
+				"skills",
+				ReadPermissions.PUBLIC_READ,
+				WritePermissions.OWNER_WRITE,
+				JSON.stringify(
+					{
+						skills=sks
+					}
+				),
+				""
+			)
+		]
+	)
+
 func read_characters_async():
 	var characters=[]
 	var storageObjects:NakamaAPI.ApiStorageObjects=await _client.read_storage_objects_async(
@@ -224,6 +243,29 @@ func read_characters_async():
 		characters=decodedCharacters
 		
 	return characters
+
+func read_skills_learned_async():
+	var skills=[]
+	var storageObjects:NakamaAPI.ApiStorageObjects=await _client.read_storage_objects_async(
+		_session,
+		[
+			NakamaStorageObjectId.new(
+				"wmd_data",
+				"skills",
+				_session.user_id
+			)
+		]
+	)
+	var parsed_result := _exception_handler.parse_exception(storageObjects)
+	if parsed_result != OK:
+		return storageObjects.get_exception()._to_string()
+		
+	if storageObjects.objects.size()>0:
+		#get array of dictionary
+		var decodedSkills=JSON.parse_string(storageObjects.objects[0].value).skills
+		skills=decodedSkills
+		
+	return skills
 
 func get_user_id() -> String:
 	if _session:
@@ -341,9 +383,28 @@ func _on_NamakaSocket_received_channel_message(message: NakamaAPI.ApiChannelMess
 	var content: Dictionary = JSON.parse_string(message.content)
 	emit_signal("chat_message_received", message.sender_id, content.msg)
 
-
 func _no_set(_value) -> void:
 	pass
 
 func _get_error_message() -> String:
 	return _exception_handler.error_message
+
+func check_name_availability(cname:String):
+	var availability_response: NakamaAPI.ApiRpc = await _client.rpc_async(_session, "check_wmd_character_name", cname)
+	var parsed_result := _exception_handler.parse_exception(availability_response)
+	if parsed_result != OK:
+		return parsed_result
+	if availability_response.payload=="1":
+		return true
+	else:
+		return false
+	
+func register_name_storage(cname:String):
+	var availability_response: NakamaAPI.ApiRpc = await _client.rpc_async(_session, "register_wmd_character_name", cname)
+	var parsed_result := _exception_handler.parse_exception(availability_response)
+	if parsed_result != OK:
+		return parsed_result
+	if availability_response.payload=="1":
+		return true
+	else:
+		return false

@@ -30,21 +30,27 @@ func setup_character_list():
 	var characterSlots=$CharacterList/Panel/CharacterSlotContainer
 	var selections=$CharacterList/Panel/SelectionContainer
 	#获取服务器端存储的角色清单
-	var characters=[]#需要修改
-	ClientManager.characters=characters
-	#获取当前已激活角色学习的技能清单
-	var skillsLearned=[]#需要修改
-	ClientManager.learned_skills=skillsLearned
+	var characters=[]
+	var characterStorageObjectList=await ServerConnection.read_characters_async()
+	for object in characterStorageObjectList:
+		characters.append(ClientManager.to_character(object))
+	ClientManager.characters=characters#需要修改
+	#获取当前账号各角色学习的技能清单
+	ClientManager.skills=await ServerConnection.read_skills_learned_async()
 	var i=0
 	if ClientManager.characters.size()>0:
 		for c in ClientManager.characters:
 			var characterSlot=characterSlots.get_child(i)
-			characterSlot.text=c.character_name
+			characterSlot.text=c.character_name+": "+str(c.level)+"级"+ClientManager.translate_race(c.race)+ClientManager.translate_job(c.job)
 			characterSlot.icon=null
+			var selection:TextureRect=selections.get_child(i)
 			if c.active==1:
-				var selection=selections.get_child(i)
-				selection.show()
+				selection.modulate=Color.WHITE
+				for skillsLearned in ClientManager.skills:
+					if skillsLearned.character_name==c.character_name:
+						ClientManager.learned_skills=skillsLearned.learned_skills
 			i+=1
+
 
 func goto_step1():
 	characterListPage.hide()
@@ -55,13 +61,26 @@ func _on_character_slot_1_pressed():
 	if characterSlot1.text=="" or characterSlot1.text==null:
 		goto_step1()
 	else:
-		ClientManager.character=ClientManager.characters[0]
+		var i=0
+		var characterStorageObjectList:Array=[]
+		while i<ClientManager.characters.size():
+			if i==0:
+				ClientManager.characters[i].active=1
+				ClientManager.character=ClientManager.characters[i]
+			else:
+				ClientManager.characters[i].active=0
+			characterStorageObjectList.append(ClientManager.to_character_storage_object(ClientManager.characters[i]))
+			i+=1
+		await ServerConnection.write_characters_async(characterStorageObjectList)
+		for skillsLearned in ClientManager.skills:
+			if skillsLearned.character_name==ClientManager.character.character_name:
+				ClientManager.learned_skills=skillsLearned.learned_skills
 		var selection1=$CharacterList/Panel/SelectionContainer/Selection1
 		var selection2=$CharacterList/Panel/SelectionContainer/Selection2
 		var selection3=$CharacterList/Panel/SelectionContainer/Selection3
-		selection1.show()
-		selection2.hide()
-		selection3.hide()
+		selection1.modulate=Color.WHITE
+		selection2.modulate=Color.TRANSPARENT
+		selection3.modulate=Color.TRANSPARENT
 
 
 func _on_character_slot_2_pressed():
@@ -69,13 +88,27 @@ func _on_character_slot_2_pressed():
 	if characterSlot2.text=="" or characterSlot2.text==null:
 		goto_step1()
 	else:
-		ClientManager.character=ClientManager.characters[1]
+		var i=0
+		var characterStorageObjectList:Array=[]
+		while i<ClientManager.characters.size():
+			if i==1:
+				ClientManager.characters[i].active=1
+				ClientManager.character=ClientManager.characters[i]
+			else:
+				ClientManager.characters[i].active=0
+			characterStorageObjectList.append(ClientManager.to_character_storage_object(ClientManager.characters[i]))
+			i+=1
+		await ServerConnection.write_characters_async(characterStorageObjectList)
+		
+		for skillsLearned in ClientManager.skills:
+			if skillsLearned.character_name==ClientManager.character.character_name:
+				ClientManager.learned_skills=skillsLearned.learned_skills
 		var selection1=$CharacterList/Panel/SelectionContainer/Selection1
 		var selection2=$CharacterList/Panel/SelectionContainer/Selection2
 		var selection3=$CharacterList/Panel/SelectionContainer/Selection3
-		selection2.show()
-		selection1.hide()
-		selection3.hide()
+		selection2.modulate=Color.WHITE
+		selection1.modulate=Color.TRANSPARENT
+		selection3.modulate=Color.TRANSPARENT
 
 
 func _on_character_slot_3_pressed():
@@ -83,13 +116,26 @@ func _on_character_slot_3_pressed():
 	if characterSlot3.text=="" or characterSlot3.text==null:
 		goto_step1()
 	else:
-		ClientManager.character=ClientManager.characters[2]
+		var i=0
+		var characterStorageObjectList:Array=[]
+		while i<ClientManager.characters.size():
+			if i==2:
+				ClientManager.characters[i].active=1
+				ClientManager.character=ClientManager.characters[i]
+			else:
+				ClientManager.characters[i].active=0
+			characterStorageObjectList.append(ClientManager.to_character_storage_object(ClientManager.characters[i]))
+			i+=1
+		await ServerConnection.write_characters_async(characterStorageObjectList)
+		for skillsLearned in ClientManager.skills:
+			if skillsLearned.character_name==ClientManager.character.character_name:
+				ClientManager.learned_skills=skillsLearned.learned_skills
 		var selection1=$CharacterList/Panel/SelectionContainer/Selection1
 		var selection2=$CharacterList/Panel/SelectionContainer/Selection2
 		var selection3=$CharacterList/Panel/SelectionContainer/Selection3
-		selection3.show()
-		selection2.hide()
-		selection1.hide()
+		selection3.modulate=Color.WHITE
+		selection2.modulate=Color.TRANSPARENT
+		selection1.modulate=Color.TRANSPARENT
 
 
 func _on_buy_points_pressed():
@@ -98,11 +144,13 @@ func _on_buy_points_pressed():
 	creation_name.text.replace(" ","")
 	if ClientManager.checkString(creation_name.text):
 		if(creation_name.text!="" and creation_gender.selected!=-1):
-			creation.character_name=creation_name.text
-			creation.gender=creation_gender.selected
-			step1.hide()
-			mode=0
-			step2_buyAttributes.show()
+			var is_available=await ServerConnection.check_name_availability(creation_name.text)
+			if is_available:
+				creation.character_name=creation_name.text
+				creation.gender=creation_gender.selected
+				step1.hide()
+				mode=0
+				step2_buyAttributes.show()
 
 
 func _on_roll_attributes_pressed():
@@ -111,11 +159,13 @@ func _on_roll_attributes_pressed():
 	creation_name.text.replace(" ","")
 	if ClientManager.checkString(creation_name.text):
 		if(creation_name.text!="" and creation_gender.selected!=-1):
-			creation.character_name=creation_name.text
-			creation.gender=creation_gender.selected
-			step1.hide()
-			mode=1
-			step2_rollAttributes.show()
+			var is_available=await ServerConnection.check_name_availability(creation_name.text)
+			if is_available:
+				creation.character_name=creation_name.text
+				creation.gender=creation_gender.selected
+				step1.hide()
+				mode=1
+				step2_rollAttributes.show()
 
 
 func _on_go_back_pressed():
@@ -239,4 +289,42 @@ func _on_pre_step_summary_pressed():
 
 func _on_next_step_summary_pressed():
 	creation=step5_summary.temp_character
+	var is_available=await ServerConnection.register_name_storage(creation.character_name)
+	if is_available:
+		var charactersStrorageObjectList:Array=await ServerConnection.read_characters_async()
+	#如果是初次创建角色，那么自动激活，否则不激活
+		if charactersStrorageObjectList.size()==0:
+			creation.active=1
+		var characterStrorageObject=ClientManager.to_character_storage_object(creation)
+		charactersStrorageObjectList.append(characterStrorageObject)
+		await ServerConnection.write_characters_async(charactersStrorageObjectList)
+		
+		var skillsStorageObjectList:Array=await ServerConnection.read_skills_learned_async()
+		if skillsStorageObjectList.size()==0:
+			ClientManager.learned_skills=selected_skills
+		var skillsStorageObject=ClientManager.to_skill_storage_object(creation.character_name,selected_skills)
+		skillsStorageObjectList.append(skillsStorageObject)
+		await ServerConnection.write_skills_learned_async(skillsStorageObjectList)
+	
+		step5_summary.hide()
+		setup_character_list()
+		characterListPage.show()
+		step1.reset()
+		step2_buyAttributes.reset()
+		step2_rollAttributes.reset()
+		step3_raceAndJob.reset()
+		step4_skillSelection.reset()
+		step5_summary.reset()
+		reset_variables()
+		
+func reset_variables():
+	creation=Character.new()
+	selected_skills=[]
+	race=Race.new()
+	job=Job.new()
+	bonus_attribute_choice=0
+	mode=-1
+	dice_rolled=false
+		
+	
 

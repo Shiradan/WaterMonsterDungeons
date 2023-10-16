@@ -13,6 +13,15 @@ var bp:int
 func _ready():
 	bp=int(buyPoints.text)
 
+func reset():
+	buyPoints.text="20"
+	strValue.text="10"
+	dexValue.text="10"
+	conValue.text="10"
+	intValue.text="10"
+	wisValue.text="10"
+	chaValue.text="10"
+
 func _on_str_add_pressed():
 	var strV=int(strValue.text)
 	strV=do_buy_points_math_plus(strV)

@@ -11,17 +11,26 @@ func set_skillList(list):
 func set_skill_points(points):
 	skillPoints=points
 
+func reset():
+	skillList=null
+	skillPoints=0
+	skillPointsContainerValue.text="0"
+	for node in skillsContainer.get_children():
+		node.queue_free()
+	
+
 func setup_skill_list():
 	var skillArray=skillList.get_array()
 	skillPointsContainerValue.text=str(skillPoints)
 	for skill in skillArray:
 		var skillRow:VBoxContainer=load("res://main/character_creation_pages/skill_selection/skill_row.tscn").instantiate()
 		skillRow.skillItem=skill
-		var skillCheckbox=skillRow.get_child(0).get_child(0)
-		skillCheckbox.text=skill.cn_name
-		skillsContainer.add_child(skillRow)
-		skillRow.checked.connect(on_checked)
-		skillRow.unchecked.connect(on_unchecked)
+		if skill.LevelRequired==1:
+			var skillCheckbox=skillRow.get_child(0).get_child(0)
+			skillCheckbox.text=skill.cn_name
+			skillsContainer.add_child(skillRow)
+			skillRow.checked.connect(on_checked)
+			skillRow.unchecked.connect(on_unchecked)
 
 func on_checked():
 	if skillPoints>0:

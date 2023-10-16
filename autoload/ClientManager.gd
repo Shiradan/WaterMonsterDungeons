@@ -16,13 +16,75 @@ enum jobs {
 	CLERIC=2
 }
 
-var characters:Array=[]
-var character:=Character.new()
-var learned_skills:Array=[]
+var characters:Array=[] #该账号的已创建角色清单
+var character:=Character.new() #该账号的已激活角色
+var skills:Array=[] #该账号所有已创建角色的已学习技能
+var learned_skills:Array=[] #该账号已激活角色的已学技能
 
-func to_character_object(s):
+func to_character(o):
 	var c=Character.new()
+	c.character_name=o.character_name
+	c.job=int(o.job)
+	c.experience=int(o.experience)
+	c.level=int(o.level)
+	c.race=int(o.race)
+	c.gender=int(o.gender)
+	c.max_hp=int(o.max_hp)
+	c.hp=int(o.hp)
+	c.max_mana=int(o.max_mana)
+	c.mana=int(o.mana)
+	c.mana_regeneration=int(o.mana_regeneration)
+	c.skill_points=int(o.skill_points)
+	c.levelup_attribute_points=int(o.levelup_attribute_points)
+	c.attributes={
+		"str":int(o.attributes.str),
+		"dex":int(o.attributes.dex),
+		"con":int(o.attributes.con),
+		"int":int(o.attributes.int),
+		"wis":int(o.attributes.wis),
+		"cha":int(o.attributes.cha)
+	}
+	c.initiative=int(o.initiative)
+	c.armor_class=int(o.armor_class)
+	c.base_attack_bonus=int(o.base_attack_bonus)
+	c.before_turn_actions=int(o.before_turn_actions)
+	c.actions=int(o.actions)
+	c.after_turn_actions=int(o.after_turn_actions)
+	c.active=int(o.active)
 	return c
+
+func to_character_storage_object(c:Character):
+	var characterStorageObject={
+		character_name=c.character_name,
+		job=c.job,
+		experience=c.experience,
+		level=c.level,
+		race=c.race,
+		gender=c.gender,
+		max_hp=c.max_hp,
+		hp=c.hp,
+		max_mana=c.max_mana,
+		mana=c.mana,
+		mana_regeneration=c.mana_regeneration,
+		skill_points=c.skill_points,
+		levelup_attribute_points=c.levelup_attribute_points,
+		attributes=c.attributes,
+		initiative=c.initiative,
+		armor_class=c.armor_class,
+		base_attack_bonus=c.base_attack_bonus,
+		before_turn_actions=c.before_turn_actions,
+		actions=c.actions,
+		after_turn_actions=c.after_turn_actions,
+		active=c.active
+	}
+	return characterStorageObject
+
+func to_skill_storage_object(cname:String,cskills:Array):
+	var skillStorageObject={
+		character_name = cname,
+		learned_skills = cskills
+	}
+	return skillStorageObject
 
 func get_race_from_index(index):
 	match index:
@@ -293,3 +355,5 @@ func get_gender_text(index):
 	if index==1:
 		return "女性"
 	return "性别错误"
+
+

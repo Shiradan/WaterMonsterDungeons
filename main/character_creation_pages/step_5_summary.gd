@@ -5,6 +5,12 @@ extends Control
 @onready var skillsText=$HBoxContainer/SkillsPanel/Skills
 var temp_character:Character
 
+func reset():
+	basicInfo.clear()
+	stats.clear()
+	skillsText.clear()
+	temp_character=null
+
 func setup_creation_summary(c:Character,race:Race,job:Job,skills:Array,bonus_attribute_choice:int):
 	temp_character=Character.new()
 	temp_character.character_name=c.character_name
