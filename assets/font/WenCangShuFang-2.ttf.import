@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://ctdf11j1v0mc6"
-path="res://.godot/imported/DungeonFont.ttf-8a1c4d596a861b44109081912c9b9795.fontdata"
+uid="uid://bjhqbb7k45mm7"
+path="res://.godot/imported/WenCangShuFang-2.ttf-fe4c94d2ce21c943fce0ae04440d1c5b.fontdata"
 
 [deps]
 
-source_file="res://assets/font/DungeonFont.ttf"
-dest_files=["res://.godot/imported/DungeonFont.ttf-8a1c4d596a861b44109081912c9b9795.fontdata"]
+source_file="res://assets/font/WenCangShuFang-2.ttf"
+dest_files=["res://.godot/imported/WenCangShuFang-2.ttf-fe4c94d2ce21c943fce0ae04440d1c5b.fontdata"]
 
 [params]
 

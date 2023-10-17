@@ -17,6 +17,7 @@ var dice_rolled:bool=false
 @onready var step5_summary=$Step5_Summary
 
 func _ready():
+	setup_character_list()
 	characterListPage.show()
 	step1.hide()
 	step2_buyAttributes.hide()
@@ -24,7 +25,7 @@ func _ready():
 	step3_raceAndJob.hide()
 	step4_skillSelection.hide()
 	step5_summary.hide()
-	setup_character_list()
+	
 	
 func setup_character_list():
 	var characterSlots=$CharacterList/Panel/CharacterSlotContainer
@@ -46,6 +47,7 @@ func setup_character_list():
 			var selection:TextureRect=selections.get_child(i)
 			if c.active==1:
 				selection.modulate=Color.WHITE
+				ClientManager.character=c
 				for skillsLearned in ClientManager.skills:
 					if skillsLearned.character_name==c.character_name:
 						ClientManager.learned_skills=skillsLearned.learned_skills
@@ -326,5 +328,5 @@ func reset_variables():
 	mode=-1
 	dice_rolled=false
 		
-	
-
+func _on_enter_wmd_pressed():
+	get_tree().change_scene_to_file("res://main/main_game_scene.tscn")

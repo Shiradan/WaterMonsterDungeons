@@ -1,0 +1,104 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0m52yg4pig8x"]
+
+[ext_resource type="Script" path="res://main/main_game_scene.gd" id="1_00odn"]
+[ext_resource type="Texture2D" uid="uid://wb11eas6ja8v" path="res://assets/Dungeons/dungeon background 2.png" id="2_0xic7"]
+[ext_resource type="PackedScene" uid="uid://ccr60kne7n1v1" path="res://assets/tscns/backgorund_tile.tscn" id="2_4wcwd"]
+[ext_resource type="StyleBox" uid="uid://clv50blojv0tt" path="res://assets/character_creation/GUI/label_style_box_flat.tres" id="4_v7w4y"]
+
+[node name="MainGameScene" type="Node2D"]
+script = ExtResource("1_00odn")
+
+[node name="BackgorundTile" parent="." instance=ExtResource("2_4wcwd")]
+
+[node name="GameUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="DungeonBackground" type="TextureRect" parent="GameUI"]
+visible = false
+layout_mode = 2
+offset_left = 16.0
+offset_top = 53.0
+offset_right = 1264.0
+offset_bottom = 704.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("2_0xic7")
+expand_mode = 1
+
+[node name="CharacterName" type="Label" parent="GameUI"]
+layout_mode = 0
+offset_left = 920.0
+offset_top = 8.0
+offset_right = 1007.0
+offset_bottom = 44.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("4_v7w4y")
+text = "角色名"
+horizontal_alignment = 1
+
+[node name="GeneralInfo" type="Label" parent="GameUI"]
+layout_mode = 0
+offset_left = 1040.0
+offset_top = 8.0
+offset_right = 1250.0
+offset_bottom = 44.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("4_v7w4y")
+text = "等级 种族 职业"
+horizontal_alignment = 1
+
+[node name="TabContainer" type="TabContainer" parent="GameUI"]
+layout_mode = 2
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 1264.0
+offset_bottom = 704.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 28
+
+[node name="队伍" type="ScrollContainer" parent="GameUI/TabContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="GameUI/TabContainer/队伍"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 120
+
+[node name="Members" type="VBoxContainer" parent="GameUI/TabContainer/队伍/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="你的角色" type="ScrollContainer" parent="GameUI/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="属性" type="ScrollContainer" parent="GameUI/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="技能" type="ScrollContainer" parent="GameUI/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="战术设置" type="ScrollContainer" parent="GameUI/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="地下城" type="ScrollContainer" parent="GameUI/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="战报" type="ScrollContainer" parent="GameUI/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="游戏说明" type="ScrollContainer" parent="GameUI/TabContainer"]
+visible = false
+layout_mode = 2

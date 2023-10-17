@@ -1,0 +1,74 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6c8ahgamy81v"]
+
+[ext_resource type="Script" path="res://main/main_game_scene_pages/team_member_row.gd" id="1_aislx"]
+[ext_resource type="StyleBox" uid="uid://clv50blojv0tt" path="res://assets/character_creation/GUI/label_style_box_flat.tres" id="1_cg511"]
+
+[node name="TeamMemberRow" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+script = ExtResource("1_aislx")
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("1_cg511")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Level" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("1_cg511")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Race" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("1_cg511")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Job" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("1_cg511")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HP" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("1_cg511")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Mana" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("1_cg511")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BAB" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("1_cg511")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AC" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("1_cg511")
+horizontal_alignment = 1
+vertical_alignment = 1

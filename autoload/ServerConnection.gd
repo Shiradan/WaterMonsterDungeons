@@ -99,6 +99,7 @@ func join_wmd_group_async():
 			for ug in userGroupList.user_groups:
 				var g = ug.group as NakamaAPI.ApiGroup
 				if g.name=="WMD Public Group":
+					_groupId=g.id
 					print("Group %s role %s" % [g.id, ug.state])
 					return result
 	
@@ -128,7 +129,7 @@ func join_wmd_group_async():
 				var group = g as NakamaAPI.ApiGroup
 				if g.name=="WMD Public Group":
 					_groupId=g.id
-					print("Group: name %s, id %s" % [group.name, group.id])
+					print("Group: %s, id %s" % [group.name, group.id])
 					break
 			var cursor = list.cursor
 			while cursor: # While there are more results get next page.
@@ -142,7 +143,7 @@ func join_wmd_group_async():
 					var group = g as NakamaAPI.ApiGroup
 					if group.name=="WMD Public Group":
 						_groupId=group.id
-						print("Group: name %s, id %s" % [group.name, group.id])
+						print("Group: %s, id %s" % [group.name, group.id])
 						break
 				cursor = list.cursor
 				
@@ -229,6 +230,30 @@ func read_characters_async():
 				"wmd_data",
 				"characters",
 				_session.user_id
+			)
+		]
+	)
+	
+	var parsed_result := _exception_handler.parse_exception(storageObjects)
+	if parsed_result != OK:
+		return storageObjects.get_exception()._to_string()
+	
+	if storageObjects.objects.size()>0:
+		#get array of dictionary
+		var decodedCharacters=JSON.parse_string(storageObjects.objects[0].value).characters
+		characters=decodedCharacters
+		
+	return characters
+
+func read_user_characters_async(user_id):
+	var characters=[]
+	var storageObjects:NakamaAPI.ApiStorageObjects=await _client.read_storage_objects_async(
+		_session,
+		[
+			NakamaStorageObjectId.new(
+				"wmd_data",
+				"characters",
+				user_id
 			)
 		]
 	)
@@ -408,3 +433,13 @@ func register_name_storage(cname:String):
 		return true
 	else:
 		return false
+
+func list_group_members():
+	print(_groupId)
+	var member_list : NakamaAPI.ApiGroupUserList = await _client.list_group_users_async(_session, _groupId)
+
+	if member_list.is_exception():
+		print("An error occurred: %s" % member_list)
+		return
+	else:
+		return member_list
