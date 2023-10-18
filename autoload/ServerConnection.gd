@@ -435,7 +435,6 @@ func register_name_storage(cname:String):
 		return false
 
 func list_group_members():
-	print(_groupId)
 	var member_list : NakamaAPI.ApiGroupUserList = await _client.list_group_users_async(_session, _groupId)
 
 	if member_list.is_exception():

@@ -17,14 +17,24 @@ var dice_rolled:bool=false
 @onready var step5_summary=$Step5_Summary
 
 func _ready():
-	setup_character_list()
-	characterListPage.show()
-	step1.hide()
-	step2_buyAttributes.hide()
-	step2_rollAttributes.hide()
-	step3_raceAndJob.hide()
-	step4_skillSelection.hide()
-	step5_summary.hide()
+	if ClientManager.logged_in:
+		setup_character_list()
+		characterListPage.hide()
+		step1.show()
+		step2_buyAttributes.hide()
+		step2_rollAttributes.hide()
+		step3_raceAndJob.hide()
+		step4_skillSelection.hide()
+		step5_summary.hide()
+	else:
+		setup_character_list()
+		characterListPage.show()
+		step1.hide()
+		step2_buyAttributes.hide()
+		step2_rollAttributes.hide()
+		step3_raceAndJob.hide()
+		step4_skillSelection.hide()
+		step5_summary.hide()
 	
 	
 func setup_character_list():
@@ -35,7 +45,7 @@ func setup_character_list():
 	var characterStorageObjectList=await ServerConnection.read_characters_async()
 	for object in characterStorageObjectList:
 		characters.append(ClientManager.to_character(object))
-	ClientManager.characters=characters#需要修改
+	ClientManager.characters=characters
 	#获取当前账号各角色学习的技能清单
 	ClientManager.skills=await ServerConnection.read_skills_learned_async()
 	var i=0
@@ -171,9 +181,12 @@ func _on_roll_attributes_pressed():
 
 
 func _on_go_back_pressed():
-	step1.hide()
-	characterListPage.show()
-	setup_character_list()
+	if ClientManager.logged_in:
+		get_tree().change_scene_to_file("res://main/main_game_scene.tscn")
+	else:
+		step1.hide()
+		characterListPage.show()
+		setup_character_list()
 
 
 func _on_pre_step_buy_attributes_pressed():
@@ -307,17 +320,20 @@ func _on_next_step_summary_pressed():
 		var skillsStorageObject=ClientManager.to_skill_storage_object(creation.character_name,selected_skills)
 		skillsStorageObjectList.append(skillsStorageObject)
 		await ServerConnection.write_skills_learned_async(skillsStorageObjectList)
-	
-		step5_summary.hide()
-		setup_character_list()
-		characterListPage.show()
-		step1.reset()
-		step2_buyAttributes.reset()
-		step2_rollAttributes.reset()
-		step3_raceAndJob.reset()
-		step4_skillSelection.reset()
-		step5_summary.reset()
-		reset_variables()
+		
+		if ClientManager.logged_in:
+			get_tree().change_scene_to_file("res://main/main_game_scene.tscn")
+		else:
+			step5_summary.hide()
+			setup_character_list()
+			characterListPage.show()
+			step1.reset()
+			step2_buyAttributes.reset()
+			step2_rollAttributes.reset()
+			step3_raceAndJob.reset()
+			step4_skillSelection.reset()
+			step5_summary.reset()
+			reset_variables()
 		
 func reset_variables():
 	creation=Character.new()
@@ -329,4 +345,5 @@ func reset_variables():
 	dice_rolled=false
 		
 func _on_enter_wmd_pressed():
+	ClientManager.logged_in=true
 	get_tree().change_scene_to_file("res://main/main_game_scene.tscn")

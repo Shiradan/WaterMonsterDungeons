@@ -1,9 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://b0m52yg4pig8x"]
+[gd_scene load_steps=11 format=3 uid="uid://b0m52yg4pig8x"]
 
 [ext_resource type="Script" path="res://main/main_game_scene.gd" id="1_00odn"]
 [ext_resource type="Texture2D" uid="uid://wb11eas6ja8v" path="res://assets/Dungeons/dungeon background 2.png" id="2_0xic7"]
 [ext_resource type="PackedScene" uid="uid://ccr60kne7n1v1" path="res://assets/tscns/backgorund_tile.tscn" id="2_4wcwd"]
 [ext_resource type="StyleBox" uid="uid://clv50blojv0tt" path="res://assets/character_creation/GUI/label_style_box_flat.tres" id="4_v7w4y"]
+[ext_resource type="Texture2D" uid="uid://dcu33616dssw2" path="res://assets/character_creation/buttons/Style 4 Icon 320.png" id="5_obyb0"]
+[ext_resource type="Texture2D" uid="uid://d8h5k7k8aj1b" path="res://assets/character_creation/buttons/Style 4 Icon 324.png" id="6_jalm3"]
+[ext_resource type="Texture2D" uid="uid://dwho7fs0wb4xm" path="res://assets/character_creation/buttons/minus.png" id="7_rsg8v"]
+[ext_resource type="Texture2D" uid="uid://dr3d8gkcpdt5" path="res://assets/character_creation/buttons/add.png" id="8_6538c"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dv250"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dptsr"]
 
 [node name="MainGameScene" type="Node2D"]
 script = ExtResource("1_00odn")
@@ -75,30 +83,335 @@ theme_override_constants/margin_right = 120
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="你的角色" type="ScrollContainer" parent="GameUI/TabContainer"]
+[node name="你的角色" type="Panel" parent="GameUI/TabContainer"]
 visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_dv250")
+
+[node name="CharacterSlotContainer" type="VBoxContainer" parent="GameUI/TabContainer/你的角色"]
+layout_mode = 0
+offset_left = 432.0
+offset_top = 179.0
+offset_right = 816.0
+offset_bottom = 435.0
+
+[node name="CharacterSlot1" type="Button" parent="GameUI/TabContainer/你的角色/CharacterSlotContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 24
+icon = ExtResource("5_obyb0")
+alignment = 0
+icon_alignment = 1
+expand_icon = true
+
+[node name="CharacterSlot2" type="Button" parent="GameUI/TabContainer/你的角色/CharacterSlotContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 24
+icon = ExtResource("5_obyb0")
+alignment = 0
+icon_alignment = 1
+expand_icon = true
+
+[node name="CharacterSlot3" type="Button" parent="GameUI/TabContainer/你的角色/CharacterSlotContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 24
+icon = ExtResource("5_obyb0")
+alignment = 0
+icon_alignment = 1
+expand_icon = true
+
+[node name="SelectionContainer" type="VBoxContainer" parent="GameUI/TabContainer/你的角色"]
+layout_mode = 0
+offset_left = 816.0
+offset_top = 179.0
+offset_right = 896.0
+offset_bottom = 435.0
+
+[node name="Selection1" type="TextureRect" parent="GameUI/TabContainer/你的角色/SelectionContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("6_jalm3")
+
+[node name="Selection2" type="TextureRect" parent="GameUI/TabContainer/你的角色/SelectionContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("6_jalm3")
+
+[node name="Selection3" type="TextureRect" parent="GameUI/TabContainer/你的角色/SelectionContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("6_jalm3")
+
+[node name="Title" type="Label" parent="GameUI/TabContainer/你的角色"]
+layout_mode = 0
+offset_left = 496.0
+offset_top = 75.0
+offset_right = 752.0
+offset_bottom = 139.0
+theme_override_font_sizes/font_size = 32
+text = "你的角色"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="属性" type="Panel" parent="GameUI/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_dptsr")
+
+[node name="AttributesLabelContainer" type="VBoxContainer" parent="GameUI/TabContainer/属性"]
+offset_left = 304.0
+offset_top = 139.0
+offset_right = 352.0
+offset_bottom = 398.0
+
+[node name="Strength" type="Label" parent="GameUI/TabContainer/属性/AttributesLabelContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 24
+text = "力量"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Dexterity" type="Label" parent="GameUI/TabContainer/属性/AttributesLabelContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 24
+text = "敏捷"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Constitution" type="Label" parent="GameUI/TabContainer/属性/AttributesLabelContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 24
+text = "体质"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Intelligence" type="Label" parent="GameUI/TabContainer/属性/AttributesLabelContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 24
+text = "智力"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Wisdom" type="Label" parent="GameUI/TabContainer/属性/AttributesLabelContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 24
+text = "感知"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Charisma" type="Label" parent="GameUI/TabContainer/属性/AttributesLabelContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 24
+text = "魅力"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AttributesValueContainer" type="VBoxContainer" parent="GameUI/TabContainer/属性"]
+layout_mode = 0
+offset_left = 368.0
+offset_top = 139.0
+offset_right = 608.0
+offset_bottom = 399.0
+
+[node name="StrContainer" type="HBoxContainer" parent="GameUI/TabContainer/属性/AttributesValueContainer"]
 layout_mode = 2
 
-[node name="属性" type="ScrollContainer" parent="GameUI/TabContainer"]
-visible = false
+[node name="StrMinus" type="Button" parent="GameUI/TabContainer/属性/AttributesValueContainer/StrContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+icon = ExtResource("7_rsg8v")
+flat = true
+
+[node name="StrValue" type="Label" parent="GameUI/TabContainer/属性/AttributesValueContainer/StrContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StrAdd" type="Button" parent="GameUI/TabContainer/属性/AttributesValueContainer/StrContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+icon = ExtResource("8_6538c")
+flat = true
+
+[node name="DexContainer" type="HBoxContainer" parent="GameUI/TabContainer/属性/AttributesValueContainer"]
 layout_mode = 2
 
-[node name="技能" type="ScrollContainer" parent="GameUI/TabContainer"]
-visible = false
+[node name="DexMinus" type="Button" parent="GameUI/TabContainer/属性/AttributesValueContainer/DexContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+icon = ExtResource("7_rsg8v")
+flat = true
+
+[node name="DexValue" type="Label" parent="GameUI/TabContainer/属性/AttributesValueContainer/DexContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DexAdd" type="Button" parent="GameUI/TabContainer/属性/AttributesValueContainer/DexContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+icon = ExtResource("8_6538c")
+flat = true
+
+[node name="ConContainer" type="HBoxContainer" parent="GameUI/TabContainer/属性/AttributesValueContainer"]
 layout_mode = 2
 
-[node name="战术设置" type="ScrollContainer" parent="GameUI/TabContainer"]
-visible = false
+[node name="ConMinus" type="Button" parent="GameUI/TabContainer/属性/AttributesValueContainer/ConContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+icon = ExtResource("7_rsg8v")
+flat = true
+
+[node name="ConValue" type="Label" parent="GameUI/TabContainer/属性/AttributesValueContainer/ConContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ConAdd" type="Button" parent="GameUI/TabContainer/属性/AttributesValueContainer/ConContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+icon = ExtResource("8_6538c")
+flat = true
+
+[node name="IntContainer" type="HBoxContainer" parent="GameUI/TabContainer/属性/AttributesValueContainer"]
 layout_mode = 2
 
-[node name="地下城" type="ScrollContainer" parent="GameUI/TabContainer"]
-visible = false
+[node name="IntMinus" type="Button" parent="GameUI/TabContainer/属性/AttributesValueContainer/IntContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+icon = ExtResource("7_rsg8v")
+flat = true
+
+[node name="IntValue" type="Label" parent="GameUI/TabContainer/属性/AttributesValueContainer/IntContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="IntAdd" type="Button" parent="GameUI/TabContainer/属性/AttributesValueContainer/IntContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+icon = ExtResource("8_6538c")
+flat = true
+
+[node name="WisContainer" type="HBoxContainer" parent="GameUI/TabContainer/属性/AttributesValueContainer"]
 layout_mode = 2
 
-[node name="战报" type="ScrollContainer" parent="GameUI/TabContainer"]
-visible = false
+[node name="WisMinus" type="Button" parent="GameUI/TabContainer/属性/AttributesValueContainer/WisContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+icon = ExtResource("7_rsg8v")
+flat = true
+
+[node name="WisValue" type="Label" parent="GameUI/TabContainer/属性/AttributesValueContainer/WisContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WisAdd" type="Button" parent="GameUI/TabContainer/属性/AttributesValueContainer/WisContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+icon = ExtResource("8_6538c")
+flat = true
+
+[node name="ChaContainer" type="HBoxContainer" parent="GameUI/TabContainer/属性/AttributesValueContainer"]
 layout_mode = 2
 
-[node name="游戏说明" type="ScrollContainer" parent="GameUI/TabContainer"]
-visible = false
+[node name="ChaMinus" type="Button" parent="GameUI/TabContainer/属性/AttributesValueContainer/ChaContainer"]
 layout_mode = 2
+size_flags_horizontal = 10
+icon = ExtResource("7_rsg8v")
+flat = true
+
+[node name="ChaValue" type="Label" parent="GameUI/TabContainer/属性/AttributesValueContainer/ChaContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ChaAdd" type="Button" parent="GameUI/TabContainer/属性/AttributesValueContainer/ChaContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+icon = ExtResource("8_6538c")
+flat = true
+
+[node name="LevelupPointsContainer" type="HBoxContainer" parent="GameUI/TabContainer/属性"]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 75.0
+offset_right = 544.0
+offset_bottom = 115.0
+
+[node name="LevelupPointsLabel" type="Label" parent="GameUI/TabContainer/属性/LevelupPointsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "剩余可分配属性点:"
+vertical_alignment = 1
+
+[node name="LevelupPointsValue" type="Label" parent="GameUI/TabContainer/属性/LevelupPointsContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("4_v7w4y")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Reset" type="Button" parent="GameUI/TabContainer/属性"]
+layout_mode = 0
+offset_left = 344.0
+offset_top = 419.0
+offset_right = 400.0
+offset_bottom = 452.0
+theme_override_font_sizes/font_size = 24
+text = "重置"
+
+[node name="Save" type="Button" parent="GameUI/TabContainer/属性"]
+layout_mode = 0
+offset_left = 464.0
+offset_top = 419.0
+offset_right = 520.0
+offset_bottom = 452.0
+theme_override_font_sizes/font_size = 24
+text = "保存"
+
+[node name="Stats" type="RichTextLabel" parent="GameUI/TabContainer/属性"]
+layout_mode = 0
+offset_left = 624.0
+offset_top = 75.0
+offset_right = 1136.0
+offset_bottom = 587.0
+theme_override_styles/normal = ExtResource("4_v7w4y")
+
+[connection signal="tab_clicked" from="GameUI/TabContainer" to="." method="_on_tab_container_tab_clicked"]
+[connection signal="pressed" from="GameUI/TabContainer/你的角色/CharacterSlotContainer/CharacterSlot1" to="." method="_on_character_slot_1_pressed"]
+[connection signal="pressed" from="GameUI/TabContainer/你的角色/CharacterSlotContainer/CharacterSlot2" to="." method="_on_character_slot_2_pressed"]
+[connection signal="pressed" from="GameUI/TabContainer/你的角色/CharacterSlotContainer/CharacterSlot3" to="." method="_on_character_slot_3_pressed"]

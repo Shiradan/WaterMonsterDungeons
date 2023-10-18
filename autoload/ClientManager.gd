@@ -20,6 +20,8 @@ var characters:Array=[] #该账号的已创建角色清单
 var character:=Character.new() #该账号的已激活角色
 var skills:Array=[] #该账号所有已创建角色的已学习技能
 var learned_skills:Array=[] #该账号已激活角色的已学技能
+var logged_in:bool=false
+var tab:int=0
 
 func to_character(o):
 	var c=Character.new()

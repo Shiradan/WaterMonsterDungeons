@@ -38,7 +38,7 @@ offset_bottom = 88.0
 [node name="UsernameLabel" type="Label" parent="LoginPanel/UsernameContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "Email:        "
+text = "Email:           "
 horizontal_alignment = 1
 vertical_alignment = 1
 
