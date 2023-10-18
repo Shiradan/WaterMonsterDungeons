@@ -24,6 +24,7 @@ driver/mix_rate.web=44100
 Nakama="*res://addons/com.heroiclabs.nakama/Nakama.gd"
 ServerConnection="*res://autoload/ServerConnection.gd"
 ClientManager="*res://autoload/ClientManager.gd"
+MathUtil="*res://autoload/math_util.gd"
 
 [debug]
 
