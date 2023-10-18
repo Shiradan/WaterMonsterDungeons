@@ -1,16 +1,11 @@
 extends Node
 
 func calculate_mean(data):
-	var dataArray=[]
-	var i=1
-	while i<=data:
-		dataArray.append(i)
-		i+=1
-	var sum: = 0.0
-	var count = dataArray.size()
+	var sum = 0.0
+	var count = data
 
-	for value in dataArray:
-		sum += float(value)
+	for i in range(1, data + 1):
+		sum += float(i)
 
 	if count > 0:
 		return sum / float(count)
