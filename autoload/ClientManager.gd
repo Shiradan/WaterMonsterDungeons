@@ -349,7 +349,10 @@ func get_at_actions(level):
 		return 2
 
 func get_actions(bab):
-	return 1+floori((bab-1)/5.0)
+	if bab<1:
+		return 1
+	else:
+		return 1+floori(float(bab-1)/5.0)
 
 func get_gender_text(index):
 	if index==0:
