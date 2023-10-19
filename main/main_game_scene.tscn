@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b0m52yg4pig8x"]
+[gd_scene load_steps=10 format=3 uid="uid://b0m52yg4pig8x"]
 
 [ext_resource type="Script" path="res://main/main_game_scene.gd" id="1_00odn"]
 [ext_resource type="Texture2D" uid="uid://wb11eas6ja8v" path="res://assets/Dungeons/dungeon background 2.png" id="2_0xic7"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dcu33616dssw2" path="res://assets/character_creation/buttons/Style 4 Icon 320.png" id="5_obyb0"]
 [ext_resource type="Texture2D" uid="uid://d8h5k7k8aj1b" path="res://assets/character_creation/buttons/Style 4 Icon 324.png" id="6_jalm3"]
 [ext_resource type="PackedScene" uid="uid://dqlrx8uk11qh5" path="res://main/main_game_scene_pages/属性.tscn" id="7_xjfuw"]
+[ext_resource type="PackedScene" uid="uid://bkggx0m46c78w" path="res://main/main_game_scene_pages/技能.tscn" id="8_vyulk"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dv250"]
 
@@ -159,11 +160,18 @@ vertical_alignment = 1
 visible = false
 layout_mode = 2
 
+[node name="技能" parent="GameUI/TabContainer" instance=ExtResource("8_vyulk")]
+visible = false
+layout_mode = 2
+
 [connection signal="tab_clicked" from="GameUI/TabContainer" to="." method="_on_tab_container_tab_clicked"]
 [connection signal="pressed" from="GameUI/TabContainer/你的角色/CharacterSlotContainer/CharacterSlot1" to="." method="_on_character_slot_1_pressed"]
 [connection signal="pressed" from="GameUI/TabContainer/你的角色/CharacterSlotContainer/CharacterSlot2" to="." method="_on_character_slot_2_pressed"]
 [connection signal="pressed" from="GameUI/TabContainer/你的角色/CharacterSlotContainer/CharacterSlot3" to="." method="_on_character_slot_3_pressed"]
 [connection signal="pressed" from="GameUI/TabContainer/属性/Reset" to="." method="setup_attributes_stats"]
-[connection signal="pressed" from="GameUI/TabContainer/属性/Save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="GameUI/TabContainer/属性/Save" to="." method="_on_save_attributes_pressed"]
+[connection signal="pressed" from="GameUI/TabContainer/技能/Reset" to="." method="setup_skill_list"]
+[connection signal="pressed" from="GameUI/TabContainer/技能/Save" to="." method="_on_save_pressed"]
 
 [editable path="GameUI/TabContainer/属性"]
+[editable path="GameUI/TabContainer/技能"]

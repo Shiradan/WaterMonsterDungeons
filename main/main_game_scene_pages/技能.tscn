@@ -1,0 +1,74 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkggx0m46c78w"]
+
+[ext_resource type="Script" path="res://main/main_game_scene_pages/技能.gd" id="1_1nef4"]
+[ext_resource type="StyleBox" uid="uid://clv50blojv0tt" path="res://assets/character_creation/GUI/label_style_box_flat.tres" id="2_vjk0d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_whqo5"]
+
+[node name="技能" type="Panel"]
+theme_override_styles/panel = SubResource("StyleBoxEmpty_whqo5")
+script = ExtResource("1_1nef4")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_left = 368.0
+offset_top = 115.0
+offset_right = 880.0
+offset_bottom = 635.0
+
+[node name="SkillsContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SkillPointsContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 1000.0
+offset_top = 27.0
+offset_right = 1160.0
+offset_bottom = 67.0
+
+[node name="SkillPointsLabel" type="Label" parent="SkillPointsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "剩余技能点:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SkillPoints" type="Label" parent="SkillPointsContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("2_vjk0d")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Reset" type="Button" parent="."]
+layout_mode = 0
+offset_left = 368.0
+offset_top = 75.0
+offset_right = 424.0
+offset_bottom = 108.0
+theme_override_font_sizes/font_size = 24
+text = "重置"
+
+[node name="Save" type="Button" parent="."]
+layout_mode = 0
+offset_left = 824.0
+offset_top = 75.0
+offset_right = 880.0
+offset_bottom = 108.0
+theme_override_font_sizes/font_size = 24
+text = "保存
+"
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 560.0
+offset_top = 32.0
+offset_right = 688.0
+offset_bottom = 64.0
+theme_override_font_sizes/font_size = 28
+text = "技能学习"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -322,6 +322,7 @@ func _on_next_step_summary_pressed():
 		await ServerConnection.write_skills_learned_async(skillsStorageObjectList)
 		
 		if ClientManager.logged_in:
+			ClientManager.skills=skillsStorageObjectList
 			get_tree().change_scene_to_file("res://main/main_game_scene.tscn")
 		else:
 			step5_summary.hide()

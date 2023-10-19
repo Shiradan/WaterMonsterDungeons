@@ -119,6 +119,13 @@ func setup_stats():
 		"[ul]回合后动作数: [color=#%s]%s[/color][/ul]\n" % [Color.WHITE.to_html(false),ClientManager.character.after_turn_actions]
 	)
 
+func setup_skill_list():
+	var skillList:TextDatabase=ClientManager.get_skill_list(ClientManager.character.job)
+	var skillPanel=$"GameUI/TabContainer/技能"
+	skillPanel.skillList=skillList
+	skillPanel.skillPoints=ClientManager.character.skill_points
+	skillPanel.setup_skill_list()
+
 func _on_tab_container_tab_clicked(tab):
 	match tab:
 		0:
@@ -132,6 +139,7 @@ func _on_tab_container_tab_clicked(tab):
 			setup_attributes_stats()
 		3:
 			ClientManager.tab=tab
+			setup_skill_list()
 		4:
 			ClientManager.tab=tab
 		5:
@@ -235,7 +243,7 @@ func _on_character_slot_3_pressed():
 			ClientManager.translate_job(ClientManager.character.job)
 
 
-func _on_save_pressed():
+func _on_save_attributes_pressed():
 	var levelupPointsValue=$"GameUI/TabContainer/属性/LevelupPointsContainer/LevelupPointsValue"
 	if int(levelupPointsValue.text)<ClientManager.character.levelup_attribute_points:
 		ClientManager.character.levelup_attribute_points=int(levelupPointsValue.text)
@@ -264,3 +272,24 @@ func _on_save_pressed():
 		setup_attributes_stats()
 				
 	
+func _on_save_pressed():
+	var skillPanel=$"GameUI/TabContainer/技能"
+	var selectedSkills=skillPanel.get_selected_skills()
+	ClientManager.learned_skills=selectedSkills
+	var skillsStorageObjectList:Array=[]
+	for skills in ClientManager.skills:
+		if skills.character_name==ClientManager.character.character_name:
+			var skillsStorageObject=ClientManager.to_skill_storage_object(ClientManager.character.character_name,selectedSkills)
+			skillsStorageObjectList.append(skillsStorageObject)
+		else:
+			skillsStorageObjectList.append(skills)
+	ClientManager.skills=skillsStorageObjectList
+	await ServerConnection.write_skills_learned_async(ClientManager.skills)
+	ClientManager.character.skill_points=int(($"GameUI/TabContainer/技能/SkillPointsContainer/SkillPoints").text)
+	var characterStorageObjectList:Array=[]
+	for c in ClientManager.characters:
+		if c.active==1:
+			c=ClientManager.character
+		characterStorageObjectList.append(ClientManager.to_character_storage_object(c))
+	await ServerConnection.write_characters_async(characterStorageObjectList)
+	setup_skill_list()
