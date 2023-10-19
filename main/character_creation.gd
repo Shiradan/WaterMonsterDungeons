@@ -347,4 +347,4 @@ func reset_variables():
 		
 func _on_enter_wmd_pressed():
 	ClientManager.logged_in=true
-	get_tree().change_scene_to_file("res://main/main_game_scene.tscn")
+	get_tree().change_scene_to_file("res://main/loading_scene.tscn")

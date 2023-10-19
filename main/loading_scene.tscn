@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://jyeqx1jsiy3a"]
+
+[ext_resource type="Texture2D" uid="uid://cyp51c0e3nh0a" path="res://assets/Dungeons/dung_6.png" id="1_mwymb"]
+[ext_resource type="Script" path="res://main/loading_scene.gd" id="1_y5m8c"]
+
+[node name="LoadingScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_y5m8c")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("1_mwymb")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 16.0
+offset_right = 960.0
+offset_bottom = 64.0
+theme_override_font_sizes/font_size = 28
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 640.0
+offset_right = 1024.0
+offset_bottom = 688.0
+theme_override_font_sizes/font_size = 24
