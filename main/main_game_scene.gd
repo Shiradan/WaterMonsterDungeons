@@ -2,12 +2,17 @@ extends Node2D
 
 @onready var character_name = $GameUI/CharacterName
 @onready var general_info = $GameUI/GeneralInfo
+@onready var exp_bar = $GameUI/ExpContainer/ExpBar
+@onready var exp_value = $GameUI/ExpValue
 
 func _ready():
 	character_name.text=ClientManager.character.character_name
 	general_info.text=str(ClientManager.character.level)+"级"+" "+\
 		ClientManager.translate_race(ClientManager.character.race)+" "+\
 		ClientManager.translate_job(ClientManager.character.job)
+	exp_bar.value=ClientManager.character.experience
+	exp_bar.max_value=ClientManager.level_exp[ClientManager.character.level]
+	exp_value.text=str(ClientManager.character.experience)+" / "+str(ClientManager.level_exp[ClientManager.character.level])
 	if ClientManager.tab==0:
 		setup_team_members()
 	else:
@@ -146,8 +151,6 @@ func _on_tab_container_tab_clicked(tab):
 			ClientManager.tab=tab
 		6:
 			ClientManager.tab=tab
-		7:
-			ClientManager.tab=tab
 
 func _on_character_slot_1_pressed():
 	var characterSlot1=$"GameUI/TabContainer/你的角色/CharacterSlotContainer/CharacterSlot1"
@@ -178,6 +181,9 @@ func _on_character_slot_1_pressed():
 		general_info.text=str(ClientManager.character.level)+"级"+" "+\
 			ClientManager.translate_race(ClientManager.character.race)+" "+\
 			ClientManager.translate_job(ClientManager.character.job)
+		exp_bar.value=ClientManager.character.experience
+		exp_bar.max_value=ClientManager.level_exp[ClientManager.character.level]
+		exp_value.text=str(ClientManager.character.experience)+" / "+str(ClientManager.level_exp[ClientManager.character.level])
 
 
 func _on_character_slot_2_pressed():
@@ -210,6 +216,9 @@ func _on_character_slot_2_pressed():
 		general_info.text=str(ClientManager.character.level)+"级"+" "+\
 			ClientManager.translate_race(ClientManager.character.race)+" "+\
 			ClientManager.translate_job(ClientManager.character.job)
+		exp_bar.value=ClientManager.character.experience
+		exp_bar.max_value=ClientManager.level_exp[ClientManager.character.level]
+		exp_value.text=str(ClientManager.character.experience)+" / "+str(ClientManager.level_exp[ClientManager.character.level])
 
 
 func _on_character_slot_3_pressed():
@@ -241,6 +250,9 @@ func _on_character_slot_3_pressed():
 		general_info.text=str(ClientManager.character.level)+"级"+" "+\
 			ClientManager.translate_race(ClientManager.character.race)+" "+\
 			ClientManager.translate_job(ClientManager.character.job)
+		exp_bar.value=ClientManager.character.experience
+		exp_bar.max_value=ClientManager.level_exp[ClientManager.character.level]
+		exp_value.text=str(ClientManager.character.experience)+" / "+str(ClientManager.level_exp[ClientManager.character.level])
 
 
 func _on_save_attributes_pressed():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b0m52yg4pig8x"]
+[gd_scene load_steps=11 format=3 uid="uid://b0m52yg4pig8x"]
 
 [ext_resource type="Script" path="res://main/main_game_scene.gd" id="1_00odn"]
 [ext_resource type="Texture2D" uid="uid://wb11eas6ja8v" path="res://assets/Dungeons/dungeon background 2.png" id="2_0xic7"]
@@ -8,6 +8,14 @@
 [ext_resource type="Texture2D" uid="uid://d8h5k7k8aj1b" path="res://assets/character_creation/buttons/Style 4 Icon 324.png" id="6_jalm3"]
 [ext_resource type="PackedScene" uid="uid://dqlrx8uk11qh5" path="res://main/main_game_scene_pages/属性.tscn" id="7_xjfuw"]
 [ext_resource type="PackedScene" uid="uid://bkggx0m46c78w" path="res://main/main_game_scene_pages/技能.tscn" id="8_vyulk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_byatk"]
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 3.0
+expand_margin_right = 3.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dv250"]
 
@@ -36,25 +44,60 @@ expand_mode = 1
 
 [node name="CharacterName" type="Label" parent="GameUI"]
 layout_mode = 0
-offset_left = 920.0
-offset_top = 8.0
-offset_right = 1007.0
-offset_bottom = 44.0
-theme_override_font_sizes/font_size = 32
+offset_left = 914.0
+offset_top = 1.0
+offset_right = 1001.0
+offset_bottom = 31.0
+theme_override_font_sizes/font_size = 26
 theme_override_styles/normal = ExtResource("4_v7w4y")
 text = "角色名"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="GeneralInfo" type="Label" parent="GameUI"]
 layout_mode = 0
-offset_left = 1040.0
-offset_top = 8.0
-offset_right = 1250.0
-offset_bottom = 44.0
-theme_override_font_sizes/font_size = 32
+offset_left = 1032.0
+offset_top = 1.0
+offset_right = 1248.0
+offset_bottom = 31.0
+theme_override_font_sizes/font_size = 26
 theme_override_styles/normal = ExtResource("4_v7w4y")
 text = "等级 种族 职业"
 horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ExpContainer" type="HBoxContainer" parent="GameUI"]
+layout_mode = 0
+offset_left = 912.0
+offset_top = 32.0
+offset_right = 1256.0
+offset_bottom = 52.0
+
+[node name="ExpLabel" type="Label" parent="GameUI/ExpContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_byatk")
+text = "EXP:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ExpBar" type="ProgressBar" parent="GameUI/ExpContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 0.7
+theme_override_font_sizes/font_size = 14
+show_percentage = false
+
+[node name="ExpValue" type="Label" parent="GameUI"]
+layout_mode = 2
+offset_left = 1008.0
+offset_top = 32.0
+offset_right = 1200.0
+offset_bottom = 52.0
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="TabContainer" type="TabContainer" parent="GameUI"]
 layout_mode = 2
@@ -161,6 +204,10 @@ visible = false
 layout_mode = 2
 
 [node name="技能" parent="GameUI/TabContainer" instance=ExtResource("8_vyulk")]
+visible = false
+layout_mode = 2
+
+[node name="战术设置" type="Panel" parent="GameUI/TabContainer"]
 visible = false
 layout_mode = 2
 
