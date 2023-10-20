@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dk5yuef32l7g0"]
+[gd_scene load_steps=6 format=3 uid="uid://dk5yuef32l7g0"]
 
 [ext_resource type="Texture2D" uid="uid://cxsncvgy80jj3" path="res://assets/login_page/background/env_ (18).png" id="1_bofgg"]
 [ext_resource type="Script" path="res://main/login_page.gd" id="1_mxg48"]
 [ext_resource type="Script" path="res://main/StatusPanel.gd" id="3_814p4"]
+[ext_resource type="PackedScene" uid="uid://bp4ywfbwilya8" path="res://main/starting_scene.tscn" id="4_dvx10"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qcpup"]
 
@@ -107,6 +108,9 @@ theme_override_font_sizes/font_size = 40
 text = "欢迎来到水怪地城"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="StartingScene" parent="." instance=ExtResource("4_dvx10")]
+layout_mode = 1
 
 [connection signal="text_submitted" from="LoginPanel/PasswordContainer/Password" to="." method="_on_password_text_submitted"]
 [connection signal="button_down" from="LoginPanel/RegisterLogin" to="." method="_on_register_login_button_down"]
