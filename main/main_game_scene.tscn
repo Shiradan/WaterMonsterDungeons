@@ -217,6 +217,7 @@ layout_mode = 2
 [connection signal="pressed" from="GameUI/TabContainer/你的角色/CharacterSlotContainer/CharacterSlot3" to="." method="_on_character_slot_3_pressed"]
 [connection signal="pressed" from="GameUI/TabContainer/属性/Reset" to="." method="setup_attributes_stats"]
 [connection signal="pressed" from="GameUI/TabContainer/属性/Save" to="." method="_on_save_attributes_pressed"]
+[connection signal="pressed" from="GameUI/TabContainer/属性/LevelUpButton" to="." method="_on_level_up_button_pressed"]
 [connection signal="pressed" from="GameUI/TabContainer/技能/Reset" to="." method="setup_skill_list"]
 [connection signal="pressed" from="GameUI/TabContainer/技能/Save" to="." method="_on_save_pressed"]
 

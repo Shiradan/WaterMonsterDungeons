@@ -104,7 +104,10 @@ func setup_creation_summary(c:Character,race:Race,job:Job,skills:Array,bonus_att
 	temp_character.armor_class=10+ClientManager.get_attr_mod(temp_character.attributes.dex)+race.bonus_ac
 	#计算bab=职业一级BAB+种族bab加值
 	temp_character.base_attack_bonus=job.l1_bab+race.bonus_ab
-	
+	if job.job_index==ClientManager.jobs.FIGHTER:
+		for skill in skills:
+			if skill.Skill_Index=="FIGHTER-2":
+				temp_character.base_attack_bonus+=2
 	temp_character.before_turn_actions=ClientManager.get_bt_actions(temp_character.level)
 	temp_character.after_turn_actions=ClientManager.get_at_actions(temp_character.level)
 	temp_character.actions=ClientManager.get_actions(temp_character.base_attack_bonus)

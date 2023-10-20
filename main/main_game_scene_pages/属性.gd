@@ -8,6 +8,7 @@ extends Panel
 @onready var chaValue = $AttributesValueContainer/ChaContainer/ChaValue
 @onready var levelupPointsValue = $LevelupPointsContainer/LevelupPointsValue
 
+
 var left_points:int=0
 
 func _on_str_add_pressed():
@@ -128,3 +129,5 @@ func _on_cha_minus_pressed():
 		levelupPoints+=1
 	chaValue.text=str(cha)
 	levelupPointsValue.text=str(levelupPoints)
+
+

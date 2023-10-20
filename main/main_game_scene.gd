@@ -87,7 +87,9 @@ func setup_attributes_stats():
 	levelupPointsValue.text=str(ClientManager.character.levelup_attribute_points)
 	var attributes_stats=$"GameUI/TabContainer/属性"
 	attributes_stats.left_points=ClientManager.character.levelup_attribute_points
-	
+	if ClientManager.character.experience>=ClientManager.level_exp[ClientManager.character.level]:
+		var levelUpButton=$"GameUI/TabContainer/属性/LevelUpButton"
+		levelUpButton.show()
 	setup_stats()
 	
 func setup_stats():
@@ -305,3 +307,23 @@ func _on_save_pressed():
 		characterStorageObjectList.append(ClientManager.to_character_storage_object(c))
 	await ServerConnection.write_characters_async(characterStorageObjectList)
 	setup_skill_list()
+
+func _on_level_up_button_pressed():
+	ClientManager.update_active_character_by_levelup()
+	#send characters data to server
+	var characterStorageObjectList:Array=[]
+	for c in ClientManager.characters:
+		if c.active==1:
+			c=ClientManager.character
+		characterStorageObjectList.append(ClientManager.to_character_storage_object(c))
+	await ServerConnection.write_characters_async(characterStorageObjectList)
+	setup_attributes_stats()
+	$"GameUI/TabContainer/属性/LevelUpButton".hide()
+	character_name.text=ClientManager.character.character_name
+	general_info.text=str(ClientManager.character.level)+"级"+" "+\
+		ClientManager.translate_race(ClientManager.character.race)+" "+\
+		ClientManager.translate_job(ClientManager.character.job)
+	exp_bar.value=ClientManager.character.experience
+	exp_bar.max_value=ClientManager.level_exp[ClientManager.character.level]
+	exp_value.text=str(ClientManager.character.experience)+" / "+str(ClientManager.level_exp[ClientManager.character.level])
+

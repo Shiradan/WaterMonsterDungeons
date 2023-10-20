@@ -401,3 +401,26 @@ func update_active_character_by_attributes():
 		if skill.Skill_Index=="MISC-0":
 			character.initiative+=2
 	character.armor_class=10+get_attr_mod(character.attributes.dex)+race.bonus_ac
+
+func update_active_character_by_levelup():
+	var job:Job=get_job_from_index(character.job)
+	character.level+=1
+	character.max_hp=job.hit_dice+\
+		floori(MathUtil.calculate_mean(job.hit_dice)*float(character.level-1))+\
+		character.level*get_attr_mod(character.attributes.con)
+	character.hp=character.max_hp
+	character.max_mana=job.l1_mana+\
+		job.mana_increment*(character.level-1)+\
+		get_attr_mod(character.attributes.int)*character.level
+	character.mana=character.max_mana
+	character.skill_points=floori(float(job.l1_skill_points)+float(character.level-1)*job.skill_points_increment)
+	if character.level % 4==0:
+		character.levelup_attribute_points+=1
+	character.base_attack_bonus=floori(float(job.l1_bab)+job.bab_increment*float(character.level-1))
+	if job.job_index==ClientManager.jobs.FIGHTER:
+		for skill in learned_skills:
+			if skill.Skill_Index=="FIGHTER-2":
+				character.base_attack_bonus+=2
+	character.before_turn_actions=get_bt_actions(character.level)
+	character.actions=get_actions(character.level)
+	character.after_turn_actions=get_at_actions(character.level)

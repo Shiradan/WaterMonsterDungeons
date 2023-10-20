@@ -260,6 +260,16 @@ offset_right = 1080.0
 offset_bottom = 512.0
 theme_override_styles/normal = ExtResource("3_rqr3i")
 
+[node name="LevelUpButton" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 608.0
+offset_top = 232.0
+offset_right = 674.0
+offset_bottom = 280.0
+theme_override_font_sizes/font_size = 32
+text = "升级"
+
 [connection signal="pressed" from="AttributesValueContainer/StrContainer/StrMinus" to="." method="_on_str_minus_pressed"]
 [connection signal="pressed" from="AttributesValueContainer/StrContainer/StrAdd" to="." method="_on_str_add_pressed"]
 [connection signal="pressed" from="AttributesValueContainer/DexContainer/DexMinus" to="." method="_on_dex_minus_pressed"]
