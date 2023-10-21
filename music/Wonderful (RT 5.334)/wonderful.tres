@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="OvaniSong" load_steps=7 format=3 uid="uid://cvmshucstef3h"]
+
+[ext_resource type="Script" path="res://addons/OvaniPlugin/OvaniSong.gd" id="1_bpc3m"]
+[ext_resource type="AudioStream" uid="uid://ch41lgiaepqns" path="res://music/Wonderful (RT 5.334)/Ambient Wonderful Intensity 1.wav" id="1_w16hp"]
+[ext_resource type="AudioStream" uid="uid://tke6qamv1v4s" path="res://music/Wonderful (RT 5.334)/Ambient Wonderful Intensity 2.wav" id="2_dtj5j"]
+[ext_resource type="AudioStream" uid="uid://hlpwjxl43gef" path="res://music/Wonderful (RT 5.334)/Ambient Wonderful Main.wav" id="3_fqh0r"]
+[ext_resource type="AudioStream" uid="uid://dlir2idt2rp22" path="res://music/Wonderful (RT 5.334)/Ambient Wonderful cut 30.wav" id="4_tkblu"]
+[ext_resource type="AudioStream" uid="uid://dfoijytknpv87" path="res://music/Wonderful (RT 5.334)/Ambient Wonderful cut 60.wav" id="5_ms4mb"]
+
+[resource]
+script = ExtResource("1_bpc3m")
+Intensity1 = ExtResource("1_w16hp")
+Intensity2 = ExtResource("2_dtj5j")
+Intensity3 = ExtResource("3_fqh0r")
+Loop30 = ExtResource("4_tkblu")
+Loop60 = ExtResource("5_ms4mb")
+ReverbTail = 5.334
+SongMode = 0

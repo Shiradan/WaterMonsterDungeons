@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b6guqqqwl4pn8"
+path="res://.godot/imported/Fantasy Relaxed Main.wav-203d43da72258991747ea09477d6c61f.sample"
+
+[deps]
+
+source_file="res://music/Relaxed (RT 6.314)/Fantasy Relaxed Main.wav"
+dest_files=["res://.godot/imported/Fantasy Relaxed Main.wav-203d43da72258991747ea09477d6c61f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

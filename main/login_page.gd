@@ -2,6 +2,9 @@ extends Control
 
 @onready var status_panel=$LoginPanel/StatusPanel
 
+func _ready():
+	SoundManger.play_login_page_bgm()
+
 func register_and_login():
 	var email=$LoginPanel/UsernameContainer/Username.text
 	var password=$LoginPanel/PasswordContainer/Password.text

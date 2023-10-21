@@ -347,4 +347,5 @@ func reset_variables():
 		
 func _on_enter_wmd_pressed():
 	ClientManager.logged_in=true
+	SoundManger.play_main_bgm()
 	get_tree().change_scene_to_file("res://main/loading_scene.tscn")

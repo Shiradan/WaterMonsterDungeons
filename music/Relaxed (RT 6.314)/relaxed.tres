@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="OvaniSong" load_steps=7 format=3 uid="uid://pr82p4d45j71"]
+
+[ext_resource type="Script" path="res://addons/OvaniPlugin/OvaniSong.gd" id="1_4jg0c"]
+[ext_resource type="AudioStream" uid="uid://b3x0rty2wttit" path="res://music/Relaxed (RT 6.314)/Fantasy Relaxed Intensity 1.wav" id="1_8r0e3"]
+[ext_resource type="AudioStream" uid="uid://dalu4crdv1y3n" path="res://music/Relaxed (RT 6.314)/Fantasy Relaxed Intensity 2.wav" id="2_038ku"]
+[ext_resource type="AudioStream" uid="uid://b6guqqqwl4pn8" path="res://music/Relaxed (RT 6.314)/Fantasy Relaxed Main.wav" id="3_b2gfo"]
+[ext_resource type="AudioStream" uid="uid://b2gps2wmfoq3o" path="res://music/Relaxed (RT 6.314)/Fantasy Relaxed cut 30.wav" id="4_t51bl"]
+[ext_resource type="AudioStream" uid="uid://c6mnmjxv7jp2w" path="res://music/Relaxed (RT 6.314)/Fantasy Relaxed cut 60.wav" id="5_lnvaf"]
+
+[resource]
+script = ExtResource("1_4jg0c")
+Intensity1 = ExtResource("1_8r0e3")
+Intensity2 = ExtResource("2_038ku")
+Intensity3 = ExtResource("3_b2gfo")
+Loop30 = ExtResource("4_t51bl")
+Loop60 = ExtResource("5_lnvaf")
+ReverbTail = 6.314
+SongMode = 0
