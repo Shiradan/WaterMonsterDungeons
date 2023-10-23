@@ -212,6 +212,10 @@ layout_mode = 2
 visible = false
 layout_mode = 2
 
+[node name="TacticSavesContainer" parent="GameUI/TabContainer/战术设置" index="0"]
+offset_top = 8.0
+offset_bottom = 33.0
+
 [connection signal="tab_clicked" from="GameUI/TabContainer" to="." method="_on_tab_container_tab_clicked"]
 [connection signal="pressed" from="GameUI/TabContainer/你的角色/CharacterSlotContainer/CharacterSlot1" to="." method="_on_character_slot_1_pressed"]
 [connection signal="pressed" from="GameUI/TabContainer/你的角色/CharacterSlotContainer/CharacterSlot2" to="." method="_on_character_slot_2_pressed"]
