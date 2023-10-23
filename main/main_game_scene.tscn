@@ -111,6 +111,7 @@ size_flags_vertical = 3
 theme_override_font_sizes/font_size = 28
 
 [node name="队伍" type="ScrollContainer" parent="GameUI/TabContainer"]
+visible = false
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="GameUI/TabContainer/队伍"]
@@ -209,20 +210,7 @@ visible = false
 layout_mode = 2
 
 [node name="战术设置" parent="GameUI/TabContainer" instance=ExtResource("9_410q1")]
-visible = false
 layout_mode = 2
-
-[node name="InTurnSkillChoiceContainer" parent="GameUI/TabContainer/战术设置/TurnActionContainer/InTurnContainer/InTurnPanel" index="0"]
-layout_mode = 0
-
-[node name="InTurnSkillScrollContainer" parent="GameUI/TabContainer/战术设置/TurnActionContainer/InTurnContainer/InTurnPanel" index="1"]
-layout_mode = 0
-
-[node name="AfterTurnSkillChoiceContainer" parent="GameUI/TabContainer/战术设置/TurnActionContainer/AfterTurnContainer/AfterTurnPanel" index="0"]
-layout_mode = 0
-
-[node name="AfterTurnSkillScrollContainer" parent="GameUI/TabContainer/战术设置/TurnActionContainer/AfterTurnContainer/AfterTurnPanel" index="1"]
-layout_mode = 0
 
 [connection signal="tab_clicked" from="GameUI/TabContainer" to="." method="_on_tab_container_tab_clicked"]
 [connection signal="pressed" from="GameUI/TabContainer/你的角色/CharacterSlotContainer/CharacterSlot1" to="." method="_on_character_slot_1_pressed"]
