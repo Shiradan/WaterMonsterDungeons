@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://d8h5k7k8aj1b" path="res://assets/character_creation/buttons/Style 4 Icon 324.png" id="6_jalm3"]
 [ext_resource type="PackedScene" uid="uid://dqlrx8uk11qh5" path="res://main/main_game_scene_pages/属性.tscn" id="7_xjfuw"]
 [ext_resource type="PackedScene" uid="uid://bkggx0m46c78w" path="res://main/main_game_scene_pages/技能.tscn" id="8_vyulk"]
+[ext_resource type="PackedScene" uid="uid://cshu28xurb4cp" path="res://main/main_game_scene_pages/战术设置.tscn" id="9_410q1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_byatk"]
 corner_radius_top_left = 5
@@ -18,8 +19,6 @@ expand_margin_left = 3.0
 expand_margin_right = 3.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dv250"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o5uky"]
 
 [node name="MainGameScene" type="Node2D"]
 script = ExtResource("1_00odn")
@@ -209,10 +208,21 @@ layout_mode = 2
 visible = false
 layout_mode = 2
 
-[node name="战术设置" type="Panel" parent="GameUI/TabContainer"]
+[node name="战术设置" parent="GameUI/TabContainer" instance=ExtResource("9_410q1")]
 visible = false
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_o5uky")
+
+[node name="InTurnSkillChoiceContainer" parent="GameUI/TabContainer/战术设置/TurnActionContainer/InTurnContainer/InTurnPanel" index="0"]
+layout_mode = 0
+
+[node name="InTurnSkillScrollContainer" parent="GameUI/TabContainer/战术设置/TurnActionContainer/InTurnContainer/InTurnPanel" index="1"]
+layout_mode = 0
+
+[node name="AfterTurnSkillChoiceContainer" parent="GameUI/TabContainer/战术设置/TurnActionContainer/AfterTurnContainer/AfterTurnPanel" index="0"]
+layout_mode = 0
+
+[node name="AfterTurnSkillScrollContainer" parent="GameUI/TabContainer/战术设置/TurnActionContainer/AfterTurnContainer/AfterTurnPanel" index="1"]
+layout_mode = 0
 
 [connection signal="tab_clicked" from="GameUI/TabContainer" to="." method="_on_tab_container_tab_clicked"]
 [connection signal="pressed" from="GameUI/TabContainer/你的角色/CharacterSlotContainer/CharacterSlot1" to="." method="_on_character_slot_1_pressed"]
@@ -226,3 +236,4 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_o5uky")
 
 [editable path="GameUI/TabContainer/属性"]
 [editable path="GameUI/TabContainer/技能"]
+[editable path="GameUI/TabContainer/战术设置"]
