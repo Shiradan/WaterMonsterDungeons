@@ -1,6 +1,5 @@
-[gd_scene load_steps=9 format=3 uid="uid://cshu28xurb4cp"]
+[gd_scene load_steps=8 format=3 uid="uid://cshu28xurb4cp"]
 
-[ext_resource type="StyleBox" uid="uid://clv50blojv0tt" path="res://assets/character_creation/GUI/label_style_box_flat.tres" id="1_0y56q"]
 [ext_resource type="StyleBox" uid="uid://ck8q8tx4coexd" path="res://assets/main_scene/GUI/label_style_box_flat2.tres" id="2_4p7x4"]
 [ext_resource type="Texture2D" uid="uid://dhq2in26prq53" path="res://assets/main_scene/button/Style 3 Icon 320.png" id="3_kyxk6"]
 [ext_resource type="StyleBox" uid="uid://bcnkewv5nxs45" path="res://assets/main_scene/GUI/border_style_box_flat.tres" id="4_vwnxu"]
@@ -39,20 +38,28 @@ layout_mode = 2
 text = "删除
 "
 
-[node name="PositionContainer" type="VBoxContainer" parent="."]
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 0
 offset_left = 16.0
-offset_top = 51.0
-offset_right = 256.0
-offset_bottom = 100.0
+offset_top = 56.0
+offset_right = 272.0
+offset_bottom = 632.0
 
-[node name="PositionLabel" type="Label" parent="PositionContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
 layout_mode = 2
-theme_override_styles/normal = ExtResource("1_0y56q")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PositionContainer" type="VBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PositionLabel" type="Label" parent="ScrollContainer/VBoxContainer/PositionContainer"]
+layout_mode = 2
+theme_override_styles/normal = ExtResource("2_4p7x4")
 text = "站位"
 vertical_alignment = 1
 
-[node name="PostionOptionButton" type="OptionButton" parent="PositionContainer"]
+[node name="PostionOptionButton" type="OptionButton" parent="ScrollContainer/VBoxContainer/PositionContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 item_count = 3
@@ -64,20 +71,16 @@ popup/item_1/id = 1
 popup/item_2/text = "后排"
 popup/item_2/id = 2
 
-[node name="AutoHealContainer" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 16.0
-offset_top = 115.0
-offset_right = 256.0
-offset_bottom = 164.0
-
-[node name="AutoHealLabel" type="Label" parent="AutoHealContainer"]
+[node name="AutoHealContainer" type="VBoxContainer" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_styles/normal = ExtResource("1_0y56q")
+
+[node name="AutoHealLabel" type="Label" parent="ScrollContainer/VBoxContainer/AutoHealContainer"]
+layout_mode = 2
+theme_override_styles/normal = ExtResource("2_4p7x4")
 text = "自动治疗"
 vertical_alignment = 1
 
-[node name="AutoHealOptionButton" type="OptionButton" parent="AutoHealContainer"]
+[node name="AutoHealOptionButton" type="OptionButton" parent="ScrollContainer/VBoxContainer/AutoHealContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 item_count = 2
@@ -87,20 +90,16 @@ popup/item_0/id = 0
 popup/item_1/text = "不启用"
 popup/item_1/id = 1
 
-[node name="RetreatContainer" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 16.0
-offset_top = 179.0
-offset_right = 256.0
-offset_bottom = 228.0
-
-[node name="RetreatLabel" type="Label" parent="RetreatContainer"]
+[node name="RetreatContainer" type="VBoxContainer" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_styles/normal = ExtResource("1_0y56q")
+
+[node name="RetreatLabel" type="Label" parent="ScrollContainer/VBoxContainer/RetreatContainer"]
+layout_mode = 2
+theme_override_styles/normal = ExtResource("2_4p7x4")
 text = "自动撤退"
 vertical_alignment = 1
 
-[node name="RetreatOptionButton" type="OptionButton" parent="RetreatContainer"]
+[node name="RetreatOptionButton" type="OptionButton" parent="ScrollContainer/VBoxContainer/RetreatContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 item_count = 3

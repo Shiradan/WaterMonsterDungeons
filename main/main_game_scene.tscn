@@ -111,7 +111,6 @@ size_flags_vertical = 3
 theme_override_font_sizes/font_size = 28
 
 [node name="队伍" type="ScrollContainer" parent="GameUI/TabContainer"]
-visible = false
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="GameUI/TabContainer/队伍"]
@@ -210,6 +209,7 @@ visible = false
 layout_mode = 2
 
 [node name="战术设置" parent="GameUI/TabContainer" instance=ExtResource("9_410q1")]
+visible = false
 layout_mode = 2
 
 [connection signal="tab_clicked" from="GameUI/TabContainer" to="." method="_on_tab_container_tab_clicked"]
