@@ -31,6 +31,7 @@ var base_attack_bonus:int=0 : set=set_bab
 var before_turn_actions:int=0 : set=set_before_turn_actions
 var actions:int=0 : set=set_actions
 var after_turn_actions:int=0 : set=set_after_turn_actions
+var tactic_setting:int=-1 : set=set_tactic_setting
 var active:int=0 : set=set_active
 
 func set_character_name(value):
@@ -92,6 +93,9 @@ func set_actions(value):
 
 func set_after_turn_actions(value):
 	after_turn_actions=value
+
+func set_tactic_setting(value):
+	tactic_setting=value
 
 func set_active(value):
 	active=value

@@ -221,6 +221,25 @@ func write_skills_learned_async(sks):
 		]
 	)
 
+func write_tactics_async(tactics):
+	await _client.write_storage_objects_async(
+		_session,
+		[
+			NakamaWriteStorageObject.new(
+				"wmd_data",
+				"tactics",
+				ReadPermissions.PUBLIC_READ,
+				WritePermissions.OWNER_WRITE,
+				JSON.stringify(
+					{
+						tactics=tactics
+					}
+				),
+				""
+			)
+		]
+	)
+
 func read_characters_async():
 	var characters=[]
 	var storageObjects:NakamaAPI.ApiStorageObjects=await _client.read_storage_objects_async(
@@ -291,6 +310,29 @@ func read_skills_learned_async():
 		skills=decodedSkills
 		
 	return skills
+
+func read_tactics_async():
+	var tactics=[]
+	var storageObjects:NakamaAPI.ApiStorageObjects=await _client.read_storage_objects_async(
+		_session,
+		[
+			NakamaStorageObjectId.new(
+				"wmd_data",
+				"tactics",
+				_session.user_id
+			)
+		]
+	)
+	var parsed_result := _exception_handler.parse_exception(storageObjects)
+	if parsed_result != OK:
+		return storageObjects.get_exception()._to_string()
+		
+	if storageObjects.objects.size()>0:
+		#get array of dictionary
+		var decodedTactics=JSON.parse_string(storageObjects.objects[0].value).tactics
+		tactics=decodedTactics
+		
+	return tactics
 
 func get_user_id() -> String:
 	if _session:

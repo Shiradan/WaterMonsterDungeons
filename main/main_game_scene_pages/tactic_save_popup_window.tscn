@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://cw1tya7o2ooev"]
+
+[ext_resource type="Script" path="res://main/main_game_scene_pages/tactic_save_popup_window.gd" id="1_0yswq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q5ecb"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="TacticSavePopupWindow" type="PopupPanel"]
+size = Vector2i(170, 64)
+visible = true
+theme_override_styles/panel = SubResource("StyleBoxFlat_q5ecb")
+script = ExtResource("1_0yswq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 165.0
+offset_bottom = 59.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+placeholder_text = "请输入战术设置名"
+alignment = 1
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "确认"
+
+[connection signal="text_submitted" from="VBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]

@@ -33,10 +33,40 @@ func get_level_number_entered():
 	newTab.name=levelNo
 	levelTabContainer.move_child(newTab,-3)
 	levelTabContainer.current_tab=levelTabContainer.get_tab_idx_from_control(newTab)
-	
+
+func setup_tactic_setting_page():
+	setup_tactic_saves()
+	setup_action_panel()
+
+func setup_tactic_saves():
+	var tacticSavesOption=$TacticSavesContainer/TacticSavesOptionButton
+	tacticSavesOption.add_item("创建新战术")
+	if ClientManager.tactic_settings.size()>0:
+		for tactic_setting in ClientManager.tactic_settings:
+			tacticSavesOption.add_item(tactic_setting.tactic_name)
+	tacticSavesOption.selected=-1
+
 func setup_action_panel():
 	var defaultTacticPanel=$"LevelTabContainer/默认"
 	defaultTacticPanel.setup_skill_selections()
-	defaultTacticPanel.setup_skill_order()
-		
+	defaultTacticPanel.setup_skill_order()	
 	
+
+func _on_tactic_saves_option_button_item_selected(index):
+	if index==0: #创建新战术
+		var tacticSaveNameWindow=load("res://main/main_game_scene_pages/tactic_save_popup_window.tscn").instantiate()
+		tacticSaveNameWindow.name_entered.connect(get_tactic_name)
+		$".".add_child(tacticSaveNameWindow)
+	else:
+		load_tactic_save(index)
+
+func get_tactic_name():
+	var popupWindow=$".".get_child(-1)
+	var tacticName=popupWindow.text
+	popupWindow.queue_free()
+	var tacticSavesOption=$TacticSavesContainer/TacticSavesOptionButton
+	tacticSavesOption.add_item(tacticName)
+	tacticSavesOption.selected=ClientManager.tactic_settings.size()+1
+
+func load_tactic_save(index:int):
+	pass

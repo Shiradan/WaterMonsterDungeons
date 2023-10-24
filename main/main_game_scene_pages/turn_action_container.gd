@@ -4,7 +4,7 @@ func setup_skill_selections():
 	var bt_skill_options:OptionButton=$BeforeTurnMarginContainer/BeforeTurnContainer/BeforeTurnPanel/BeforeTurnSkillChoiceContainer/BeforeTurnSkillOptionButton
 	var it_skill_options:OptionButton=$InTurnContainer/InTurnContainer/InTurnPanel/InTurnSkillChoiceContainer/InTurnSkillOptionButton
 	var at_skill_options:OptionButton=$AfterTurnMarginContainer/AfterTurnContainer/AfterTurnPanel/AfterTurnSkillChoiceContainer/AfterTurnSkillOptionButton
-	
+
 	while bt_skill_options.has_selectable_items():
 		bt_skill_options.remove_item(0)
 		
@@ -26,6 +26,10 @@ func setup_skill_selections():
 				it_skill_options.add_item(skill.cn_name)
 			elif int(skill.TurnAction)==2:
 				at_skill_options.add_item(skill.cn_name)
+	
+	bt_skill_options.add_item("等待")
+	it_skill_options.add_item("等待")
+	at_skill_options.add_item("等待")
 	
 	bt_skill_options.selected=-1
 	it_skill_options.selected=-1

@@ -134,8 +134,12 @@ func setup_skill_list():
 	skillPanel.setup_skill_list()
 
 func setup_tactic_panel():
+	ClientManager.tactics= await ServerConnection.read_tactics_async()
+	for tactic in ClientManager.tactics:
+		if tactic.character_name==ClientManager.character.character_name:
+			ClientManager.tactic_settings=tactic.tactic_settings
 	var tacticPanel=$"GameUI/TabContainer/战术设置"
-	tacticPanel.setup_action_panel()
+	tacticPanel.setup_tactic_setting_page()
 
 func _on_tab_container_tab_clicked(tab):
 	match tab:

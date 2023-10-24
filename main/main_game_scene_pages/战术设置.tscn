@@ -20,9 +20,6 @@ offset_bottom = 36.0
 [node name="TacticSavesOptionButton" type="OptionButton" parent="TacticSavesContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-item_count = 1
-popup/item_0/text = "创建新战术"
-popup/item_0/id = 0
 
 [node name="SaveTactic" type="Button" parent="TacticSavesContainer"]
 layout_mode = 2
@@ -125,4 +122,5 @@ layout_mode = 2
 visible = false
 layout_mode = 2
 
+[connection signal="item_selected" from="TacticSavesContainer/TacticSavesOptionButton" to="." method="_on_tactic_saves_option_button_item_selected"]
 [connection signal="tab_clicked" from="LevelTabContainer" to="." method="_on_level_tab_container_tab_clicked"]
