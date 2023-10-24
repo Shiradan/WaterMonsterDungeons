@@ -133,6 +133,10 @@ func setup_skill_list():
 	skillPanel.skillPoints=ClientManager.character.skill_points
 	skillPanel.setup_skill_list()
 
+func setup_tactic_panel():
+	var tacticPanel=$"GameUI/TabContainer/战术设置"
+	tacticPanel.setup_action_panel()
+
 func _on_tab_container_tab_clicked(tab):
 	match tab:
 		0:
@@ -149,6 +153,7 @@ func _on_tab_container_tab_clicked(tab):
 			setup_skill_list()
 		4:
 			ClientManager.tab=tab
+			setup_tactic_panel()
 		5:
 			ClientManager.tab=tab
 		6:

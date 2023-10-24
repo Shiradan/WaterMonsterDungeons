@@ -34,5 +34,9 @@ func get_level_number_entered():
 	levelTabContainer.move_child(newTab,-3)
 	levelTabContainer.current_tab=levelTabContainer.get_tab_idx_from_control(newTab)
 	
-	
+func setup_action_panel():
+	var defaultTacticPanel=$"LevelTabContainer/默认"
+	defaultTacticPanel.setup_skill_selections()
+	defaultTacticPanel.setup_skill_order()
+		
 	

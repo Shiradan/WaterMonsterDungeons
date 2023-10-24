@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://bkali61blb26g"]
+[gd_scene load_steps=11 format=3 uid="uid://bkali61blb26g"]
 
+[ext_resource type="Script" path="res://main/main_game_scene_pages/turn_action_container.gd" id="1_70vf3"]
 [ext_resource type="StyleBox" uid="uid://ck8q8tx4coexd" path="res://assets/main_scene/GUI/label_style_box_flat2.tres" id="1_i373d"]
 [ext_resource type="Texture2D" uid="uid://dhq2in26prq53" path="res://assets/main_scene/button/Style 3 Icon 320.png" id="2_m4o3m"]
 [ext_resource type="StyleBox" uid="uid://bcnkewv5nxs45" path="res://assets/main_scene/GUI/border_style_box_flat.tres" id="3_frgp2"]
@@ -24,42 +25,48 @@ offset_left = 288.0
 offset_top = 8.0
 offset_right = 1240.0
 offset_bottom = 600.0
+script = ExtResource("1_70vf3")
 
-[node name="BeforeTurnContainer" type="VBoxContainer" parent="."]
+[node name="BeforeTurnMarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 5
+
+[node name="BeforeTurnContainer" type="VBoxContainer" parent="BeforeTurnMarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="BeforeTurnLabel" type="Label" parent="BeforeTurnContainer"]
+[node name="BeforeTurnLabel" type="Label" parent="BeforeTurnMarginContainer/BeforeTurnContainer"]
 layout_mode = 2
 theme_override_styles/normal = ExtResource("1_i373d")
 text = "回合前"
 vertical_alignment = 1
 
-[node name="BeforeTurnPanel" type="Panel" parent="BeforeTurnContainer"]
+[node name="BeforeTurnPanel" type="Panel" parent="BeforeTurnMarginContainer/BeforeTurnContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ownet")
 
-[node name="BeforeTurnSkillChoiceContainer" type="HBoxContainer" parent="BeforeTurnContainer/BeforeTurnPanel"]
+[node name="BeforeTurnSkillChoiceContainer" type="HBoxContainer" parent="BeforeTurnMarginContainer/BeforeTurnContainer/BeforeTurnPanel"]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 304.0
 offset_bottom = 48.0
 
-[node name="BeforeTurnSkillOptionButton" type="OptionButton" parent="BeforeTurnContainer/BeforeTurnPanel/BeforeTurnSkillChoiceContainer"]
+[node name="BeforeTurnSkillOptionButton" type="OptionButton" parent="BeforeTurnMarginContainer/BeforeTurnContainer/BeforeTurnPanel/BeforeTurnSkillChoiceContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_u47im")
 
-[node name="BeforeTurnAddSkillButton" type="Button" parent="BeforeTurnContainer/BeforeTurnPanel/BeforeTurnSkillChoiceContainer"]
+[node name="BeforeTurnAddSkillButton" type="Button" parent="BeforeTurnMarginContainer/BeforeTurnContainer/BeforeTurnPanel/BeforeTurnSkillChoiceContainer"]
 layout_mode = 2
 icon = ExtResource("2_m4o3m")
 flat = true
 icon_alignment = 1
 
-[node name="BeforeTurnSkillScrollContainer" type="ScrollContainer" parent="BeforeTurnContainer/BeforeTurnPanel"]
+[node name="BeforeTurnSkillScrollContainer" type="ScrollContainer" parent="BeforeTurnMarginContainer/BeforeTurnContainer/BeforeTurnPanel"]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 56.0
@@ -67,46 +74,51 @@ offset_right = 304.0
 offset_bottom = 560.0
 theme_override_styles/panel = ExtResource("3_frgp2")
 
-[node name="BeforeTurnSkillOrderContainer" type="VBoxContainer" parent="BeforeTurnContainer/BeforeTurnPanel/BeforeTurnSkillScrollContainer"]
+[node name="BeforeTurnSkillOrderContainer" type="VBoxContainer" parent="BeforeTurnMarginContainer/BeforeTurnContainer/BeforeTurnPanel/BeforeTurnSkillScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="InTurnContainer" type="VBoxContainer" parent="."]
+[node name="InTurnContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 5
+
+[node name="InTurnContainer" type="VBoxContainer" parent="InTurnContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="InTurnLabel" type="Label" parent="InTurnContainer"]
+[node name="InTurnLabel" type="Label" parent="InTurnContainer/InTurnContainer"]
 layout_mode = 2
 theme_override_styles/normal = ExtResource("1_i373d")
 text = "回合中"
 vertical_alignment = 1
 
-[node name="InTurnPanel" type="Panel" parent="InTurnContainer"]
+[node name="InTurnPanel" type="Panel" parent="InTurnContainer/InTurnContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_cn8pw")
 
-[node name="InTurnSkillChoiceContainer" type="HBoxContainer" parent="InTurnContainer/InTurnPanel"]
+[node name="InTurnSkillChoiceContainer" type="HBoxContainer" parent="InTurnContainer/InTurnContainer/InTurnPanel"]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 304.0
 offset_bottom = 48.0
 
-[node name="InTurnSkillOptionButton" type="OptionButton" parent="InTurnContainer/InTurnPanel/InTurnSkillChoiceContainer"]
+[node name="InTurnSkillOptionButton" type="OptionButton" parent="InTurnContainer/InTurnContainer/InTurnPanel/InTurnSkillChoiceContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_bcytq")
 
-[node name="InTurnAddSkillButton" type="Button" parent="InTurnContainer/InTurnPanel/InTurnSkillChoiceContainer"]
+[node name="InTurnAddSkillButton" type="Button" parent="InTurnContainer/InTurnContainer/InTurnPanel/InTurnSkillChoiceContainer"]
 layout_mode = 2
 icon = ExtResource("2_m4o3m")
 flat = true
 icon_alignment = 1
 
-[node name="InTurnSkillScrollContainer" type="ScrollContainer" parent="InTurnContainer/InTurnPanel"]
+[node name="InTurnSkillScrollContainer" type="ScrollContainer" parent="InTurnContainer/InTurnContainer/InTurnPanel"]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 56.0
@@ -114,46 +126,51 @@ offset_right = 304.0
 offset_bottom = 560.0
 theme_override_styles/panel = ExtResource("3_frgp2")
 
-[node name="InTurnSkillOrderContainer" type="VBoxContainer" parent="InTurnContainer/InTurnPanel/InTurnSkillScrollContainer"]
+[node name="InTurnSkillOrderContainer" type="VBoxContainer" parent="InTurnContainer/InTurnContainer/InTurnPanel/InTurnSkillScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="AfterTurnContainer" type="VBoxContainer" parent="."]
+[node name="AfterTurnMarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 5
+
+[node name="AfterTurnContainer" type="VBoxContainer" parent="AfterTurnMarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="AfterTurnLabel" type="Label" parent="AfterTurnContainer"]
+[node name="AfterTurnLabel" type="Label" parent="AfterTurnMarginContainer/AfterTurnContainer"]
 layout_mode = 2
 theme_override_styles/normal = ExtResource("1_i373d")
 text = "回合后"
 vertical_alignment = 1
 
-[node name="AfterTurnPanel" type="Panel" parent="AfterTurnContainer"]
+[node name="AfterTurnPanel" type="Panel" parent="AfterTurnMarginContainer/AfterTurnContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_rygfs")
 
-[node name="AfterTurnSkillChoiceContainer" type="HBoxContainer" parent="AfterTurnContainer/AfterTurnPanel"]
+[node name="AfterTurnSkillChoiceContainer" type="HBoxContainer" parent="AfterTurnMarginContainer/AfterTurnContainer/AfterTurnPanel"]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 304.0
 offset_bottom = 48.0
 
-[node name="AfterTurnSkillOptionButton" type="OptionButton" parent="AfterTurnContainer/AfterTurnPanel/AfterTurnSkillChoiceContainer"]
+[node name="AfterTurnSkillOptionButton" type="OptionButton" parent="AfterTurnMarginContainer/AfterTurnContainer/AfterTurnPanel/AfterTurnSkillChoiceContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_cbxon")
 
-[node name="AfterTurnAddSkillButton" type="Button" parent="AfterTurnContainer/AfterTurnPanel/AfterTurnSkillChoiceContainer"]
+[node name="AfterTurnAddSkillButton" type="Button" parent="AfterTurnMarginContainer/AfterTurnContainer/AfterTurnPanel/AfterTurnSkillChoiceContainer"]
 layout_mode = 2
 icon = ExtResource("2_m4o3m")
 flat = true
 icon_alignment = 1
 
-[node name="AfterTurnSkillScrollContainer" type="ScrollContainer" parent="AfterTurnContainer/AfterTurnPanel"]
+[node name="AfterTurnSkillScrollContainer" type="ScrollContainer" parent="AfterTurnMarginContainer/AfterTurnContainer/AfterTurnPanel"]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 56.0
@@ -161,7 +178,11 @@ offset_right = 304.0
 offset_bottom = 560.0
 theme_override_styles/panel = ExtResource("3_frgp2")
 
-[node name="AfterTurnSkillOrderContainer" type="VBoxContainer" parent="AfterTurnContainer/AfterTurnPanel/AfterTurnSkillScrollContainer"]
+[node name="AfterTurnSkillOrderContainer" type="VBoxContainer" parent="AfterTurnMarginContainer/AfterTurnContainer/AfterTurnPanel/AfterTurnSkillScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[connection signal="pressed" from="BeforeTurnMarginContainer/BeforeTurnContainer/BeforeTurnPanel/BeforeTurnSkillChoiceContainer/BeforeTurnAddSkillButton" to="." method="_on_before_turn_add_skill_button_pressed"]
+[connection signal="pressed" from="InTurnContainer/InTurnContainer/InTurnPanel/InTurnSkillChoiceContainer/InTurnAddSkillButton" to="." method="_on_in_turn_add_skill_button_pressed"]
+[connection signal="pressed" from="AfterTurnMarginContainer/AfterTurnContainer/AfterTurnPanel/AfterTurnSkillChoiceContainer/AfterTurnAddSkillButton" to="." method="_on_after_turn_add_skill_button_pressed"]
