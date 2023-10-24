@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://n1vy20xs3k21"]
+
+[ext_resource type="Script" path="res://main/main_game_scene_pages/level_number_popup_panel.gd" id="1_5tqql"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vn23u"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="LevelNumberPopupPanel" type="PopupPanel"]
+size = Vector2i(170, 74)
+visible = true
+theme_override_styles/panel = SubResource("StyleBoxFlat_vn23u")
+script = ExtResource("1_5tqql")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 160.0
+offset_bottom = 64.0
+
+[node name="LevelNumber" type="LineEdit" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+placeholder_text = "请输入大于0的层数"
+alignment = 1
+
+[node name="Confirm" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+text = "确认"
+
+[connection signal="text_submitted" from="VBoxContainer/LevelNumber" to="." method="_on_level_number_text_submitted"]
+[connection signal="pressed" from="VBoxContainer/Confirm" to="." method="_on_confirm_pressed"]

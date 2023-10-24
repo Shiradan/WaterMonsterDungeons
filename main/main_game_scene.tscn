@@ -216,6 +216,9 @@ layout_mode = 2
 offset_top = 8.0
 offset_bottom = 33.0
 
+[node name="LevelTabContainer" parent="GameUI/TabContainer/战术设置" index="2"]
+offset_bottom = 635.0
+
 [connection signal="tab_clicked" from="GameUI/TabContainer" to="." method="_on_tab_container_tab_clicked"]
 [connection signal="pressed" from="GameUI/TabContainer/你的角色/CharacterSlotContainer/CharacterSlot1" to="." method="_on_character_slot_1_pressed"]
 [connection signal="pressed" from="GameUI/TabContainer/你的角色/CharacterSlotContainer/CharacterSlot2" to="." method="_on_character_slot_2_pressed"]
@@ -229,3 +232,4 @@ offset_bottom = 33.0
 [editable path="GameUI/TabContainer/属性"]
 [editable path="GameUI/TabContainer/技能"]
 [editable path="GameUI/TabContainer/战术设置"]
+[editable path="GameUI/TabContainer/战术设置/LevelTabContainer/默认"]

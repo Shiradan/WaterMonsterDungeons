@@ -354,6 +354,12 @@ func checkString(string_to_check: String) -> bool:
 	regex.compile("^[a-zA-Z0-9_\u4e00-\u9fff]+$") # 此正则表达式允许字母、数字、下划线和中文字符
 	return regex.search(string_to_check) != null
 
+func checkNumber(string_to_check:String) -> bool:
+	var regex=RegEx.new()
+	regex.compile("^[0-9]+$")
+	return regex.search(string_to_check) != null
+	
+
 func get_attr_mod(attr):
 	return floori((attr-10)/2.0)
 	
