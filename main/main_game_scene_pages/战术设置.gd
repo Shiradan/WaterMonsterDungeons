@@ -159,7 +159,7 @@ func save_tactic_setting():
 				"tactic_settings":ClientManager.tactic_settings
 			}
 			ClientManager.tactics.append(tactic)
-		is_new_tactic=false
+
 	else:
 		var levels=[]
 		var i=0
@@ -199,6 +199,7 @@ func save_tactic_setting():
 		ClientManager.tactics=tacticsArray
 	#write tactics to nakama server
 	await ServerConnection.write_tactics_async(ClientManager.tactics)
+	is_new_tactic=false
 
 func reset():
 	$ScrollContainer/VBoxContainer/PositionContainer/PostionOptionButton.selected=0
@@ -208,3 +209,19 @@ func reset():
 	while levelTabContainer.get_tab_count()>3:
 		levelTabContainer.remove_child(levelTabContainer.get_tab_control(1))
 	setup_action_panel()
+
+
+func _on_delete_tactic_pressed():
+	var tacticOptions:OptionButton=$TacticSavesContainer/TacticSavesOptionButton
+	if tacticOptions.selected!=-1:
+		var deleteConfirmWindow:PopupPanel=load("res://main/main_game_scene_pages/delete_tactic_popup_window.tscn").instantiate()
+		deleteConfirmWindow.confirm_delete.connect(get_delete_confirmation)
+		$".".add_child(deleteConfirmWindow)
+		deleteConfirmWindow.popup_centered()
+		
+func get_delete_confirmation():
+	var tacticOptions:OptionButton=$TacticSavesContainer/TacticSavesOptionButton
+	await ClientManager.delete_tactic(tacticOptions.get_item_text(tacticOptions.selected))
+	tacticOptions.selected=-1
+	reset()
+	setup_tactic_saves()

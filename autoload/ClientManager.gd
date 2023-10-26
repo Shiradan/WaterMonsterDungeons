@@ -460,3 +460,21 @@ func delete_character(index:int):
 	characters=charactersArray
 	skills=skillsArray
 	tactics=tacticsArray
+
+func delete_tactic(tacticName2Delete:String):
+	var tacticSettingsArray=[]
+	var tacticsArray=[]
+	for ts in tactic_settings:
+		if ts.tactic_name!=tacticName2Delete:
+			tacticSettingsArray.append(ts)
+	tactic_settings=tacticSettingsArray
+	for t in tactics:
+		if t.character_name==character.character_name:
+			var tactic={
+					"character_name":character.character_name,
+					"tactic_settings":tactic_settings
+				}
+			t=tactic
+		tacticsArray.append(t)
+	tactics=tacticsArray
+	await ServerConnection.write_tactics_async(tactics)
