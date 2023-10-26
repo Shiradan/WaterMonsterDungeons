@@ -1,0 +1,20 @@
+{
+	"tactic_name":"",
+	"position":0,
+	"auto_heal":0,
+	"auto_retreat":0,
+	"levels":[
+		{
+			"level":0,
+			"before_turn":[
+				""
+			],
+			"in_turn":[
+				""
+			],
+			"after_turn":[
+				""
+			]
+		}
+	]
+}

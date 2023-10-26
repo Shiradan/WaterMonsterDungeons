@@ -1,5 +1,26 @@
 extends HBoxContainer
 
+func get_bt_actions():
+	var bt_actions=[]
+	var bt_skill_order=$BeforeTurnMarginContainer/BeforeTurnContainer/BeforeTurnPanel/BeforeTurnSkillScrollContainer/BeforeTurnSkillOrderContainer
+	for skill in bt_skill_order.get_children():
+		bt_actions.append(skill.skill_name)
+	return bt_actions
+
+func get_it_actions():
+	var it_actions=[]
+	var it_skill_order=$InTurnContainer/InTurnContainer/InTurnPanel/InTurnSkillScrollContainer/InTurnSkillOrderContainer
+	for skill in it_skill_order.get_children():
+		it_actions.append(skill.skill_name)
+	return it_actions
+	
+func get_at_actions():
+	var at_actions=[]
+	var at_skill_order=$AfterTurnMarginContainer/AfterTurnContainer/AfterTurnPanel/AfterTurnSkillScrollContainer/AfterTurnSkillOrderContainer
+	for skill in at_skill_order.get_children():
+		at_actions.append(skill.skill_name)
+	return at_actions
+
 func setup_skill_selections():
 	var bt_skill_options:OptionButton=$BeforeTurnMarginContainer/BeforeTurnContainer/BeforeTurnPanel/BeforeTurnSkillChoiceContainer/BeforeTurnSkillOptionButton
 	var it_skill_options:OptionButton=$InTurnContainer/InTurnContainer/InTurnPanel/InTurnSkillChoiceContainer/InTurnSkillOptionButton
@@ -35,7 +56,7 @@ func setup_skill_selections():
 	it_skill_options.selected=-1
 	at_skill_options.selected=-1
 
-func setup_skill_order():
+func setup_default_skill_order():
 	var bt_skill_order=$BeforeTurnMarginContainer/BeforeTurnContainer/BeforeTurnPanel/BeforeTurnSkillScrollContainer/BeforeTurnSkillOrderContainer
 	var it_skill_order=$InTurnContainer/InTurnContainer/InTurnPanel/InTurnSkillScrollContainer/InTurnSkillOrderContainer
 	var at_skill_order=$AfterTurnMarginContainer/AfterTurnContainer/AfterTurnPanel/AfterTurnSkillScrollContainer/AfterTurnSkillOrderContainer
@@ -45,6 +66,23 @@ func setup_skill_order():
 		node.queue_free()
 	for node in at_skill_order.get_children():
 		node.queue_free()
+
+func setup_skill_order_by_level(level:Dictionary):
+	var bt_skill_order=$BeforeTurnMarginContainer/BeforeTurnContainer/BeforeTurnPanel/BeforeTurnSkillScrollContainer/BeforeTurnSkillOrderContainer
+	var it_skill_order=$InTurnContainer/InTurnContainer/InTurnPanel/InTurnSkillScrollContainer/InTurnSkillOrderContainer
+	var at_skill_order=$AfterTurnMarginContainer/AfterTurnContainer/AfterTurnPanel/AfterTurnSkillScrollContainer/AfterTurnSkillOrderContainer
+	for skillName in level.before_turn:
+		var skillRow=load("res://main/main_game_scene_pages/tactic_skill_row.tscn").instantiate()
+		skillRow.skill_name=skillName
+		bt_skill_order.add_child(skillRow)
+	for skillName in level.in_turn:
+		var skillRow=load("res://main/main_game_scene_pages/tactic_skill_row.tscn").instantiate()
+		skillRow.skill_name=skillName
+		it_skill_order.add_child(skillRow)
+	for skillName in level.after_turn:
+		var skillRow=load("res://main/main_game_scene_pages/tactic_skill_row.tscn").instantiate()
+		skillRow.skill_name=skillName
+		at_skill_order.add_child(skillRow)
 
 func _on_before_turn_add_skill_button_pressed():
 	var bt_action_selected=$BeforeTurnMarginContainer/BeforeTurnContainer/BeforeTurnPanel/BeforeTurnSkillChoiceContainer/BeforeTurnSkillOptionButton

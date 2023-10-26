@@ -4,6 +4,10 @@ extends Node2D
 @onready var general_info = $GameUI/GeneralInfo
 @onready var exp_bar = $GameUI/ExpContainer/ExpBar
 @onready var exp_value = $GameUI/ExpValue
+@onready var error_label = $GameUI/ErrorLabel
+
+var character_slot_icon=preload("res://assets/character_creation/buttons/Style 4 Icon 320.png")
+
 
 func _ready():
 	character_name.text=ClientManager.character.character_name
@@ -67,6 +71,33 @@ func setup_character_list():
 		if c.active==1:
 			selection.modulate=Color.WHITE
 		i+=1
+
+func setup_character_list_by_cache():
+	var characterSlots=$"GameUI/TabContainer/你的角色/CharacterSlotContainer"
+	var selections=$"GameUI/TabContainer/你的角色/SelectionContainer"
+	#获取服务器端存储的角色清单
+	var i=0
+	print(ClientManager.characters)
+	for c in ClientManager.characters:
+		var characterSlot=characterSlots.get_child(i)
+		characterSlot.text=c.character_name+": "+str(c.level)+"级"+ClientManager.translate_race(c.race)+ClientManager.translate_job(c.job)
+		characterSlot.icon=null
+		var selection:TextureRect=selections.get_child(i)
+		if c.active==1:
+			selection.modulate=Color.WHITE
+		i+=1
+
+func reset_character_list():
+	var characterSlots=$"GameUI/TabContainer/你的角色/CharacterSlotContainer"
+	var selections=$"GameUI/TabContainer/你的角色/SelectionContainer"
+	for slot in characterSlots.get_children():
+		slot.text=""
+		slot.icon=character_slot_icon
+	for selection in selections.get_children():
+		selection.modulate=Color.TRANSPARENT
+
+func reset_error_label():
+	error_label.text=""
 
 func setup_attributes_stats():
 	var strValue=$"GameUI/TabContainer/属性/AttributesValueContainer/StrContainer/StrValue"
@@ -134,10 +165,6 @@ func setup_skill_list():
 	skillPanel.setup_skill_list()
 
 func setup_tactic_panel():
-	ClientManager.tactics= await ServerConnection.read_tactics_async()
-	for tactic in ClientManager.tactics:
-		if tactic.character_name==ClientManager.character.character_name:
-			ClientManager.tactic_settings=tactic.tactic_settings
 	var tacticPanel=$"GameUI/TabContainer/战术设置"
 	tacticPanel.setup_tactic_setting_page()
 
@@ -145,23 +172,30 @@ func _on_tab_container_tab_clicked(tab):
 	match tab:
 		0:
 			ClientManager.tab=tab
+			reset_error_label()
 			setup_team_members()
 		1:
 			ClientManager.tab=tab
+			reset_error_label()
 			setup_character_list()
 		2:
 			ClientManager.tab=tab
+			reset_error_label()
 			setup_attributes_stats()
 		3:
 			ClientManager.tab=tab
+			reset_error_label()
 			setup_skill_list()
 		4:
 			ClientManager.tab=tab
+			reset_error_label()
 			setup_tactic_panel()
 		5:
 			ClientManager.tab=tab
+			reset_error_label()
 		6:
 			ClientManager.tab=tab
+			reset_error_label()
 
 func _on_character_slot_1_pressed():
 	var characterSlot1=$"GameUI/TabContainer/你的角色/CharacterSlotContainer/CharacterSlot1"
@@ -182,6 +216,10 @@ func _on_character_slot_1_pressed():
 		for skillsLearned in ClientManager.skills:
 			if skillsLearned.character_name==ClientManager.character.character_name:
 				ClientManager.learned_skills=skillsLearned.learned_skills
+		ClientManager.tactic_settings=[]
+		for tactic in ClientManager.tactics:
+			if tactic.character_name==ClientManager.character.character_name:
+				ClientManager.tactic_settings=tactic.tactic_settings
 		var selection1=$"GameUI/TabContainer/你的角色/SelectionContainer/Selection1"
 		var selection2=$"GameUI/TabContainer/你的角色/SelectionContainer/Selection2"
 		var selection3=$"GameUI/TabContainer/你的角色/SelectionContainer/Selection3"
@@ -217,6 +255,10 @@ func _on_character_slot_2_pressed():
 		for skillsLearned in ClientManager.skills:
 			if skillsLearned.character_name==ClientManager.character.character_name:
 				ClientManager.learned_skills=skillsLearned.learned_skills
+		ClientManager.tactic_settings=[]
+		for tactic in ClientManager.tactics:
+			if tactic.character_name==ClientManager.character.character_name:
+				ClientManager.tactic_settings=tactic.tactic_settings
 		var selection1=$"GameUI/TabContainer/你的角色/SelectionContainer/Selection1"
 		var selection2=$"GameUI/TabContainer/你的角色/SelectionContainer/Selection2"
 		var selection3=$"GameUI/TabContainer/你的角色/SelectionContainer/Selection3"
@@ -251,6 +293,10 @@ func _on_character_slot_3_pressed():
 		for skillsLearned in ClientManager.skills:
 			if skillsLearned.character_name==ClientManager.character.character_name:
 				ClientManager.learned_skills=skillsLearned.learned_skills
+		ClientManager.tactic_settings=[]
+		for tactic in ClientManager.tactics:
+			if tactic.character_name==ClientManager.character.character_name:
+				ClientManager.tactic_settings=tactic.tactic_settings
 		var selection1=$"GameUI/TabContainer/你的角色/SelectionContainer/Selection1"
 		var selection2=$"GameUI/TabContainer/你的角色/SelectionContainer/Selection2"
 		var selection3=$"GameUI/TabContainer/你的角色/SelectionContainer/Selection3"
@@ -336,3 +382,38 @@ func _on_level_up_button_pressed():
 	exp_bar.max_value=ClientManager.level_exp[ClientManager.character.level]
 	exp_value.text=str(ClientManager.character.experience)+" / "+str(ClientManager.level_exp[ClientManager.character.level])
 
+
+
+func _on_delete_1_pressed():
+	if ClientManager.characters[0].active!=1:
+		var deleteConfirmWindow:PopupPanel=load("res://main/main_game_scene_pages/character_delete_popup_window.tscn").instantiate()
+		deleteConfirmWindow.confirm_delete.connect(get_delete_confirmation.bind(0))
+		$"GameUI/TabContainer/你的角色".add_child(deleteConfirmWindow)
+		deleteConfirmWindow.popup_centered()
+	else:
+		error_label.text="无法删除已激活角色"
+		
+func _on_delete_2_pressed():
+	if ClientManager.characters.size()>1:
+		if ClientManager.characters[1].active!=1:
+			var deleteConfirmWindow:PopupPanel=load("res://main/main_game_scene_pages/character_delete_popup_window.tscn").instantiate()
+			deleteConfirmWindow.confirm_delete.connect(get_delete_confirmation.bind(1))
+			$"GameUI/TabContainer/你的角色".add_child(deleteConfirmWindow)
+			deleteConfirmWindow.popup_centered()
+		else:
+			error_label.text="无法删除已激活角色"
+					
+func _on_delete_3_pressed():
+	if ClientManager.characters.size()>2:
+		if ClientManager.characters[2].active!=1:
+			var deleteConfirmWindow:PopupPanel=load("res://main/main_game_scene_pages/character_delete_popup_window.tscn").instantiate()
+			deleteConfirmWindow.confirm_delete.connect(get_delete_confirmation.bind(2))
+			$"GameUI/TabContainer/你的角色".add_child(deleteConfirmWindow)
+			deleteConfirmWindow.popup_centered()
+		else:
+			error_label.text="无法删除已激活角色"
+			
+func get_delete_confirmation(index:int):
+	await ClientManager.delete_character(index)
+	reset_character_list()
+	setup_character_list()

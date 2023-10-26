@@ -16,6 +16,9 @@ var dice_rolled:bool=false
 @onready var step4_skillSelection=$Step4_SkillSelection
 @onready var step5_summary=$Step5_Summary
 
+@onready var error_label = $CharacterList/Panel/ErrorLabel
+var character_slot_icon=preload("res://assets/character_creation/buttons/Style 4 Icon 320.png")
+
 func _ready():
 	if ClientManager.logged_in:
 		setup_character_list()
@@ -48,6 +51,9 @@ func setup_character_list():
 	ClientManager.characters=characters
 	#获取当前账号各角色学习的技能清单
 	ClientManager.skills=await ServerConnection.read_skills_learned_async()
+	#获取当前账号各角色战术设置
+	ClientManager.tactics=await ServerConnection.read_tactics_async()
+	
 	var i=0
 	if ClientManager.characters.size()>0:
 		for c in ClientManager.characters:
@@ -61,10 +67,26 @@ func setup_character_list():
 				for skillsLearned in ClientManager.skills:
 					if skillsLearned.character_name==c.character_name:
 						ClientManager.learned_skills=skillsLearned.learned_skills
+				for tactic in ClientManager.tactics:
+					if tactic.character_name==ClientManager.character.character_name:
+						ClientManager.tactic_settings=tactic.tactic_settings
 			i+=1
 
+func reset_character_list():
+	reset_error_label()
+	var characterSlots=$CharacterList/Panel/CharacterSlotContainer
+	var selections=$CharacterList/Panel/SelectionContainer
+	for slot in characterSlots.get_children():
+		slot.text=""
+		slot.icon=character_slot_icon
+	for selection in selections.get_children():
+		selection.modulate=Color.TRANSPARENT
+
+func reset_error_label():
+	$CharacterList/Panel/ErrorLabel.text=""
 
 func goto_step1():
+	reset_error_label()
 	characterListPage.hide()
 	step1.show()
 
@@ -349,3 +371,40 @@ func _on_enter_wmd_pressed():
 	ClientManager.logged_in=true
 	SoundManger.play_main_bgm()
 	get_tree().change_scene_to_file("res://main/loading_scene.tscn")
+
+
+func _on_delete_1_pressed():
+	if ClientManager.characters[0].active!=1:
+		var deleteConfirmWindow:PopupPanel=load("res://main/main_game_scene_pages/character_delete_popup_window.tscn").instantiate()
+		deleteConfirmWindow.confirm_delete.connect(get_delete_confirmation.bind(0))
+		characterListPage.add_child(deleteConfirmWindow)
+		deleteConfirmWindow.popup_centered()
+	else:
+		error_label.text="无法删除已激活角色"
+
+
+func _on_delete_2_pressed():
+	if ClientManager.characters.size()>1:
+		if ClientManager.characters[1].active!=1:
+			var deleteConfirmWindow:PopupPanel=load("res://main/main_game_scene_pages/character_delete_popup_window.tscn").instantiate()
+			deleteConfirmWindow.confirm_delete.connect(get_delete_confirmation.bind(1))
+			characterListPage.add_child(deleteConfirmWindow)
+			deleteConfirmWindow.popup_centered()
+		else:
+			error_label.text="无法删除已激活角色"
+
+
+func _on_delete_3_pressed():
+	if ClientManager.characters.size()>2:
+		if ClientManager.characters[2].active!=1:
+			var deleteConfirmWindow:PopupPanel=load("res://main/main_game_scene_pages/character_delete_popup_window.tscn").instantiate()
+			deleteConfirmWindow.confirm_delete.connect(get_delete_confirmation.bind(2))
+			characterListPage.add_child(deleteConfirmWindow)
+			deleteConfirmWindow.popup_centered()
+		else:
+			error_label.text="无法删除已激活角色"
+
+func get_delete_confirmation(index:int):
+	await ClientManager.delete_character(index)
+	reset_character_list()
+	setup_character_list()

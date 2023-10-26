@@ -476,6 +476,16 @@ func register_name_storage(cname:String):
 	else:
 		return false
 
+func remove_name_storage(cname:String):
+	var availability_response: NakamaAPI.ApiRpc = await _client.rpc_async(_session, "remove_wmd_character_name", cname)
+	var parsed_result := _exception_handler.parse_exception(availability_response)
+	if parsed_result != OK:
+		return parsed_result
+	if availability_response.payload=="1":
+		return true
+	else:
+		return false
+
 func list_group_members():
 	var member_list : NakamaAPI.ApiGroupUserList = await _client.list_group_users_async(_session, _groupId)
 

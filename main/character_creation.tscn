@@ -17,10 +17,9 @@ script = ExtResource("1_nably")
 [node name="BackgorundTile" parent="." instance=ExtResource("2_x1hag")]
 
 [node name="CharacterList" parent="." instance=ExtResource("3_se3xk")]
-visible = false
 
-[node name="Panel" parent="CharacterList" index="0"]
-offset_right = 1024.0
+[node name="DeleteContainer" parent="CharacterList/Panel" index="0"]
+layout_mode = 1
 
 [node name="Step1_ModeSelection" parent="." instance=ExtResource("4_6vxbf")]
 visible = false
@@ -68,6 +67,7 @@ offset_right = 504.0
 visible = false
 
 [node name="Step5_Summary" parent="." instance=ExtResource("10_qby20")]
+visible = false
 
 [node name="HBoxContainer" parent="Step5_Summary" index="0"]
 offset_left = 128.0
@@ -91,6 +91,9 @@ offset_top = 24.0
 offset_right = 315.0
 offset_bottom = 552.0
 
+[connection signal="pressed" from="CharacterList/Panel/DeleteContainer/Delete1" to="." method="_on_delete_1_pressed"]
+[connection signal="pressed" from="CharacterList/Panel/DeleteContainer/Delete2" to="." method="_on_delete_2_pressed"]
+[connection signal="pressed" from="CharacterList/Panel/DeleteContainer/Delete3" to="." method="_on_delete_3_pressed"]
 [connection signal="pressed" from="CharacterList/Panel/CharacterSlotContainer/CharacterSlot1" to="." method="_on_character_slot_1_pressed"]
 [connection signal="pressed" from="CharacterList/Panel/CharacterSlotContainer/CharacterSlot2" to="." method="_on_character_slot_2_pressed"]
 [connection signal="pressed" from="CharacterList/Panel/CharacterSlotContainer/CharacterSlot3" to="." method="_on_character_slot_3_pressed"]

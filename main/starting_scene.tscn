@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://5qtow28i1oty" path="res://assets/loading/QQ图片20230313191135.jpg" id="1_qw1br"]
 [ext_resource type="Script" path="res://main/starting_scene.gd" id="1_y32kt"]
-[ext_resource type="Texture2D" uid="uid://dndhjqa8avr2w" path="res://assets/loading/QQ图片20231020141102.jpg" id="2_pvii0"]
+[ext_resource type="Texture2D" uid="uid://qt5ou6gls88w" path="res://assets/loading/ChaiChaiStudio.png" id="3_ivfbx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ekvfr"]
 bg_color = Color(1, 1, 1, 1)
@@ -37,7 +37,7 @@ offset_left = 736.0
 offset_top = 232.0
 offset_right = 992.0
 offset_bottom = 488.0
-texture = ExtResource("2_pvii0")
+texture = ExtResource("3_ivfbx")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="."]

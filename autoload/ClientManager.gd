@@ -44,7 +44,7 @@ var character:=Character.new() #该账号的已激活角色
 var skills:Array=[] #该账号所有已创建角色的已学习技能
 var learned_skills:Array=[] #该账号已激活角色的已学技能
 var tactics:Array=[] #该账号所有已创建角色的战术设置
-var tactic_settings:Array=[] #盖账号已激活角色的战术设置
+var tactic_settings:Array=[] #该账号已激活角色的战术设置
 
 var logged_in:bool=false
 var tab:int=0
@@ -433,3 +433,30 @@ func update_active_character_by_levelup():
 	character.before_turn_actions=get_bt_actions(character.level)
 	character.actions=get_actions(character.level)
 	character.after_turn_actions=get_at_actions(character.level)
+
+
+func delete_character(index:int):
+	var charactersArray=[]
+	var charactersStorageList=[]
+	var skillsArray=[]
+	var tacticsArray=[]
+	var characterName2Delete=ClientManager.characters[index].character_name
+	var i=0
+	while i<characters.size():
+		if i!=index:
+			charactersArray.append(characters[i])
+			charactersStorageList.append(to_character_storage_object(characters[i]))
+		i+=1
+	for skill in skills:
+		if skill.character_name!=characterName2Delete:
+			skillsArray.append(skill)
+	for tactic in tactics:
+		if tactic.character_name!=characterName2Delete:
+			tacticsArray.append(tactic)
+	await ServerConnection.write_skills_learned_async(skillsArray)
+	await ServerConnection.write_characters_async(charactersStorageList)
+	await ServerConnection.write_tactics_async(tacticsArray)
+	await ServerConnection.remove_name_storage(characterName2Delete)
+	characters=charactersArray
+	skills=skillsArray
+	tactics=tacticsArray

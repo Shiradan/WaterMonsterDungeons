@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dndhjqa8avr2w"
-path="res://.godot/imported/QQ图片20231020141102.jpg-6298ca5d560201fd18b4fa858e10d742.ctex"
+uid="uid://bdfo7ci5fy1cy"
+path="res://.godot/imported/Style 4 Icon 321.png-ce2f05d71eb5e03fbfdd677db0a4c484.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/loading/QQ图片20231020141102.jpg"
-dest_files=["res://.godot/imported/QQ图片20231020141102.jpg-6298ca5d560201fd18b4fa858e10d742.ctex"]
+source_file="res://assets/main_scene/button/Style 4 Icon 321.png"
+dest_files=["res://.godot/imported/Style 4 Icon 321.png-ce2f05d71eb5e03fbfdd677db0a4c484.ctex"]
 
 [params]
 
