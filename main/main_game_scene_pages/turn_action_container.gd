@@ -4,21 +4,33 @@ func get_bt_actions():
 	var bt_actions=[]
 	var bt_skill_order=$BeforeTurnMarginContainer/BeforeTurnContainer/BeforeTurnPanel/BeforeTurnSkillScrollContainer/BeforeTurnSkillOrderContainer
 	for skill in bt_skill_order.get_children():
-		bt_actions.append(skill.skill_name)
+		var action={
+			"attack":skill.skill_name,
+			"priority":skill.priority
+		}
+		bt_actions.append(action)
 	return bt_actions
 
 func get_it_actions():
 	var it_actions=[]
 	var it_skill_order=$InTurnContainer/InTurnContainer/InTurnPanel/InTurnSkillScrollContainer/InTurnSkillOrderContainer
 	for skill in it_skill_order.get_children():
-		it_actions.append(skill.skill_name)
+		var action={
+			"attack":skill.skill_name,
+			"priority":skill.priority
+		}
+		it_actions.append(action)
 	return it_actions
 	
 func get_at_actions():
 	var at_actions=[]
 	var at_skill_order=$AfterTurnMarginContainer/AfterTurnContainer/AfterTurnPanel/AfterTurnSkillScrollContainer/AfterTurnSkillOrderContainer
 	for skill in at_skill_order.get_children():
-		at_actions.append(skill.skill_name)
+		var action={
+			"attack":skill.skill_name,
+			"priority":skill.priority
+		}
+		at_actions.append(action)
 	return at_actions
 
 func setup_skill_selections():
@@ -71,17 +83,20 @@ func setup_skill_order_by_level(level:Dictionary):
 	var bt_skill_order=$BeforeTurnMarginContainer/BeforeTurnContainer/BeforeTurnPanel/BeforeTurnSkillScrollContainer/BeforeTurnSkillOrderContainer
 	var it_skill_order=$InTurnContainer/InTurnContainer/InTurnPanel/InTurnSkillScrollContainer/InTurnSkillOrderContainer
 	var at_skill_order=$AfterTurnMarginContainer/AfterTurnContainer/AfterTurnPanel/AfterTurnSkillScrollContainer/AfterTurnSkillOrderContainer
-	for skillName in level.before_turn:
+	for skill in level.before_turn:
 		var skillRow=load("res://main/main_game_scene_pages/tactic_skill_row.tscn").instantiate()
-		skillRow.skill_name=skillName
+		skillRow.skill_name=skill.attack
+		skillRow.priority=skill.priority
 		bt_skill_order.add_child(skillRow)
-	for skillName in level.in_turn:
+	for skill in level.in_turn:
 		var skillRow=load("res://main/main_game_scene_pages/tactic_skill_row.tscn").instantiate()
-		skillRow.skill_name=skillName
+		skillRow.skill_name=skill.attack
+		skillRow.priority=skill.priority
 		it_skill_order.add_child(skillRow)
-	for skillName in level.after_turn:
+	for skill in level.after_turn:
 		var skillRow=load("res://main/main_game_scene_pages/tactic_skill_row.tscn").instantiate()
-		skillRow.skill_name=skillName
+		skillRow.skill_name=skill.attack
+		skillRow.priority=skill.priority
 		at_skill_order.add_child(skillRow)
 
 func _on_before_turn_add_skill_button_pressed():

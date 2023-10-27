@@ -7,13 +7,22 @@
 		{
 			"level":0,
 			"before_turn":[
-				""
+				{
+					"attack":"",
+					"priority":""
+				}
 			],
 			"in_turn":[
-				""
+				{
+					"attack":"",
+					"priority":""
+				}
 			],
 			"after_turn":[
-				""
+				{
+					"attack":"",
+					"priority":""
+				}
 			]
 		}
 	]

@@ -261,6 +261,10 @@ offset_bottom = 33.0
 [node name="LevelTabContainer" parent="GameUI/TabContainer/战术设置" index="2"]
 offset_bottom = 635.0
 
+[node name="地下城" type="Panel" parent="GameUI/TabContainer"]
+visible = false
+layout_mode = 2
+
 [connection signal="tab_clicked" from="GameUI/TabContainer" to="." method="_on_tab_container_tab_clicked"]
 [connection signal="pressed" from="GameUI/TabContainer/你的角色/DeleteContainer/Delete1" to="." method="_on_delete_1_pressed"]
 [connection signal="pressed" from="GameUI/TabContainer/你的角色/DeleteContainer/Delete2" to="." method="_on_delete_2_pressed"]

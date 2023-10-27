@@ -39,7 +39,8 @@ func get_level_number_entered():
 
 func setup_tactic_setting_page():
 	setup_tactic_saves()
-	setup_action_panel()
+	reset()
+
 
 func setup_tactic_saves():
 	var tacticSavesOption:OptionButton=$TacticSavesContainer/TacticSavesOptionButton

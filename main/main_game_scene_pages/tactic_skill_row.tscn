@@ -17,10 +17,21 @@ theme_override_styles/normal = ExtResource("2_31635")
 text = "技能名"
 vertical_alignment = 1
 
+[node name="OptionButton" type="OptionButton" parent="."]
+layout_mode = 2
+item_count = 3
+popup/item_0/text = "前排"
+popup/item_0/id = 0
+popup/item_1/text = "中间"
+popup/item_1/id = 1
+popup/item_2/text = "后排"
+popup/item_2/id = 2
+
 [node name="Button" type="Button" parent="."]
 layout_mode = 2
 icon = ExtResource("1_qu253")
 flat = true
 icon_alignment = 1
 
+[connection signal="item_selected" from="OptionButton" to="." method="_on_option_button_item_selected"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

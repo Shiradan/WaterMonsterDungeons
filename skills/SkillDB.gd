@@ -1,6 +1,7 @@
 extends TextDatabase
 
 func _initialize():
+	#技能索引
 	add_mandatory_property("Skill_Index",TYPE_STRING)
 	#中文名——必要
 	add_mandatory_property("cn_name",TYPE_STRING)
