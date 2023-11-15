@@ -1,0 +1,29 @@
+[{
+		"name":"",
+		"Dungeon_Index":-1,
+		"cn_name":"",
+		"Desc":"",
+		"Levels":[
+			{
+				"Level":0,
+				"Level_Desc":"",
+				"Enemies":[
+					{
+						"Enemy_Id":0,
+						"Enemy_Pos":-1,
+						"Ammount":0,
+						"Target_Prob":{
+							"Front":0.0,
+							"Middle":0.0,
+							"Back":0.0
+						}
+					}
+				],
+				"Traps":[],
+				"Level_Pass_Desc":""
+			}
+		],
+		"victory_desc":"",
+		"defeat_desc":"",
+		"CR":0
+}]
